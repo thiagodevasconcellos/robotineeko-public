@@ -36,7 +36,8 @@ Robotineeko represents real product work across:
 
 - recruiter-facing README
 - safe repository metadata
-- empty folder structure for public reference
+- curated public documentation subset
+- placeholder folder structure for public reference
 - future screenshots and diagrams
 - public architecture notes with sensitive details removed
 
@@ -53,21 +54,30 @@ The following remain private:
 
 ## Repository Structure
 
-This public repository currently ships only a safe empty structure:
+This public repository currently ships a safe public shell plus a small curated
+documentation set:
 
 ```text
 frontend/
 backend/
 docs/
+  README.md
+  product-overview.md
+  public-demo-and-surfaces.md
+  analysis-workflow.md
 public/
 infra/
 ```
 
-Each folder exists only as a public placeholder for the product boundary it represents.
+Most folders remain placeholders for product boundaries.
+
+The `docs/` folder is the exception: it now contains a small public-safe subset
+prepared specifically for portfolio review.
 
 ## Why The Structure Is Empty
 
-The live product is active, but this repository is intentionally published as a sanitized portfolio artifact.
+The live product is active, but this repository is intentionally published as a
+sanitized portfolio artifact.
 
 That means:
 
