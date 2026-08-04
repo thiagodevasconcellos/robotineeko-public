@@ -22,12 +22,23 @@ It exists to show:
 
 It does not exist to mirror the private production codebase.
 
+## Product Engineering Scope
+
+Robotineeko represents real product work across:
+
+- frontend delivery
+- backend-connected application flows
+- deployment and runtime maintenance
+- iterative production support
+- documentation prepared for public review without exposing internals
+
 ## Public Scope
 
 - recruiter-facing README
 - safe repository metadata
 - empty folder structure for public reference
 - future screenshots and diagrams
+- public architecture notes with sensitive details removed
 
 ## Private Scope
 
@@ -54,14 +65,17 @@ infra/
 
 Each folder exists only as a public placeholder for the product boundary it represents.
 
-## Engineering Summary
+## Why The Structure Is Empty
 
-Robotineeko represents real product work across:
+The live product is active, but this repository is intentionally published as a sanitized portfolio artifact.
 
-- frontend delivery
-- backend integration
-- deployment and runtime maintenance
-- iterative production support
+That means:
+
+- no production source code
+- no datasets or snapshots
+- no environment files
+- no infrastructure secrets
+- no internal operating material
 
 ## Publication Rule
 
