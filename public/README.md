@@ -1,1 +1,11 @@
-[README.md](https://github.com/user-attachments/files/30682926/README.md)
+# public
+
+Public placeholder only.
+
+This folder is reserved for assets that are safe to expose publicly.
+
+Examples of acceptable future contents:
+
+- screenshots
+- icons created for the public repository
+- demo-supporting visual material
