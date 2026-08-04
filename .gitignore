@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+*.pid
+*.log
+*.tar.gz
+*.zip
+.pytest_cache/
+__pycache__/
+*.pyc
+.~lock.*

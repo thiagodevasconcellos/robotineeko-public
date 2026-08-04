@@ -1,0 +1,178 @@
+.ResultsRuntime {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.resultsRuntimeToolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.resultsRuntimeHeadline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.resultsRuntimeDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #6f7784;
+}
+
+.resultsRuntimeDot.is-idle { background: #6f7784; }
+.resultsRuntimeDot.is-ok { background: #5ec77b; }
+.resultsRuntimeDot.is-warn { background: #d3a645; }
+.resultsRuntimeDot.is-error { background: #e36d6d; }
+
+.resultsRuntimeToolbarMeta {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.resultsRuntimeActionButton {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+.resultsRuntimeSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.10);
+    border: 1px solid rgba(107, 184, 255, 0.18);
+}
+
+.resultsRuntimeSummaryTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.resultsRuntimeSummaryText {
+    color: var(--text-secondary);
+}
+
+.resultsRuntimeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.resultsRuntimeCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-panel);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resultsRuntimeCardTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.resultsRuntimeCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.resultsRuntimeFieldRow {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.resultsRuntimeFieldLabel {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.resultsRuntimeFieldValue {
+    color: var(--text-primary);
+    min-width: 0;
+    word-break: break-word;
+}
+
+.resultsRuntimeError {
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: var(--status-negative);
+}
+
+.resultsRuntimeList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resultsRuntimeListItem {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.resultsRuntimeListTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.resultsRuntimeListMeta {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+.resultsRuntimeEmpty {
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-panel);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1100px) {
+    .resultsRuntimeGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .resultsRuntimeToolbar {
+        flex-wrap: wrap;
+    }
+
+    .resultsRuntimeToolbarMeta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .resultsRuntimeFieldRow {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}

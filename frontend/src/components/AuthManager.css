@@ -1,0 +1,136 @@
+.authManagerOverlay {
+    z-index: 1260;
+}
+
+.authManagerStandalone {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.authManagerWindow {
+    box-sizing: border-box;
+    width: 420px;
+    max-width: min(92vw, 420px);
+    min-width: 0;
+    padding: 48px 18px 18px;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    box-shadow: none;
+}
+
+.authManagerWindowStandalone {
+    padding-top: 18px;
+}
+
+.authManagerPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.authManagerTitle {
+    font-size: 1.08rem;
+    font-weight: 700;
+}
+
+.authManagerActions button,
+.authManagerField input {
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+.authManagerActions button {
+    height: 36px;
+    padding: 0 14px;
+    cursor: pointer;
+}
+
+.authManagerField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.authManagerField label {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+.authManagerField input {
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 0;
+}
+
+.authManagerActions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.authManagerPrimary {
+    font-weight: 700;
+    background-color: #d6d9de !important;
+    color: #25282d !important;
+    border-color: #d6d9de !important;
+}
+
+.authManagerGuest {
+    border-color: rgba(217, 168, 58, 0.42) !important;
+    background-color: rgba(217, 168, 58, 0.12) !important;
+    color: #f5d98f !important;
+    font-weight: 700;
+}
+
+.authManagerError {
+    color: var(--status-danger-strong);
+    font-size: 0.86rem;
+}
+
+.authManagerIdentity {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.authManagerGuestBadge {
+    width: fit-content;
+    padding: 3px 8px;
+    border: 1px solid rgba(217, 168, 58, 0.35);
+    background: rgba(217, 168, 58, 0.1);
+    color: #f5d98f;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .authManagerStandalone {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .authManagerWindow {
+        width: 100%;
+        max-width: 100%;
+        padding: 42px 14px 14px;
+    }
+
+    .authManagerActions {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .authManagerActions button {
+        width: 100%;
+    }
+}

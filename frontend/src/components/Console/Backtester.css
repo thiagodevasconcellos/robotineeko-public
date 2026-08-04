@@ -1,0 +1,926 @@
+section#Console .Backtester {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Backtester .backtesterPanelToolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: stretch;
+    min-height: 42px;
+    background-color: var(--surface-app);
+    border-top: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+    margin: -7.5px -20px 0;
+    z-index: 2;
+}
+
+section#Console .Backtester .backtesterPanelTabs {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterPanelTab {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 10px;
+    padding: 0 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Backtester .backtesterPanelTab.active {
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+    background-color: var(--surface-app);
+    font-weight: bold;
+}
+
+section#Console .Backtester .backtesterPanelTabIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background-color: var(--text-muted);
+    color: #111;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+section#Console .Backtester .backtesterPanelTabIcon.capital {
+    background-color: #6bb8ff;
+}
+
+section#Console .Backtester .backtesterPanelTabIcon.strategy {
+    background-color: #d98dff;
+}
+
+section#Console .Backtester .backtesterPanelTabIcon.costs {
+    background-color: #ffb04d;
+}
+
+section#Console .Backtester .backtesterPanelTabIcon.execution {
+    background-color: var(--status-positive);
+}
+
+section#Console .Backtester .backtesterActions {
+    display: flex;
+    align-items: stretch;
+    flex: 0 0 auto;
+    gap: 8px;
+    padding-right: 10px;
+}
+
+section#Console .Backtester .backtesterStaleBadge {
+    align-self: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background-color: rgba(211, 166, 69, 0.16);
+    color: #f0c46b;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+section#Console .Backtester .backtesterToolbarButton {
+    min-width: 120px;
+    padding: 0 16px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+section#Console .Backtester .backtesterToolbarButton:hover:not(:disabled) {
+    background-color: var(--surface-panel);
+}
+
+section#Console .Backtester .backtesterToolbarButton:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+section#Console .Backtester .backtesterToolbarButton.isActive {
+    background-color: rgba(236, 236, 236, 0.12);
+}
+
+section#Console .Backtester .backtesterPanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    background-color: transparent;
+    padding: 16px;
+}
+
+section#Console .Backtester .consoleJobProgress {
+    position: relative;
+    height: 2px;
+    margin: 0 -20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+section#Console .Backtester .backtesterJobStatus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 28px;
+    margin: 0 -20px;
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.12) 0%, rgba(107, 184, 255, 0.04) 100%);
+    border-bottom: 1px solid rgba(107, 184, 255, 0.18);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+section#Console .Backtester .backtesterJobStatus strong {
+    display: block;
+    font-weight: 700;
+}
+
+section#Console .Backtester .backtesterJobStatus span {
+    display: block;
+    color: var(--text-secondary);
+    font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+    font-size: 0.76rem;
+}
+
+section#Console .Backtester .consoleJobProgressFill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.28) 0%, rgba(107, 184, 255, 0.92) 100%);
+    box-shadow: 0 0 10px rgba(107, 184, 255, 0.25);
+}
+
+section#Console .Backtester .consoleJobProgressFill.isIndeterminate {
+    width: 38%;
+    animation: consoleJobProgressSlide 1.15s ease-in-out infinite;
+}
+
+@keyframes consoleJobProgressSlide {
+    0% {
+        transform: translateX(-115%);
+    }
+
+    100% {
+        transform: translateX(365%);
+    }
+}
+
+section#Console .Backtester .backtesterPanelSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Backtester .backtesterStrategySetCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 14px 16px 18px;
+    padding: 16px;
+    border: 1px solid var(--border-default);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.015) 100%);
+}
+
+section#Console .Backtester .backtesterStrategyPipeShell {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebar,
+section#Console .Backtester .backtesterStrategyPipeContent {
+    min-width: 0;
+    min-height: 0;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+    overflow: hidden;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebarHeader,
+section#Console .Backtester .backtesterStrategyPipeToolbar,
+section#Console .Backtester .backtesterStrategyPipeSearchRow {
+    padding: 12px;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebarHeader {
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebarHeader h3,
+section#Console .Backtester .backtesterStrategyPipeSelectionHeader h3 {
+    margin: 0 0 4px;
+    font-size: 0.98rem;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSidebarHeader p,
+section#Console .Backtester .backtesterStrategyPipeSelectionHeader p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+section#Console .Backtester .backtesterStrategyPipeToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Backtester .backtesterStrategyPipeListTabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+section#Console .Backtester .backtesterStrategyPipeListTabs button,
+section#Console .Backtester .backtesterStrategyPipeSearchClear,
+section#Console .Backtester .backtesterStrategyPipeList button {
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Backtester .backtesterStrategyPipeListTabs button {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Backtester .backtesterStrategyPipeListTabs button.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.16);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Backtester .backtesterStrategyPipeRefreshButton {
+    min-width: 0;
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: .45em;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSearchRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Backtester .backtesterStrategySetHeader {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+section#Console .Backtester .backtesterStrategySetHeader > div:first-child {
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterStrategySetHeader h3 {
+    margin: 0 0 4px;
+    font-size: 0.98rem;
+}
+
+section#Console .Backtester .backtesterStrategySetHeader p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+section#Console .Backtester .backtesterStrategySetActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2px;
+    scrollbar-width: thin;
+}
+
+section#Console .Backtester .backtesterStrategyLibraryFilter,
+section#Console .Backtester .backtesterStrategyLibrarySelect {
+    min-width: 0;
+    height: 34px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    padding: 0 10px;
+    font: inherit;
+    flex: 0 0 auto;
+}
+
+section#Console .Backtester .backtesterStrategyLibraryFilter {
+    width: 100%;
+    min-width: 0;
+    text-transform: none;
+}
+
+section#Console .Backtester .backtesterStrategyLibrarySelect {
+    appearance: auto;
+    width: 260px;
+    min-width: 260px;
+}
+
+section#Console .Backtester .backtesterStrategyLibraryAddButton {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSearchClear {
+    flex: 0 0 auto;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: .45em;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSearchClear:hover:not(:disabled) {
+    color: var(--text-primary);
+}
+
+section#Console .Backtester .backtesterStrategyPipeList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+section#Console .Backtester .backtesterStrategyPipeListEntry {
+    position: relative;
+    display: block;
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterStrategyPipeListSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    min-width: 0;
+    padding: 12px;
+    padding-right: 56px;
+    border-radius: .6em;
+    text-align: left;
+    cursor: pointer;
+}
+
+section#Console .Backtester .backtesterStrategyPipeListSelect.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.12);
+}
+
+section#Console .Backtester .backtesterStrategyPipeListSelect span,
+section#Console .Backtester .backtesterStrategyPipeListSelect small {
+    color: var(--text-muted);
+}
+
+section#Console .Backtester .backtesterStrategyPipeEntryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterStrategyPipeEntryLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterStrategyPipeFavoriteStar {
+    color: #f0c46b;
+}
+
+section#Console .Backtester .backtesterStrategyPipeFavoriteBadge {
+    flex: 0 0 auto;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(240, 196, 107, 0.14);
+    color: #f0c46b;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+section#Console .Backtester .backtesterStrategyPipeFavoriteToggle {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+section#Console .Backtester .backtesterStrategyPipeFavoriteToggle.active {
+    border-color: rgba(250, 204, 21, 0.35);
+    background: rgba(250, 204, 21, 0.12);
+    color: #facc15;
+}
+
+section#Console .Backtester .backtesterStrategyPipeFavoriteToggle:hover:not(:disabled) {
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.28);
+}
+
+section#Console .Backtester .backtesterStrategyPipeContent {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSelectionCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Backtester .backtesterStrategyPipeSelectionHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSelectionMeta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSelectionMeta span {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 0.74rem;
+}
+
+section#Console .Backtester .backtesterStrategyPipeSelectionActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterStrategySetMeta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+section#Console .Backtester .backtesterStrategySetList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Backtester .backtesterStrategySetRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Backtester .backtesterStrategySetRow.isDisabled {
+    opacity: 0.62;
+}
+
+section#Console .Backtester .backtesterStrategySetRowMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterStrategySetFields {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(110px, 0.8fr) minmax(110px, 0.7fr);
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+section#Console .Backtester .backtesterStrategySetPriority {
+    width: 42px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background-color: rgba(107, 184, 255, 0.12);
+    color: #8cc7ff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+section#Console .Backtester .backtesterStrategySetLabel {
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    padding: 8px 10px;
+    font: inherit;
+}
+
+section#Console .Backtester .backtesterStrategySetMarketInput {
+    width: 100%;
+    min-width: 0;
+    height: 36px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    padding: 8px 10px;
+    font: inherit;
+    text-transform: uppercase;
+}
+
+section#Console .Backtester .backtesterStrategySetRowActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterStrategySetEmpty {
+    padding: 14px;
+    border: 1px dashed var(--border-default);
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+section#Console .Backtester .backtesterStrategySetError {
+    border-style: solid;
+    border-color: rgba(239, 68, 68, 0.38);
+    background: rgba(239, 68, 68, 0.08);
+    color: #ffd8d8;
+}
+
+section#Console .Backtester .backtesterPortfolioSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Backtester .backtesterPortfolioSummary h4 {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+section#Console .Backtester .backtesterPortfolioGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Backtester .backtesterPortfolioCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.025);
+    font-size: 0.82rem;
+}
+
+section#Console .Backtester .backtesterPortfolioCard strong {
+    font-size: 0.85rem;
+}
+
+section#Console .Backtester .backtesterStaleNotice {
+    padding: 10px 12px;
+    border: 1px solid rgba(211, 166, 69, 0.35);
+    background-color: rgba(211, 166, 69, 0.08);
+    color: #f0c46b;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+section#Console .Backtester .backtesterGuestNotice {
+    margin: 10px 16px 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(211, 166, 69, 0.35);
+    background-color: rgba(211, 166, 69, 0.08);
+    color: #f0c46b;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+section#Console .Backtester .fieldRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Backtester .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Backtester .backtesterWideField {
+    grid-column: 1 / -1;
+}
+
+section#Console .Backtester .backtesterHistoryField {
+    grid-column: span 2;
+}
+
+section#Console .Backtester .fieldHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+section#Console .Backtester .field label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+section#Console .Backtester .fieldResetButton {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-panel);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+section#Console .Backtester .fieldResetButton:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+}
+
+section#Console .Backtester .fieldDescription {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Backtester .backtesterSummaryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Backtester .backtesterSummaryCardHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+section#Console .Backtester .backtesterSummaryCardTitle {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+section#Console .Backtester .backtesterSummaryCardMeta {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Backtester .backtesterSummaryCardActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterInlineButton {
+    min-height: 30px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+section#Console .Backtester .backtesterInlineButton:hover {
+    background-color: var(--surface-hover);
+}
+
+section#Console .Backtester .backtesterSummaryChipRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterSummaryChip {
+    padding: 5px 10px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+section#Console .Backtester .backtesterSummaryList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Backtester .backtesterSummaryListItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+section#Console .Backtester .backtesterSummaryListItem strong {
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: right;
+}
+
+section#Console .Backtester .backtesterSummaryNotes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Backtester .field input,
+section#Console .Backtester .field select {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    box-sizing: border-box;
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    padding: 8px 10px;
+    font: inherit;
+}
+
+section#Console .Backtester .backtestHistoryScopeRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 120px;
+    gap: 8px;
+    align-items: center;
+}
+
+section#Console .Backtester .backtestHistoryScopeRow input,
+section#Console .Backtester .backtestHistoryScopeRow select {
+    width: 100%;
+}
+
+@media (max-width: 1100px) {
+    section#Console .Backtester .fieldRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    section#Console .Backtester .backtesterHistoryField {
+        grid-column: span 2;
+    }
+
+    section#Console .Backtester .backtesterStrategyPipeShell,
+    section#Console .Backtester .backtesterStrategySetHeader,
+    section#Console .Backtester .backtesterStrategySetMeta,
+    section#Console .Backtester .backtesterStrategySetRow {
+        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    section#Console .Backtester .backtesterStrategySetFields {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Backtester .backtesterStrategySetRowActions {
+        justify-content: flex-start;
+    }
+
+    section#Console .Backtester .backtesterStrategySetActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    section#Console .Backtester .backtesterStrategyPipeSelectionHeader {
+        flex-direction: column;
+    }
+
+    section#Console .Backtester .backtesterStrategyPipeSelectionMeta {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 900px) {
+    section#Console .Backtester .fieldRow {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Backtester .backtesterHistoryField {
+        grid-column: span 1;
+    }
+
+    section#Console .Backtester .backtesterSummaryCardHeader,
+    section#Console .Backtester .backtesterSummaryListItem {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section#Console .Backtester .backtesterSummaryCardActions {
+        justify-content: flex-start;
+    }
+
+    section#Console .Backtester .backtesterSummaryListItem strong {
+        text-align: left;
+    }
+
+    section#Console .Backtester .backtesterJobStatus {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

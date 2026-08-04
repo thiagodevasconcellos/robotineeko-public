@@ -1,0 +1,822 @@
+div#App {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: var(--chart-side-spacing) minmax(0, 1fr) var(--chart-side-spacing);
+    grid-template-areas: 
+        'header header header'
+        'chart-left chart chart-right'
+        'console console console'
+        'log log log';
+    grid-template-rows: var(--header-height) minmax(0, 1fr) auto auto;
+}
+
+div#App.authGateApp {
+    display: block;
+    background:
+        radial-gradient(circle at top, rgba(90, 110, 140, 0.10), transparent 30%),
+        linear-gradient(180deg, #090b0d, #0d1014 48%, #0a0c0f);
+}
+
+.appRuntimeAlert {
+    position: fixed;
+    top: calc(var(--header-height) + 14px);
+    right: 18px;
+    z-index: 160;
+    width: min(420px, calc(100vw - 36px));
+    display: grid;
+    gap: 6px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(239, 68, 68, 0.42);
+    background: rgba(44, 10, 10, 0.96);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+    color: #ffd6d6;
+}
+
+.appRuntimeAlertEyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff8d8d;
+}
+
+.appRuntimeAlert strong {
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.appRuntimeAlert span {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: rgba(255, 225, 225, 0.92);
+}
+
+.appRuntimeAlertInvalidStops {
+    top: calc(var(--header-height) + 112px);
+    border-color: rgba(239, 68, 68, 0.68);
+    background: rgba(66, 8, 8, 0.98);
+}
+
+.appRuntimeAlertClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffd6d6;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.appRuntimeAlertClose:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.streamLaunchWindow {
+    width: min(560px, calc(100vw - 32px));
+    padding-bottom: 24px;
+}
+
+.streamLaunchPanel {
+    display: grid;
+    gap: 16px;
+}
+
+.streamLaunchTitle {
+    font-size: 1.18rem;
+    font-weight: 700;
+    color: var(--text-overlay-strong);
+}
+
+.streamLaunchCopy {
+    margin: -6px 0 0;
+    color: rgba(237, 241, 245, 0.74);
+    line-height: 1.5;
+}
+
+.streamLaunchToggle {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.streamLaunchToggle input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+}
+
+.streamLaunchToggle strong,
+.streamLaunchBacktestMeta strong {
+    display: block;
+    color: var(--text-overlay-strong);
+}
+
+.streamLaunchToggle span,
+.streamLaunchBacktestMeta span,
+.streamLaunchField small {
+    color: rgba(237, 241, 245, 0.72);
+    line-height: 1.45;
+}
+
+.streamLaunchBacktestMeta,
+.streamLaunchBacktestWarning {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(9, 11, 13, 0.54);
+}
+
+.streamLaunchBacktestWarning {
+    border-color: rgba(245, 158, 11, 0.32);
+    color: #ffd189;
+}
+
+.streamLaunchField {
+    display: grid;
+    gap: 8px;
+}
+
+.streamLaunchField span {
+    font-weight: 600;
+    color: var(--text-overlay-strong);
+}
+
+.streamLaunchField input {
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.streamLaunchChoiceGroup {
+    display: grid;
+    gap: 10px;
+}
+
+.streamLaunchChoiceGroup > strong {
+    color: var(--text-overlay-strong);
+    font-size: 0.95rem;
+}
+
+.streamLaunchChoice {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.streamLaunchChoice input {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+}
+
+.streamLaunchChoice span {
+    display: block;
+    color: var(--text-overlay-strong);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.streamLaunchChoice small {
+    display: block;
+    color: rgba(237, 241, 245, 0.72);
+    line-height: 1.45;
+    margin-top: 2px;
+}
+
+.streamLaunchActions {
+    justify-content: flex-end !important;
+}
+
+.streamLaunchPrimary {
+    border: 1px solid rgba(87, 211, 140, 0.36);
+    background: rgba(87, 211, 140, 0.14);
+    color: #b8f2cf;
+}
+
+.streamLaunchPrimary:hover {
+    background: rgba(87, 211, 140, 0.2);
+}
+
+.appErrorBoundaryShell {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background:
+        radial-gradient(circle at top, rgba(214, 188, 90, 0.12), transparent 30%),
+        linear-gradient(180deg, #090b0d, #0d1014 48%, #0a0c0f);
+}
+
+.appErrorBoundaryCard {
+    width: min(720px, 100%);
+    padding: 28px;
+    border: 1px solid rgba(214, 188, 90, 0.4);
+    border-radius: 16px;
+    background: rgba(24, 27, 31, 0.96);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    color: var(--text-primary);
+}
+
+.appErrorBoundaryEyebrow {
+    color: #d6bc5a;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.appErrorBoundaryCard h1 {
+    margin: 10px 0 12px;
+    font-size: 1.65rem;
+}
+
+.appErrorBoundaryCard p {
+    margin: 0 0 16px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.appErrorBoundaryCard code {
+    display: block;
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(9, 11, 13, 0.85);
+    border: 1px solid var(--border-default);
+    color: #f0d27a;
+    overflow-wrap: anywhere;
+}
+
+.appErrorBoundaryCard button {
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid rgba(214, 188, 90, 0.45);
+    border-radius: 10px;
+    background: rgba(214, 188, 90, 0.14);
+    color: #f3d988;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.appErrorBoundaryCard button:hover {
+    background: rgba(214, 188, 90, 0.2);
+}
+
+.authGateScreen {
+    min-height: 100vh;
+    display: block;
+}
+
+.authGateBrand {
+    display: none;
+}
+
+.authGateSubtitle {
+    display: none;
+}
+section#Header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    background-color: var(--surface-app);
+    border-bottom: solid 1px var(--border-default);
+    overflow: visible;
+}
+
+section#Header .chartHeaderControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 12px;
+    min-width: 0;
+    overflow: visible;
+}
+
+section#Header .chartHeaderMainControls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+section#Header .chartHeaderMainControls::-webkit-scrollbar {
+    display: none;
+}
+
+section#Header .chartHeaderField {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+section#Header .chartHeaderField span {
+    font-weight: 600;
+}
+
+section#Header .chartHeaderField input,
+section#Header .chartHeaderField select {
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 0;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+section#Header .chartHeaderFieldSymbol input {
+    width: 110px;
+    text-transform: uppercase;
+}
+
+section#Header .chartHeaderFieldSymbol {
+    position: relative;
+}
+
+section#Header .chartSymbolAutocomplete {
+    position: relative;
+}
+
+section#Header .chartHeaderFieldTimeframe select {
+    width: 88px;
+}
+
+section#Header .chartHeaderFieldBroker select {
+    width: 210px;
+    max-width: 210px;
+}
+
+section#Header .chartHeaderFieldBars input {
+    width: 130px;
+}
+
+section#Header .chartHeaderFieldPrecision {
+    gap: 0;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionControls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionButton {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 24px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.22em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionButton:hover {
+    background-color: var(--surface-app);
+}
+
+section#Header .headerToggleButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.22em;
+    background-color: var(--surface-panel);
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    flex: 0 0 auto;
+}
+
+section#Header .headerToggleButton:hover {
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Header .headerToggleButton.active {
+    background-color: rgba(88, 166, 106, 0.14);
+    border-color: rgba(88, 166, 106, 0.55);
+    color: #a7dbb2;
+}
+
+section#Header .headerVolumeControls {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+}
+
+section#Header .headerVolumeModeSelect {
+    height: 24px;
+    padding: 0 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.22em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionIcon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.68rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    padding-right: 8px;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionIcon::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-right: 1.25px solid currentColor;
+    border-bottom: 1.25px solid currentColor;
+    transform-origin: center;
+}
+
+section#Header .chartHeaderFieldPrecision .precisionIconDecrease::after {
+    transform: translateY(-65%) rotate(135deg);
+}
+
+section#Header .chartHeaderFieldPrecision .precisionIconIncrease::after {
+    transform: translateY(-48%) rotate(-45deg);
+}
+
+section#Header .headerDrawingTools {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex: 0 0 auto;
+}
+
+section#Header .workspaceSyncShell {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+section#Header .headerStatusArea {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+section#Header .workspaceSyncBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    justify-content: center;
+    width: 24px;
+    padding: 0;
+    appearance: none;
+    border: 1px solid var(--border-default);
+    border-radius: 0;
+    background-color: var(--surface-panel);
+    color: var(--text-muted);
+    flex: 0 0 auto;
+    cursor: pointer;
+}
+
+section#Header .workspaceSyncBadge:hover {
+    background-color: var(--surface-app);
+}
+
+section#Header .workspaceSyncBadge .workspaceSyncDot {
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: currentColor;
+    opacity: 0.85;
+}
+
+section#Header .workspaceSyncBadge.is-syncing {
+    color: #c89b3c;
+}
+
+section#Header .workspaceSyncBadge.is-saved {
+    color: #58a66a;
+}
+
+section#Header .workspaceSyncBadge.is-error {
+    color: var(--status-danger-strong);
+}
+
+section#Header .workspaceStatusMenu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 320px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    z-index: 30;
+}
+
+section#Header .workspaceStatusSection + .workspaceStatusSection {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-default);
+}
+
+section#Header .workspaceStatusSectionTitle {
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+section#Header .workspaceStatusRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.82rem;
+    color: var(--text-primary);
+}
+
+section#Header .workspaceStatusRow + .workspaceStatusRow {
+    margin-top: 6px;
+}
+
+section#Header .workspaceStatusRow span {
+    color: var(--text-muted);
+}
+
+section#Header .workspaceStatusRow strong {
+    font-weight: 600;
+    text-align: right;
+}
+
+section#Header .workspaceStatusRow strong.isOk {
+    color: #58a66a;
+}
+
+section#Header .workspaceStatusRow strong.isWarn {
+    color: #c89b3c;
+}
+
+section#Header .workspaceStatusRow strong.isError {
+    color: var(--status-danger-strong);
+}
+
+section#Header .workspaceStatusRow strong.isMuted {
+    color: var(--text-muted);
+}
+
+section#Header .workspaceStatusRow.isMultiline {
+    align-items: flex-start;
+}
+
+section#Header .workspaceStatusRow.isMultiline strong {
+    max-width: 180px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+section#Header .headerIconButton,
+section#Header .indicatorManagerTrigger,
+section#Header .headerAccountButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid var(--border-default);
+    border-radius: 0.32em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Header .headerIconButton:hover,
+section#Header .indicatorManagerTrigger:hover,
+section#Header .headerAccountButton:hover {
+    background-color: var(--surface-app);
+}
+
+section#Header .headerIconButton.active {
+    background-color: rgba(244, 248, 252, 0.94);
+    border-color: rgba(232, 240, 248, 0.98);
+    color: #0d1419;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+section#Header .headerIconButton svg,
+section#Header .indicatorManagerTrigger svg,
+section#Header .headerAccountButton svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+section#Header .headerAccountButton {
+    width: auto;
+    gap: 8px;
+    padding: 0 10px;
+    max-width: 260px;
+}
+
+section#Header .headerAccountLabel {
+    display: inline-block;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.chartSpacer {
+    background-color: var(--surface-app);
+}
+.chartSpacerLeft {
+    grid-area: chart-left;
+    border-right: solid 1px var(--border-default);
+}
+.chartSpacerRight {
+    grid-area: chart-right;
+    border-left: solid 1px var(--border-default);
+}
+section#Chart {
+    grid-area: chart;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+section#Console {
+    grid-area: console;
+    background-color: var(--surface-app);
+    overflow: hidden;
+    align-self: end;
+}
+
+div#App.consoleIsMaximized section#Chart {
+    pointer-events: none;
+}
+section#SystemLog {
+    grid-area: log;
+    background-color: var(--surface-app);
+    overflow: hidden;
+    align-self: end;
+}
+
+@media (max-width: 900px) {
+    div#App {
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            'header'
+            'chart'
+            'console'
+            'log';
+        grid-template-rows: auto minmax(44vh, 1fr) auto auto;
+    }
+
+    section#Header {
+        min-height: var(--header-height);
+    }
+
+    section#Header .chartHeaderControls {
+        padding: 8px 10px;
+    }
+
+    section#Header .chartHeaderMainControls {
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+    }
+
+    section#Header .chartHeaderField {
+        font-size: 0.82rem;
+    }
+
+    section#Header .chartHeaderFieldSymbol input {
+        width: 92px;
+    }
+
+    section#Header .chartHeaderFieldTimeframe select {
+        width: 76px;
+    }
+
+    section#Header .chartHeaderFieldBroker select {
+        width: 180px;
+        max-width: 180px;
+    }
+
+    section#Header .chartHeaderFieldBars input {
+        width: 108px;
+    }
+
+    section#Header .headerStatusArea {
+        gap: 6px;
+    }
+
+    section#Header .headerAccountButton {
+        min-width: 30px;
+        padding: 0 8px;
+    }
+
+    section#Header .headerAccountLabel {
+        display: none;
+    }
+
+    section#Header .workspaceStatusMenu {
+        min-width: min(320px, calc(100vw - 24px));
+        max-width: calc(100vw - 24px);
+    }
+
+    .chartSpacerLeft,
+    .chartSpacerRight {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    div#App {
+        grid-template-rows: auto minmax(38vh, 1fr) auto auto;
+    }
+
+    section#Header .chartHeaderControls {
+        padding: 6px 8px;
+    }
+
+    section#Header .chartHeaderMainControls {
+        gap: 6px;
+    }
+
+    section#Header .chartHeaderField span {
+        display: none;
+    }
+
+    section#Header .chartHeaderFieldSymbol input {
+        width: 84px;
+    }
+
+    section#Header .chartHeaderFieldTimeframe select {
+        width: 68px;
+    }
+
+    section#Header .chartHeaderFieldBroker select {
+        width: 152px;
+        max-width: 152px;
+    }
+
+    section#Header .chartHeaderFieldBars input {
+        width: 94px;
+    }
+
+    section#Header .headerIconButton,
+    section#Header .indicatorManagerTrigger,
+    section#Header .headerAccountButton {
+        width: 32px;
+        min-width: 32px;
+        height: 28px;
+    }
+}

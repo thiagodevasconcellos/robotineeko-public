@@ -1,0 +1,1556 @@
+section#Console .Trade {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    color: #f1f5f9;
+}
+
+section#Console .Trade .tradeHeaderCard,
+section#Console .Trade .tradeCard,
+section#Console .Trade .tradeMonitorSection,
+section#Console .Trade .tradeHistoryPanel {
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    border-radius: .6em;
+}
+
+section#Console .Trade .tradeHeaderCard {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+}
+
+section#Console .Trade .tradeHeaderCard h3,
+section#Console .Trade .tradeCard h4 {
+    margin: 0 0 6px;
+}
+
+section#Console .Trade .tradeHeaderCard p {
+    margin: 0;
+    max-width: 780px;
+    color: rgba(226, 232, 240, 0.82);
+}
+
+section#Console .Trade .tradeHeaderMeta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 10px;
+    min-width: 340px;
+}
+
+section#Console .Trade .tradeHeaderMeta > div,
+section#Console .Trade .tradeInfoCard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeHeaderMeta strong,
+section#Console .Trade .tradeInfoCard strong {
+    font-size: 0.95rem;
+}
+
+section#Console .Trade .tradeInfoCard strong {
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+section#Console .Trade .tradeInfoCard.emphasis {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeHeaderMeta span,
+section#Console .Trade .tradeInfoCard span,
+section#Console .Trade .tradeSleeveMain span,
+section#Console .Trade .tradeEmpty {
+    color: rgba(226, 232, 240, 0.72);
+}
+
+section#Console .Trade .tradeLibraryError {
+    color: #ffd8d8;
+    border: 1px solid rgba(239, 68, 68, 0.32);
+    background: rgba(239, 68, 68, 0.08);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+section#Console .Trade .tradeStrategyNameBadge {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(59, 130, 246, 0.45);
+    background:
+        linear-gradient(180deg, rgba(59, 130, 246, 0.16), rgba(16, 185, 129, 0.08)),
+        rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeStrategyNameBadge span {
+    color: rgba(191, 219, 254, 0.92);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+section#Console .Trade .tradeStrategyNameBadge strong {
+    color: #dbeafe;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+section#Console .Trade .tradeStrategyNameBadge.isCompact {
+    margin-top: 4px;
+    padding: 8px 10px;
+}
+
+section#Console .Trade .tradeStrategyNameBadge.isCompact strong {
+    font-size: 0.92rem;
+}
+
+section#Console .Trade .tradeBenchmarkImportWindow {
+    width: min(520px, calc(100vw - 32px));
+}
+
+section#Console .Trade .tradeBenchmarkImportPanel {
+    display: grid;
+    gap: 14px;
+}
+
+section#Console .Trade .tradeBenchmarkImportPanel h4,
+section#Console .Trade .tradeBenchmarkImportPanel p {
+    margin: 0;
+}
+
+section#Console .Trade .tradeBenchmarkImportPanel p {
+    color: rgba(226, 232, 240, 0.82);
+    line-height: 1.5;
+}
+
+section#Console .Trade .tradeBenchmarkImportActions {
+    justify-content: flex-end;
+}
+
+section#Console .Trade .tradeInfoCard .tradeInfoValue {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+section#Console .Trade .tradeSleeveOperationalGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+section#Console .Trade .tradeSleeveOperationalCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+section#Console .Trade .tradeSleeveOperationalCard strong {
+    color: var(--text-primary);
+}
+
+section#Console .Trade .tradeSleeveOperationalCard small {
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+section#Console .Trade .tradeSleeveOperationalCard.is-healthy {
+    border-color: rgba(92, 186, 122, 0.26);
+    background: rgba(92, 186, 122, 0.08);
+}
+
+section#Console .Trade .tradeSleeveOperationalCard.is-pending {
+    border-color: rgba(217, 168, 58, 0.32);
+    background: rgba(217, 168, 58, 0.08);
+}
+
+section#Console .Trade .tradeSleeveOperationalCard.is-warning,
+section#Console .Trade .tradeSleeveOperationalCard.is-issue {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+section#Console .Trade .tradeOperationalPill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+section#Console .Trade .tradeOperationalPill.is-healthy {
+    border-color: rgba(92, 186, 122, 0.35);
+    background: rgba(92, 186, 122, 0.14);
+    color: #dff5e6;
+}
+
+section#Console .Trade .tradeOperationalPill.is-pending {
+    border-color: rgba(217, 168, 58, 0.35);
+    background: rgba(217, 168, 58, 0.14);
+    color: #fff0c7;
+}
+
+section#Console .Trade .tradeOperationalPill.is-warning,
+section#Console .Trade .tradeOperationalPill.is-issue {
+    border-color: rgba(239, 68, 68, 0.35);
+    background: rgba(239, 68, 68, 0.14);
+    color: #ffd8d8;
+}
+
+section#Console .Trade .tradeInvalidStopsToken {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+section#Console .Trade .tradeReconciliationLegend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeReconciliationLegendTitle {
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+section#Console .Trade .tradeReconciliationLegendList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px 14px;
+}
+
+section#Console .Trade .tradeReconciliationLegendItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    color: rgba(226, 232, 240, 0.76);
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeReconciliationSnapshotGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+section#Console .Trade .tradeReconciliationSnapshotPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 0;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeReconciliationSnapshotHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Trade .tradeReconciliationSnapshotHeader strong {
+    display: block;
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+section#Console .Trade .tradeReconciliationSnapshotHeader span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+section#Console .Trade .tradeReconciliationOperationList {
+    display: grid;
+    gap: 10px;
+    max-height: 320px;
+    overflow: auto;
+    padding-right: 2px;
+}
+
+section#Console .Trade .tradeReconciliationOperationCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeReconciliationOperationCard.is-healthy {
+    border-color: rgba(92, 186, 122, 0.28);
+    background: rgba(92, 186, 122, 0.08);
+}
+
+section#Console .Trade .tradeReconciliationOperationCard.is-warning {
+    border-color: rgba(217, 168, 58, 0.32);
+    background: rgba(217, 168, 58, 0.08);
+}
+
+section#Console .Trade .tradeReconciliationOperationCard.is-issue {
+    border-color: rgba(239, 68, 68, 0.28);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+section#Console .Trade .tradeReconciliationOperationCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+section#Console .Trade .tradeReconciliationOperationIndex {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+section#Console .Trade .tradeReconciliationOperationPrimary {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.35;
+}
+
+section#Console .Trade .tradeReconciliationOperationSecondary {
+    color: rgba(226, 232, 240, 0.8);
+    font-size: 0.84rem;
+}
+
+section#Console .Trade .tradeReconciliationOperationMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Trade .tradeReconciliationOperationMeta span {
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(226, 232, 240, 0.82);
+    font-size: 0.78rem;
+}
+
+section#Console .Trade .tradeReconciliationOperationNote {
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+section#Console .Trade .tradeCellWithToken {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+section#Console .Trade .tradeActions button,
+section#Console .Trade .tradeSleeveActions button {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+section#Console .Trade .tradePrimaryAction {
+    border-color: rgba(92, 186, 122, 0.35) !important;
+    background: rgba(92, 186, 122, 0.14) !important;
+    color: #dff5e6 !important;
+}
+
+section#Console .Trade .tradePrimaryAction.isPendingSaveAction {
+    border-color: rgba(239, 68, 68, 0.42) !important;
+    background: rgba(239, 68, 68, 0.14) !important;
+    color: #ffd8d8 !important;
+}
+
+section#Console .Trade .tradePrimaryAction.isSavedAction {
+    border-color: rgba(92, 186, 122, 0.35) !important;
+    background: rgba(92, 186, 122, 0.14) !important;
+    color: #dff5e6 !important;
+}
+
+section#Console .Trade .tradeSecondaryAction {
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-primary) !important;
+}
+
+section#Console .Trade .tradeActions button.isActiveAction {
+    background: rgba(92, 186, 122, 0.14);
+    border-color: rgba(92, 186, 122, 0.35);
+    color: #dff5e6;
+}
+
+section#Console .Trade .tradeActions button.isInactiveAction {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+}
+
+section#Console .Trade .tradeActions button.isDangerAction {
+    background: rgba(217, 168, 58, 0.14);
+    border-color: rgba(217, 168, 58, 0.35);
+    color: #fff0c7;
+}
+
+section#Console .Trade .tradeActions button:disabled,
+section#Console .Trade .tradeSleeveActions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.48;
+}
+
+section#Console .Trade .tradeTabs {
+    margin: -7.5px -20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+section#Console .Trade .tradePanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    background-color: transparent;
+    padding: 16px;
+}
+
+section#Console .Trade .tradeManagerShell {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 16px;
+    min-height: 0;
+}
+
+section#Console .Trade .tradeManagerContent {
+    min-width: 0;
+}
+
+section#Console .Trade .tradePanelGrid {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    gap: 14px;
+    align-items: start;
+}
+
+section#Console .Trade .tradeStrategyLibrarySidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+    overflow: hidden;
+}
+
+section#Console .Trade .tradeStrategyLibrarySidebarHeader,
+section#Console .Trade .tradeStrategyLibraryToolbar,
+section#Console .Trade .tradeStrategyLibrarySearchRow {
+    padding: 12px;
+}
+
+section#Console .Trade .tradeStrategyLibrarySidebarHeader {
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeStrategyLibrarySidebarHeader h4 {
+    margin: 0 0 4px;
+}
+
+section#Console .Trade .tradeStrategyLibrarySidebarHeader p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeStrategyLibraryToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeStrategyLibraryTabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+section#Console .Trade .tradeStrategyLibraryTabs button,
+section#Console .Trade .tradeStrategyLibrarySearchClear,
+section#Console .Trade .tradeStrategyLibraryEntry button {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+section#Console .Trade .tradeStrategyLibraryTabs button {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeStrategyLibraryTabs button.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.16);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Trade .tradeStrategyLibraryRefreshButton {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeStrategyLibrarySearchRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeStrategyLibrarySearchRow input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    color: var(--text-primary);
+    padding: 10px 12px;
+}
+
+section#Console .Trade .tradeStrategyLibrarySearchClear {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeStrategyLibraryList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    padding: 8px 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) transparent;
+}
+
+section#Console .Trade .tradeStrategyLibraryList::-webkit-scrollbar {
+    width: 8px;
+}
+
+section#Console .Trade .tradeStrategyLibraryList::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section#Console .Trade .tradeStrategyLibraryList::-webkit-scrollbar-thumb {
+    background-color: var(--border-default);
+    border-radius: 999px;
+}
+
+section#Console .Trade .tradeStrategyLibraryEntry {
+    position: relative;
+    display: block;
+}
+
+section#Console .Trade .tradeStrategyLibrarySelect,
+section#Console .Trade .tradeStrategyLibraryFavoriteToggle {
+    appearance: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeStrategyLibrarySelect {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+    padding: 12px 56px 12px 12px;
+    text-align: left;
+}
+
+section#Console .Trade .tradeStrategyLibrarySelect.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.14);
+}
+
+section#Console .Trade .tradeStrategyLibrarySelect span,
+section#Console .Trade .tradeStrategyLibrarySelect small {
+    color: rgba(226, 232, 240, 0.74);
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeStrategyLibraryEntryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+section#Console .Trade .tradeStrategyLibraryEntryLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+section#Console .Trade .tradeStrategyLibraryFavoriteStar {
+    color: #fde68a;
+}
+
+section#Console .Trade .tradeStrategyLibraryFavoriteBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    color: #fde68a;
+    font-size: 0.74rem;
+    font-weight: 600;
+}
+
+section#Console .Trade .tradeStrategyLibraryFavoriteToggle {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    padding: 0;
+    border-radius: 999px;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+section#Console .Trade .tradeStrategyLibraryFavoriteToggle.active {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.12);
+    color: #fde68a;
+}
+
+section#Console .Trade .tradeCardFull {
+    grid-column: 1 / -1;
+}
+
+section#Console .Trade .tradeManagerLeftColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Trade .tradeRuntimeControlCard {
+    align-self: start;
+}
+
+section#Console .Trade .tradeStrategyRuntimeCard {
+    align-self: stretch;
+}
+
+section#Console .Trade .tradeCard {
+    padding: 16px;
+}
+
+section#Console .Trade .tradeField,
+section#Console .Trade .tradeCheckbox {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+section#Console .Trade .tradeFieldHelp {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+section#Console .Trade .tradeField input,
+section#Console .Trade .tradeField select {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    color: var(--text-primary);
+    padding: 10px 12px;
+}
+
+section#Console .Trade .tradeCheckbox {
+    flex-direction: row;
+    align-items: center;
+}
+
+section#Console .Trade .tradeActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+section#Console .Trade .tradeConfigActions {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+section#Console .Trade .tradeConfigHelp {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: .55em;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Trade .tradeConfigHelp strong {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+}
+
+section#Console .Trade .tradeConfigHelp span {
+    color: rgba(226, 232, 240, 0.78);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeConfigHelp code {
+    color: var(--text-primary);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+section#Console .Trade .tradeActionGroupList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+section#Console .Trade .tradeActionGroup {
+    padding: 12px;
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeActionGroup > strong {
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(226, 232, 240, 0.92);
+}
+
+section#Console .Trade .tradeActionGroupHelp {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeActionHint {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: .55em;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeActionHint.isWarning {
+    border-color: rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.08);
+    color: #ffe4b5;
+}
+
+section#Console .Trade .tradeImportCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 12px;
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeImportHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Trade .tradeImportHeader span,
+section#Console .Trade .tradeImportPreview {
+    color: rgba(226, 232, 240, 0.72);
+    font-size: 0.88rem;
+}
+
+section#Console .Trade .tradeImportMetaRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: rgba(226, 232, 240, 0.72);
+    font-size: 0.84rem;
+}
+
+section#Console .Trade .tradeImportMetaRow button {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeRuntimeWarning {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 168, 58, 0.35);
+    background: rgba(217, 168, 58, 0.09);
+    color: #fff0c7;
+}
+
+section#Console .Trade .tradeGuestRestriction {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 12px 0;
+    padding: 11px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(217, 168, 58, 0.35);
+    background: rgba(217, 168, 58, 0.09);
+    color: #fff0c7;
+}
+
+section#Console .Trade .tradeGuestRestriction strong {
+    font-size: 0.9rem;
+}
+
+section#Console .Trade .tradeGuestRestriction span {
+    color: rgba(255, 240, 199, 0.88);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+section#Console .Trade .tradeMonitorLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Trade .tradeMonitorChartsRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+section#Console .Trade .tradeMonitorChartCard {
+    min-height: 0;
+}
+
+section#Console .Trade .tradeMiniChartMeta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+section#Console .Trade .tradeMiniChartMeta > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeMiniChartMeta strong {
+    font-size: 0.96rem;
+    color: var(--text-primary);
+}
+
+section#Console .Trade .tradeMiniChartMeta span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+section#Console .Trade .tradeMiniChartCanvas {
+    height: 140px;
+    border-radius: .55em;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeMiniChartCanvas svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+section#Console .Trade .tradeMonitorChartCard.tone-latency .tradeMiniChartCanvas {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        #000000;
+    background-size: 100% 25%, 20% 100%, auto;
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+section#Console .Trade .tradeMiniChartCanvas path {
+    fill: none;
+    stroke: #f3f4f6;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+section#Console .Trade .tradeMonitorChartCard.tone-latency .tradeMiniChartCanvas path {
+    stroke: #00ff38;
+    stroke-width: 1;
+}
+
+section#Console .Trade .tradeMiniChartAxisLine {
+    stroke: rgba(255, 255, 255, 0.24);
+    stroke-width: 1;
+}
+
+section#Console .Trade .tradeMiniChartAxisLabel {
+    fill: rgba(226, 232, 240, 0.78);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+section#Console .Trade .tradeMiniChartCrosshair {
+    stroke: rgba(255, 255, 255, 0.42);
+    stroke-width: 1;
+    stroke-dasharray: 4 4;
+}
+
+section#Console .Trade .tradeMiniChartCrosshairPoint {
+    fill: #ffffff;
+    stroke: rgba(0, 0, 0, 0.45);
+    stroke-width: 1;
+}
+
+section#Console .Trade .tradeMiniChartCrosshairTag rect,
+section#Console .Trade .tradeMiniChartCrosshairTimeTag rect {
+    fill: rgba(7, 10, 18, 0.92);
+    stroke: rgba(255, 255, 255, 0.18);
+}
+
+section#Console .Trade .tradeMiniChartCrosshairTag text,
+section#Console .Trade .tradeMiniChartCrosshairTimeTag text {
+    fill: #f8fafc;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+section#Console .Trade .tradeTableViewport {
+    max-height: 260px;
+    overflow: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeCommandTableViewport {
+    max-height: 170px;
+}
+
+section#Console .Trade .tradeReconciliationViewport {
+    max-height: 240px;
+}
+
+section#Console .Trade .tradeReconciliationArchiveViewport {
+    max-height: 180px;
+}
+
+section#Console .Trade .tradeTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+section#Console .Trade .tradeTable th,
+section#Console .Trade .tradeTable td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: top;
+}
+
+section#Console .Trade .tradeTable thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: rgba(19, 24, 33, 0.96);
+    color: rgba(226, 232, 240, 0.9);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+section#Console .Trade .tradeTable tbody tr:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+section#Console .Trade .tradeReconciliationTable tbody tr.is-healthy td {
+    background: rgba(92, 186, 122, 0.04);
+}
+
+section#Console .Trade .tradeReconciliationTable tbody tr.is-warning td {
+    background: rgba(217, 168, 58, 0.05);
+}
+
+section#Console .Trade .tradeReconciliationTable tbody tr.is-issue td {
+    background: rgba(239, 68, 68, 0.05);
+}
+
+section#Console .Trade .tradeTable tbody tr.isSelected {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Trade .tradeReconciliationArchiveViewport .tradeTable tbody tr {
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeMonitorSectionHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+section#Console .Trade .tradeMonitorSectionHeader strong {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+section#Console .Trade .tradeMonitorSectionHeader span {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+section#Console .Trade .tradeMonitorBanner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeMonitorAccountBanner.is-warning {
+    border-color: rgba(245, 158, 11, 0.34);
+    background: linear-gradient(180deg, rgba(120, 53, 15, 0.24), rgba(120, 53, 15, 0.16));
+}
+
+section#Console .Trade .tradeMonitorAccountBanner.is-healthy {
+    border-color: rgba(92, 186, 122, 0.28);
+    background: linear-gradient(180deg, rgba(22, 101, 52, 0.18), rgba(21, 128, 61, 0.1));
+}
+
+section#Console .Trade .tradeMonitorAccountBanner.is-info {
+    border-color: rgba(59, 130, 246, 0.28);
+    background: linear-gradient(180deg, rgba(30, 64, 175, 0.16), rgba(30, 41, 59, 0.1));
+}
+
+section#Console .Trade .tradeMonitorBanner span {
+    color: rgba(226, 232, 240, 0.76);
+}
+
+section#Console .Trade .tradeErrorLog {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(248, 113, 113, 0.42);
+    background: linear-gradient(180deg, rgba(127, 29, 29, 0.28), rgba(69, 10, 10, 0.32));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeErrorLog strong {
+    color: #ffe2e2;
+    font-size: 0.94rem;
+}
+
+section#Console .Trade .tradeErrorLog span {
+    color: #fecaca;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.84rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+section#Console .Trade .tradeErrorLogMonitor {
+    margin-top: 12px;
+}
+
+section#Console .Trade .tradeSleeveList,
+section#Console .Trade .tradeAuditList,
+section#Console .Trade .tradeSleeveStateList,
+section#Console .Trade .tradeIntentList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Trade .tradeAuditViewport {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 31vh;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+section#Console .Trade .tradeAuditReconciliation {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeAuditLogPanel {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Trade .tradeAuditPagination {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Trade .tradeAuditPagination button {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-radius: 10px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+section#Console .Trade .tradeAuditPagination span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Trade .tradeAuditPaginationInput {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Trade .tradeAuditPaginationInput input {
+    width: 68px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    padding: 6px 10px;
+}
+
+section#Console .Trade .tradeSleeveRow,
+section#Console .Trade .tradeAuditRow,
+section#Console .Trade .tradeSleeveStateRow,
+section#Console .Trade .tradeIntentRow {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Trade .tradeSleeveRow.isDisabled {
+    opacity: 0.55;
+}
+
+section#Console .Trade .tradeSleeveMain {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+section#Console .Trade .tradeSleeveMain > strong,
+section#Console .Trade .tradeSleeveMain > span:first-of-type {
+    display: block;
+    padding-right: 96px;
+}
+
+section#Console .Trade .tradeSleeveMain .tradeStrategyNameBadge {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section#Console .Trade .tradeSleeveBody {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    flex: 1;
+}
+
+section#Console .Trade .tradeSleeveActions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+section#Console .Trade .tradeSleeveStateList {
+    margin-top: 14px;
+}
+
+section#Console .Trade .tradeIntentList {
+    margin-top: 14px;
+}
+
+section#Console .Trade .tradeSleeveStateMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+section#Console .Trade .tradeSleeveStateMeta span {
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+}
+
+section#Console .Trade .tradeInfoGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Trade .tradeStrategyReadOnly {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Trade .tradeStrategyReadOnlyMeta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Trade .tradeStrategyReadOnlyMetaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeStrategyReadOnlyMetaItem strong,
+section#Console .Trade .tradeStrategySectionTitle,
+section#Console .Trade .tradeStrategyFieldLabel {
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+section#Console .Trade .tradeStrategyReadOnlyMetaItem span,
+section#Console .Trade .tradeStrategyFieldLabel {
+    color: var(--text-muted);
+}
+
+section#Console .Trade .tradeStrategyReadOnlySections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Trade .tradeStrategySection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Trade .tradeStrategyFieldList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Trade .tradeStrategyFieldItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Trade .tradeExpressionPreview {
+    min-height: 42px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    overflow-x: auto;
+}
+
+section#Console .Trade .tradeExpressionPreview.singleLine {
+    white-space: nowrap;
+}
+
+section#Console .Trade .tradeExpressionPreviewText {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: var(--text-primary);
+    line-height: 1.45;
+    min-width: 100%;
+}
+
+section#Console .Trade .tradeStrategyToken {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 24px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: rgba(107, 184, 255, 0.12);
+    border: 1px solid rgba(107, 184, 255, 0.28);
+    color: #dbeafe;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+section#Console .Trade .tradeStrategyToken.isLiteral {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: var(--text-primary);
+}
+
+section#Console .Trade .tradeStrategyTokenLabel,
+section#Console .Trade .tradeStrategyTokenIndex {
+    line-height: 1;
+}
+
+@media (max-width: 980px) {
+    section#Console .Trade .tradeHeaderCard,
+    section#Console .Trade .tradeManagerShell,
+    section#Console .Trade .tradePanelGrid {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
+    section#Console .Trade .tradeHeaderMeta,
+    section#Console .Trade .tradeInfoGrid {
+        grid-template-columns: 1fr;
+        min-width: 0;
+    }
+
+    section#Console .Trade .tradeStrategyReadOnlyMeta,
+    section#Console .Trade .tradeStrategyReadOnlySections {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Trade .tradeManagerLeftColumn {
+        gap: 14px;
+    }
+
+    section#Console .Trade .tradeMonitorChartsRow,
+    section#Console .Trade .tradeMiniChartMeta {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Trade .tradeReconciliationSnapshotGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+section#Console .Trade .tradeRuntimeControlGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Trade .tradeHistoryTableViewport {
+    margin-top: 14px;
+    overflow: auto;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Trade .tradeHistoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1180px;
+}
+
+section#Console .Trade .tradeHistoryTable thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: rgba(8, 11, 18, 0.96);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Trade .tradeHistoryTable tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+section#Console .Trade .tradeHistoryTable tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+section#Console .Trade .tradeHistoryTable tbody tr.isOpenTrade td {
+    background: rgba(245, 158, 11, 0.08);
+}
+
+section#Console .Trade .tradeHistoryTable tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.055);
+}
+
+section#Console .Trade .tradeHistoryStatePill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 76px;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+section#Console .Trade .tradeHistoryStatePill.isClosed {
+    color: #bbf7d0;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.28);
+}
+
+section#Console .Trade .tradeHistoryStatePill.isOpen {
+    color: #fde68a;
+    background: rgba(245, 158, 11, 0.14);
+    border-color: rgba(245, 158, 11, 0.32);
+}
+
+@media (max-width: 980px) {
+    section#Console .Trade .tradeRuntimeControlGrid {
+        grid-template-columns: 1fr;
+    }
+}

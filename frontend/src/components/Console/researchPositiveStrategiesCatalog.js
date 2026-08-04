@@ -1,0 +1,3 @@
+export const RESEARCH_POSITIVE_STRATEGIES_LAST_UPDATED = 'Public snapshot'
+
+export const RESEARCH_POSITIVE_STRATEGY_CATALOG = []

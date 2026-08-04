@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+gymnasium
+stable-baselines3
+websocket-client

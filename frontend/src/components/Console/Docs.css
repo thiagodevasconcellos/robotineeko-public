@@ -1,0 +1,399 @@
+.DocsConsole {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.docsLayout {
+    display: grid;
+    grid-template-columns: minmax(320px, 320px) minmax(0, 1fr);
+    gap: 18px;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.docsSidebar {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+    min-height: 0;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.015);
+    overflow: hidden;
+}
+
+.docsSidebarTitle {
+    padding: 14px 16px 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.docsSidebarControls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.docsLegend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 12px 12px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.docsSearchInput,
+.docsCategorySelect {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+}
+
+.docsCategorySelect option {
+    background-color: #0f172a;
+    color: #e5eefc;
+}
+
+.docsSidebarStatus,
+.docsSidebarError {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.docsSidebarError {
+    color: #ef9a9a;
+}
+
+.docsSidebarGroups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 12px 6px;
+    overflow: auto;
+}
+
+.docsSidebarGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.docsSidebarGroupTitle {
+    padding: 9px 12px;
+    border-top: 2px solid rgba(255, 255, 255, 0.52);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+    background-color: rgba(88, 104, 129, 0.22);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.docsSidebarList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.docsSidebarDocEntry {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.docsSidebarItem {
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.docsSidebarItemTitle {
+    font-weight: 600;
+}
+
+.docsSidebarItemMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.docsSidebarItem:hover {
+    background-color: rgba(255, 255, 255, 0.045);
+    color: var(--text-primary);
+}
+
+.docsSidebarItem.active {
+    background-color: rgba(66, 153, 225, 0.18);
+    border-left: 3px solid #63b3ed;
+    border-color: rgba(99, 179, 237, 0.35);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.docsInlineToc {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 2px 0 6px;
+    padding: 8px 8px 8px 10px;
+    border-left: 2px solid rgba(107, 184, 255, 0.55);
+    background-color: rgba(107, 184, 255, 0.08);
+}
+
+.docsInlineTocItem {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.docsInlineTocItem.level-2 {
+    padding-left: 16px;
+}
+
+.docsInlineTocItem.level-3,
+.docsInlineTocItem.level-4,
+.docsInlineTocItem.level-5,
+.docsInlineTocItem.level-6 {
+    padding-left: 24px;
+}
+
+.docsContent {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.docsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.docsEyebrow {
+    margin-bottom: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.docsTitle {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.docsHeaderMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.docsHeaderMetaText {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+.docsSummary {
+    margin-top: 8px;
+    max-width: 72ch;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.docsPath {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+
+.docsSections {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 18px 20px 24px;
+}
+
+.docsSectionCard {
+    padding: 16px 18px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.docsSectionTitle {
+    margin: 0 0 12px;
+}
+
+.docsSectionTitle.level-1 {
+    font-size: 1.1rem;
+}
+
+.docsSectionTitle.level-2 {
+    font-size: 1rem;
+}
+
+.docsSectionTitle.level-3,
+.docsSectionTitle.level-4,
+.docsSectionTitle.level-5,
+.docsSectionTitle.level-6 {
+    font-size: 0.92rem;
+}
+
+.docsSectionBody {
+    color: var(--text-secondary);
+}
+
+.docsParagraph {
+    margin: 0 0 10px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.docsInlineCode {
+    display: inline-block;
+    padding: 0.06rem 0.34rem;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-size: 0.92em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.docsInlineLink {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.16em;
+}
+
+.docsBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.55rem;
+    padding: 0.16rem 0.55rem;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.docsBadge.tone-current {
+    border-color: rgba(82, 199, 135, 0.45);
+    background-color: rgba(82, 199, 135, 0.12);
+    color: #b9f5ce;
+}
+
+.docsBadge.tone-specialized {
+    border-color: rgba(108, 170, 255, 0.45);
+    background-color: rgba(108, 170, 255, 0.12);
+    color: #cfe2ff;
+}
+
+.docsBadge.tone-guide {
+    border-color: rgba(255, 198, 92, 0.45);
+    background-color: rgba(255, 198, 92, 0.12);
+    color: #ffe4a8;
+}
+
+.docsBadge.tone-feature {
+    border-color: rgba(214, 135, 255, 0.45);
+    background-color: rgba(214, 135, 255, 0.12);
+    color: #f0d1ff;
+}
+
+.docsBadge.tone-future {
+    border-color: rgba(255, 132, 132, 0.45);
+    background-color: rgba(255, 132, 132, 0.12);
+    color: #ffc7c7;
+}
+
+.docsBadge.tone-archived {
+    border-color: rgba(189, 189, 189, 0.4);
+    background-color: rgba(189, 189, 189, 0.12);
+    color: #e2e8f0;
+}
+
+.docsList {
+    margin: 0 0 12px 18px;
+    padding: 0;
+}
+
+.docsList li {
+    margin-bottom: 6px;
+    line-height: 1.55;
+}
+
+.docsCodeBlock {
+    margin: 0 0 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(0, 0, 0, 0.26);
+    overflow: auto;
+    white-space: pre;
+}
+
+.docsEmpty {
+    padding: 24px;
+    color: var(--text-muted);
+}
+
+@media (max-width: 1100px) {
+    .docsLayout {
+        grid-template-columns: minmax(260px, 260px) minmax(0, 1fr);
+    }
+
+    .docsSidebar {
+        width: 260px;
+        min-width: 260px;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 900px) {
+    .docsLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .docsSidebar {
+        max-height: 38vh;
+    }
+
+    .docsHeader {
+        flex-direction: column;
+    }
+
+    .docsPath {
+        white-space: normal;
+    }
+}

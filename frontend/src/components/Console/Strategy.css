@@ -1,0 +1,1408 @@
+section#Console .Strategy {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Strategy .strategyViewHeader {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 0 -20px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Strategy .strategyViewTabs {
+    flex: 0 0 auto;
+}
+
+section#Console .Strategy .strategyViewTabButton {
+    min-width: 120px;
+    justify-content: center;
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyLoadedNameBanner {
+    display: inline-flex;
+    justify-content: center;
+    margin: 7px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.45);
+    background:
+        linear-gradient(180deg, rgba(59, 130, 246, 0.16), rgba(16, 185, 129, 0.08)),
+        rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+    min-width: 240px;
+}
+
+section#Console .Strategy .strategyViewHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+section#Console .Strategy .strategyGuestNotice {
+    max-width: 420px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(245, 158, 11, 0.32);
+    background: rgba(245, 158, 11, 0.1);
+    color: #fde68a;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+section#Console .Strategy .strategyLoadedNameBanner strong {
+    color: #dbeafe;
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
+
+section#Console .Strategy .strategyLoadedNameBanner strong span {
+    color: #f8fafc;
+    letter-spacing: 0;
+}
+
+section#Console .Strategy .strategyPanelToolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: stretch;
+    min-height: 42px;
+    background-color: var(--surface-app);
+    border-bottom: 1px solid var(--border-default);
+    margin: -7.5px -20px 0;
+    z-index: 2;
+}
+
+section#Console .Strategy .strategyPanelTabs {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+section#Console .Strategy .strategyPanelTab {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 10px;
+    padding: 0 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyPanelTab.active {
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+    background-color: var(--surface-app);
+    font-weight: bold;
+}
+
+section#Console .Strategy .strategyPanelTabIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background-color: var(--text-muted);
+    color: #111;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyPanelTabIcon.long {
+    background-color: var(--status-positive);
+}
+
+section#Console .Strategy .strategyPanelTabIcon.short {
+    background-color: #ffb04d;
+}
+
+section#Console .Strategy .strategyPanelTabIcon.other {
+    background-color: #6bb8ff;
+}
+
+section#Console .Strategy .strategyActions {
+    display: flex;
+    align-items: stretch;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+section#Console .Strategy .strategyToolbarButton {
+    min-width: 120px;
+    padding: 0 16px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+section#Console .Strategy .strategyToolbarButton:hover:not(:disabled) {
+    background-color: var(--surface-panel);
+}
+
+section#Console .Strategy .strategyToolbarButton:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+section#Console .Strategy .strategyManagerShell {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Strategy .strategyDebugShell {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    min-height: 0;
+    overflow: auto;
+}
+
+section#Console .Strategy .strategyDebugCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+    min-height: 0;
+}
+
+section#Console .Strategy .strategyDebugCardHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+section#Console .Strategy .strategyDebugTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Strategy .strategyDebugSubtitle {
+    margin-top: 4px;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+section#Console .Strategy .strategyDebugActions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Strategy .strategyDebugPrimaryButton,
+section#Console .Strategy .strategyDebugSecondaryButton {
+    height: 36px;
+    padding: 0 14px;
+    border-radius: .5em;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+section#Console .Strategy .strategyDebugPrimaryButton {
+    border-color: rgba(107, 184, 255, 0.5);
+    background: rgba(107, 184, 255, 0.14);
+}
+
+section#Console .Strategy .strategyDebugPrimaryButton:disabled,
+section#Console .Strategy .strategyDebugSecondaryButton:disabled {
+    opacity: 0.65;
+    cursor: default;
+}
+
+section#Console .Strategy .strategyDebugSummaryGrid,
+section#Console .Strategy .strategyDebugResultGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+section#Console .Strategy .strategyDebugSummaryItem,
+section#Console .Strategy .strategyDebugResultCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Strategy .strategyDebugSummaryItem span,
+section#Console .Strategy .strategyDebugResultCard span,
+section#Console .Strategy .strategyDebugLogMeta span {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+section#Console .Strategy .strategyDebugSummaryItem strong,
+section#Console .Strategy .strategyDebugResultCard strong {
+    color: var(--text-primary);
+    font-size: 0.98rem;
+}
+
+section#Console .Strategy .strategyDebugResultCard strong.isSuccess {
+    color: var(--status-positive);
+}
+
+section#Console .Strategy .strategyDebugResultCard strong.isError {
+    color: var(--status-negative);
+}
+
+section#Console .Strategy .strategyDebugMessage {
+    padding: 12px 14px;
+    border-radius: .55em;
+    border: 1px solid var(--border-default);
+}
+
+section#Console .Strategy .strategyDebugMessage.isError {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.12);
+    color: #ffd8d8;
+}
+
+section#Console .Strategy .strategyDebugLogMeta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+section#Console .Strategy .strategyDebugLogList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 220px;
+    max-height: 420px;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+section#Console .Strategy .strategyDebugLogEmpty {
+    padding: 18px 14px;
+    border: 1px dashed var(--border-default);
+    border-radius: .55em;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+section#Console .Strategy .strategyDebugLogEntry {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: .55em;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Strategy .strategyDebugLogEntry.is-error {
+    border-color: rgba(239, 68, 68, 0.32);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+section#Console .Strategy .strategyDebugLogEntry.is-success {
+    border-color: rgba(92, 186, 122, 0.28);
+    background: rgba(92, 186, 122, 0.08);
+}
+
+section#Console .Strategy .strategyDebugLogEntryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+section#Console .Strategy .strategyDebugLogEntryHeader strong {
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyDebugLogEntryHeader span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Strategy .strategyDebugLogEntryMessage {
+    color: var(--text-primary);
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+section#Console .Strategy .strategyManagerSidebar,
+section#Console .Strategy .strategyManagerContent {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Strategy .strategyManagerSidebar {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+section#Console .Strategy .strategyManagerTabs {
+    display: flex;
+    align-items: flex-end;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Strategy .strategyManagerTabs button,
+section#Console .Strategy .strategyManagerToolbar button,
+section#Console .Strategy .strategyManagerList button,
+section#Console .Strategy .strategyManagerActions button,
+section#Console .Strategy .strategyManagerField input {
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Strategy .strategyManagerTabs button {
+    position: relative;
+    bottom: -1px;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-top-left-radius: .45em;
+    border-top-right-radius: .45em;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyManagerTabs button.active {
+    border-color: var(--border-default);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyManagerToolbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+section#Console .Strategy .strategyManagerToolbarTopRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Strategy .strategyManagerListTabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+section#Console .Strategy .strategyManagerSearchRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyManagerSearchRow input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: .45em;
+}
+
+section#Console .Strategy .strategyManagerSearchClear {
+    flex: 0 0 auto;
+    height: 34px;
+    padding: 0 12px;
+    border-radius: .45em;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyManagerSearchClear:hover:not(:disabled) {
+    color: var(--text-primary);
+}
+
+section#Console .Strategy .strategyManagerListTabs button {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyManagerListTabs button.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.16);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyManagerToolbar button,
+section#Console .Strategy .strategyManagerActions button {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: .45em;
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyManagerList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    overflow: auto;
+    padding: 8px 0;
+}
+
+section#Console .Strategy .strategyManagerListEntry {
+    position: relative;
+    display: block;
+}
+
+section#Console .Strategy .strategyManagerList .strategyManagerListSelect {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    width: 100%;
+    padding: 10px 50px 10px 14px;
+    border: none;
+    border-left: 3px solid transparent;
+    text-align: left;
+    background: transparent;
+    cursor: pointer;
+}
+
+section#Console .Strategy .strategyManagerEntryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+section#Console .Strategy .strategyManagerEntryLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+section#Console .Strategy .strategyManagerFavoriteStar {
+    color: #facc15;
+    font-size: 0.96rem;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(250, 204, 21, 0.18);
+    flex: 0 0 auto;
+}
+
+section#Console .Strategy .strategyManagerFavoriteBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(250, 204, 21, 0.16);
+    border: 1px solid rgba(250, 204, 21, 0.32);
+    color: #fde68a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyManagerList .strategyManagerListSelect.active {
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.20), rgba(107, 184, 255, 0.08));
+    border-left-color: #6bb8ff;
+}
+
+section#Console .Strategy .strategyManagerFavoriteToggle {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+section#Console .Strategy .strategyManagerFavoriteToggle.active {
+    border-color: rgba(250, 204, 21, 0.35);
+    background: rgba(250, 204, 21, 0.12);
+    color: #facc15;
+}
+
+section#Console .Strategy .strategyManagerFavoriteToggle:hover:not(:disabled) {
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.28);
+}
+
+section#Console .Strategy .strategyManagerList span,
+section#Console .Strategy .strategyManagerList small,
+section#Console .Strategy .strategyManagerDetailLabel,
+section#Console .Strategy .strategyManagerEmpty,
+section#Console .Strategy .strategyManagerEmptyState {
+    color: var(--text-muted);
+    font-size: .82rem;
+}
+
+section#Console .Strategy .strategyManagerContent {
+    padding: 18px;
+    overflow: auto;
+}
+
+section#Console .Strategy .strategyManagerPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+section#Console .Strategy .strategyManagerPanelTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyManagerField {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyManagerField label,
+section#Console .Strategy .strategyManagerDetailLabel {
+    color: var(--text-muted);
+    font-size: .84rem;
+}
+
+section#Console .Strategy .strategyManagerField input {
+    height: 38px;
+    padding: 0 12px;
+    border-radius: .45em;
+}
+
+section#Console .Strategy .strategyManagerDetailGrid {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 10px 14px;
+    padding: 14px;
+    border-radius: .55em;
+    background-color: var(--surface-panel);
+}
+
+section#Console .Strategy .strategyManagerActions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+section#Console .Strategy .strategyManagerPrimary {
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyPanel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    background-color: transparent;
+    padding: 16px;
+}
+
+section#Console .Strategy .strategyPanelSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Strategy .strategyPanelSectionWithSidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 220px;
+    align-items: stretch;
+    gap: 16px;
+    flex: 1;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Strategy .strategyPanelSectionWithSidebar.isSidebarCollapsed {
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyPanelSectionMain {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+section#Console .Strategy .strategyTokenSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+    min-width: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+section#Console .Strategy .strategyTokenSidebar.isCollapsed {
+    width: 28px !important;
+    min-width: 28px;
+    padding: 10px 4px;
+}
+
+section#Console .Strategy .strategyTokenSidebarToolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyTokenSidebarTitle {
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+section#Console .Strategy .strategyTokenSidebarCollapse {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    line-height: 1;
+}
+
+section#Console .Strategy .strategyTokenSidebarResizeHandle {
+    position: absolute;
+    top: 0;
+    left: -6px;
+    bottom: 0;
+    width: 12px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: ew-resize;
+}
+
+section#Console .Strategy .strategyTokenSidebarResizeHandle::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 5px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+section#Console .Strategy .strategyTokenSidebarLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+}
+
+section#Console .Strategy .strategyTokenSidebarNav {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    min-width: 0;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    overflow: visible;
+}
+
+section#Console .Strategy .strategyTokenSidebarNavButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    min-height: 48px;
+    padding: 7px 12px 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+    text-align: center;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: visible;
+    transition: background-color .16s ease, color .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+section#Console .Strategy .strategyTokenSidebarNavButton:hover {
+    background: color-mix(in srgb, var(--surface-panel) 78%, rgba(107, 184, 255, 0.10));
+}
+
+section#Console .Strategy .strategyTokenSidebarNavButton.active {
+    background: rgba(107, 184, 255, 0.12);
+    color: var(--text-primary);
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.22);
+}
+
+section#Console .Strategy .strategyTokenSidebarContent {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+section#Console .Strategy .strategyPresetPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: max-content;
+}
+
+section#Console .Strategy .strategyPresetPanelHeader {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+}
+
+section#Console .Strategy .strategyPresetPanelHeaderRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyPresetCompareButton {
+    flex: 0 0 auto;
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+section#Console .Strategy .strategyPresetCompareButton:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+section#Console .Strategy .strategyPresetCompareError {
+    padding: 8px 10px;
+    border: 1px solid rgba(239, 107, 115, 0.35);
+    background: rgba(239, 107, 115, 0.08);
+    color: #ef6b73;
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetCompareList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyPresetCompareCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Strategy .strategyPresetCompareCard.isBest {
+    border-color: rgba(107, 184, 255, 0.4);
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Strategy .strategyPresetCompareCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyPresetCompareBadgeRow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+section#Console .Strategy .strategyPresetCompareCardTitle {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Strategy .strategyPresetCompareBadge {
+    padding: 2px 6px;
+    border: 1px solid rgba(107, 184, 255, 0.35);
+    background: rgba(107, 184, 255, 0.16);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyPresetCompareBadge.isPortfolio {
+    border-color: rgba(251, 191, 36, 0.35);
+    background: rgba(251, 191, 36, 0.16);
+    color: #fde68a;
+}
+
+section#Console .Strategy .strategyPresetCompareMetrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetCompareContribution {
+    padding: 8px 10px;
+    border: 1px solid rgba(251, 191, 36, 0.18);
+    background: rgba(251, 191, 36, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetRecommendation {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Strategy .strategyPresetRecommendationLabel {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyPresetRecommendationValue {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Strategy .strategyPresetRecommendationText {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetAliasList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+}
+
+section#Console .Strategy .strategyPresetDoc {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Strategy .strategyPresetDocTitle {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyPresetDocList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyPresetDocItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+section#Console .Strategy .strategyPresetDocKey {
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Strategy .strategyPresetDocText {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetDocExpected {
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyPresetAliasChip {
+    padding: 4px 6px;
+    border: 1px solid var(--border-default);
+    background: rgba(107, 184, 255, 0.08);
+    color: var(--text-primary);
+    font-size: 0.74rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Strategy .strategyPresetPanelBody {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 0 0 auto;
+    min-height: max-content;
+    overflow: visible;
+}
+
+section#Console .Strategy .strategyPresetCard {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 10px;
+    border: 1px solid var(--border-default);
+    background: rgba(107, 184, 255, 0.08);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+}
+
+section#Console .Strategy .strategyPresetCard:hover {
+    background: rgba(107, 184, 255, 0.16);
+    border-color: var(--border-strong);
+}
+
+section#Console .Strategy .strategyPresetCardTitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyPresetCardText {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+section#Console .Strategy .strategyTokenSidebarHeader {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+}
+
+section#Console .Strategy .strategyTokenSidebarGroups {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+section#Console .Strategy .strategyTokenSidebarGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyTokenSidebarGroupTitle {
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+section#Console .Strategy .strategyTokenSidebarList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Strategy .strategyTokenSidebarButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 9px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(107, 184, 255, 0.1);
+    color: var(--text-primary);
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+section#Console .Strategy .strategyTokenSidebarButton:hover {
+    background-color: rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Strategy .strategyTokenSidebarSwatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+section#Console .Strategy .strategyTokenSidebarButtonLabel {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Strategy .fieldRow {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Strategy .strategyPricePresetRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+section#Console .Strategy .strategyPricePresetLabel {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Strategy .strategyPricePresetSelect {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    font: inherit;
+    padding: 6px 8px;
+}
+
+section#Console .Strategy .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Strategy .field label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+section#Console .Strategy .field .fieldLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+section#Console .Strategy .field .fieldLabelIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #111;
+    background-color: var(--text-muted);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+section#Console .Strategy .field .fieldLabelIcon.longOpen,
+section#Console .Strategy .field .fieldLabelIcon.longGain {
+    background-color: var(--status-positive);
+}
+
+section#Console .Strategy .field .fieldLabelIcon.longClose,
+section#Console .Strategy .field .fieldLabelIcon.longLoss,
+section#Console .Strategy .field .fieldLabelIcon.shortClose,
+section#Console .Strategy .field .fieldLabelIcon.shortLoss {
+    background-color: var(--status-danger-strong);
+    color: var(--text-overlay-strong);
+}
+
+section#Console .Strategy .field .fieldLabelIcon.shortOpen,
+section#Console .Strategy .field .fieldLabelIcon.shortGain {
+    background-color: #ffb04d;
+}
+
+section#Console .Strategy .field .fieldLabelIcon.longGain,
+section#Console .Strategy .field .fieldLabelIcon.shortGain {
+    background-color: var(--status-positive);
+}
+
+section#Console .Strategy .field input,
+section#Console .Strategy .field select,
+section#Console .Strategy .field .strategyExpressionEditor {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    padding: 8px 10px;
+    font: inherit;
+}
+
+section#Console .Strategy .field .strategyExpressionEditorShell {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Strategy .field .strategyExpressionEditor {
+    min-height: calc(1.35em * 2 + 16px);
+    line-height: 1.35;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-y: auto;
+    cursor: text;
+    resize: none;
+}
+
+section#Console .Strategy .field .strategyExpressionEditor.singleLine {
+    min-height: calc(1.35em + 16px);
+    overflow-y: hidden;
+    resize: none;
+}
+
+section#Console .Strategy .field .strategyExpressionEditor:focus {
+    outline: 1px solid var(--border-strong);
+    outline-offset: -1px;
+}
+
+section#Console .Strategy .fieldDescription {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+section#Console .Strategy .strategyExpressionPreview {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    min-height: calc(1.35em * 2 + 16px);
+    padding: 8px 10px;
+    border: 1px solid var(--border-default);
+    background-color: color-mix(in srgb, var(--surface-input) 72%, transparent);
+    color: var(--text-muted);
+    font: inherit;
+    line-height: 1.35;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+section#Console .Strategy .strategyExpressionPreview.singleLine {
+    min-height: calc(1.35em + 16px);
+}
+
+section#Console .Strategy .strategyExpressionPreviewText {
+    white-space: pre-wrap;
+}
+
+section#Console .Strategy .strategyToken {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin: 1px 3px 1px 0;
+    padding: 2px 6px;
+    border: 1px solid var(--border-default);
+    border-radius: 6px;
+    background-color: rgba(107, 184, 255, 0.14);
+    vertical-align: middle;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+section#Console .Strategy .strategyToken.isLiteral {
+    background-color: rgba(243, 244, 246, 0.10);
+}
+
+section#Console .Strategy .strategyTokenLabel,
+section#Console .Strategy .strategyTokenIndex {
+    font-weight: 600;
+}
+
+section#Console .Strategy .strategyTokenButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+    line-height: 1;
+}
+
+section#Console .Strategy .strategyTokenButton:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+section#Console .Strategy .strategyTokenButton.remove {
+    color: #ffb4b4;
+}
+
+section#Console .Strategy .field.checkboxField {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-input);
+}
+
+section#Console .Strategy .field.checkboxField label {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+section#Console .Strategy .field.checkboxField input {
+    width: auto;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    section#Console .Strategy .strategyPanelToolbar {
+        flex-direction: column;
+        align-items: stretch;
+        margin: -7.5px -12px 0;
+    }
+
+    section#Console .Strategy .strategyPanelTabs,
+    section#Console .Strategy .strategyActions {
+        flex-wrap: wrap;
+    }
+
+    section#Console .Strategy .strategyManagerShell {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Strategy .strategyPanelSectionWithSidebar {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+    }
+
+    section#Console .Strategy .strategyTokenSidebar {
+        height: 240px;
+    }
+
+    section#Console .Strategy .strategyTokenSidebarNav {
+        display: flex;
+    }
+
+    section#Console .Strategy .fieldRow {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 640px) {
+    section#Console .Strategy .strategyPanel {
+        padding: 12px;
+    }
+
+    section#Console .Strategy .strategyPanelTab {
+        padding: 0 14px;
+    }
+}

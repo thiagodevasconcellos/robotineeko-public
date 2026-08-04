@@ -1,0 +1,192 @@
+.ChartStatus {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.chartStatusToolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.chartStatusSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.10);
+    border: 1px solid rgba(107, 184, 255, 0.18);
+}
+
+.chartStatusSummaryTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chartStatusSummaryText {
+    color: var(--text-secondary);
+}
+
+.chartStatusHeadline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chartStatusDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #6f7784;
+}
+
+.chartStatusDot.is-idle {
+    background: #6f7784;
+}
+
+.chartStatusDot.is-ok {
+    background: #5ec77b;
+}
+
+.chartStatusDot.is-warn {
+    background: #d3a645;
+}
+
+.chartStatusDot.is-error {
+    background: #e36d6d;
+}
+
+.chartStatusToolbarMeta {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.chartStatusRefreshButton {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+.chartStatusGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.chartStatusCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-panel);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chartStatusCardTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chartStatusCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.chartStatusFieldRow {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.chartStatusFieldLabel {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.chartStatusFieldValue {
+    color: var(--text-primary);
+    min-width: 0;
+    word-break: break-word;
+}
+
+.chartStatusList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chartStatusListItem {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.chartStatusListTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chartStatusListMeta,
+.chartStatusListSubmeta {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+.chartStatusEmpty,
+.chartStatusError {
+    padding: 12px;
+    border-radius: 0.5em;
+}
+
+.chartStatusEmpty {
+    background: var(--surface-panel);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chartStatusError {
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: var(--status-negative);
+}
+
+@media (max-width: 1100px) {
+    .chartStatusGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .chartStatusToolbar {
+        flex-wrap: wrap;
+    }
+
+    .chartStatusToolbarMeta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .chartStatusFieldRow {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}

@@ -1,0 +1,281 @@
+.ScientificRecordConsole {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.scientificRecordLayout {
+    grid-template-columns: minmax(320px, 360px) minmax(0, 1fr);
+}
+
+.scientificRecordSidebar .docsSidebarControls {
+    gap: 10px;
+}
+
+.scientificRecordSidebarSummary,
+.scientificRecordSidebarKey {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    word-break: break-word;
+}
+
+.scientificRecordSidebarSummary {
+    line-height: 1.45;
+}
+
+.scientificRecordContent {
+    min-height: 0;
+}
+
+.scientificRecordHeader {
+    align-items: flex-start;
+}
+
+.scientificRecordHeaderActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.scientificRecordActionButton {
+    padding: 9px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+.scientificRecordActionButton.primary {
+    background: rgba(107, 184, 255, 0.18);
+    border-color: rgba(107, 184, 255, 0.35);
+}
+
+.scientificRecordActionButton.danger {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.scientificRecordActionButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.scientificRecordReadOnlyBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(250, 204, 21, 0.34);
+    border-radius: 0.45em;
+    background: rgba(250, 204, 21, 0.12);
+    color: #facc15;
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.scientificRecordBody {
+    display: grid;
+    grid-template-columns: minmax(220px, 250px) minmax(0, 1fr);
+    gap: 16px;
+    padding: 18px 20px 24px;
+    min-height: 0;
+}
+
+.scientificRecordNavigator {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.scientificRecordRailTitle {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.scientificRecordNavigatorList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    overflow: auto;
+}
+
+.scientificRecordNavigatorButton {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+.scientificRecordNavigatorButton:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.scientificRecordArticlePane {
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.scientificRecordSections {
+    gap: 18px;
+}
+
+.scientificRecordMandateGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.scientificRecordMandateCard,
+.scientificRecordTimelineCard,
+.scientificRecordFeatureCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.scientificRecordMandateLabel,
+.scientificRecordTimelineStep,
+.scientificRecordFeatureBlock strong {
+    font-size: 0.84rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
+.scientificRecordMandateValue {
+    min-width: 0;
+}
+
+.scientificRecordFeatureGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 14px;
+}
+
+.scientificRecordFeatureHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.scientificRecordFeatureHeader h4,
+.scientificRecordTimelineCard h4 {
+    margin: 0;
+    font-size: 0.96rem;
+}
+
+.scientificRecordFeatureBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.scientificRecordTimeline {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.scientificRecordEditor {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 18px;
+}
+
+.scientificRecordEditorSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+.scientificRecordEditorSectionHeader h3 {
+    margin: 0;
+}
+
+.scientificRecordEditorGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.scientificRecordField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.scientificRecordField.wide {
+    grid-column: 1 / -1;
+}
+
+.scientificRecordField span {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.scientificRecordField input,
+.scientificRecordField textarea,
+.scientificRecordField select {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-primary);
+    resize: vertical;
+}
+
+.scientificRecordEditCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.scientificRecordEditCardActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.scientificRecordEmpty {
+    padding: 28px;
+}
+
+@media (max-width: 1440px) {
+    .scientificRecordLayout {
+        grid-template-columns: minmax(280px, 320px) minmax(0, 1fr);
+    }
+
+    .scientificRecordBody {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,13 +1,29 @@
-# backend
+# Backend
 
-Public placeholder only.
+This folder contains the public snapshot of the Robotineeko backend.
 
-This folder marks the backend boundary of the live product.
+## Stack
 
-In the public repository, no production backend code, data, or configuration is included.
+- FastAPI
+- Python
+- authenticated API flows
+- guest hardening logic
+- docs, workspace, chart, strategy, and neural-related services
 
-Future public-safe material here may include:
+## What is visible here
 
-- service boundary notes
-- API surface summaries
-- sanitized integration descriptions
+- backend application modules
+- service and route organization
+- indicator and strategy libraries
+- tests, including guest-facing hardening checks
+
+## What was removed from the public snapshot
+
+- private `/fund` backend
+- databases, model artifacts, and generated runtime data
+- token-coupled operational tools
+- deployment host configuration and secrets
+
+## Notes
+
+The live system contains more operational material than the public snapshot. This export is meant to show backend engineering quality and application structure without exposing runtime-sensitive content.

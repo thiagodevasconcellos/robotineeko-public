@@ -1,0 +1,168 @@
+:root {
+    --surface-app: #0d1014;
+    --surface-panel: #171b21;
+    --surface-panel-muted: #14181e;
+    --surface-input: #11151a;
+    --surface-overlay: #101317;
+
+    --text-primary: #edf1f5;
+    --text-muted: #98a2ad;
+    --text-overlay: #edf1f5;
+    --text-overlay-strong: #ffffff;
+
+    --border-default: rgba(255, 255, 255, 0.10);
+    --border-strong: rgba(255, 255, 255, 0.18);
+    --border-overlay: rgba(255, 255, 255, 0.10);
+
+    --status-danger: #f44;
+    --status-danger-strong: #c43b3b;
+    --status-positive: #57d38c;
+    --status-negative: #ff7b72;
+
+    --overlay-scrim: rgba(0, 0, 0, 0.62);
+    --overlay-fog: rgba(0, 0, 0, 0.48);
+
+    --header-height: 44px;
+    --chart-side-spacing: 50px;
+    --console-height: 450px;
+}
+
+body {
+    margin: 0;
+    color: var(--text-primary);
+    background:
+        radial-gradient(circle at top, rgba(90, 110, 140, 0.10), transparent 30%),
+        linear-gradient(180deg, #090b0d, #0d1014 48%, #0a0c0f);
+    background-color: var(--surface-app);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input {
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    height: 20px;
+    border: 1px solid var(--border-default);
+}
+select {
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+}
+
+div.fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-fog);
+}
+div.overlayContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+div.overlay {
+    position: relative;
+    background-color: var(--surface-overlay);
+    padding: 40px 30px 20px 30px;
+    border-radius: .5em;
+    font-size: .9em;
+    color: var(--text-overlay);
+    border: 1px solid var(--border-overlay);
+}
+div.overlay input {
+    color: var(--text-overlay);
+    background-color: var(--surface-input);
+}
+div.overlay input[type="color"] {
+    padding: 0px;
+    border: 1px solid var(--border-overlay)!important;
+    height: 22.5px;
+    width: 30px!important;
+}
+div.overlay button {
+    cursor: pointer;
+    border-radius: .5em;
+    padding: 5px 10px 5px 10px;
+}
+div.overlay .overlayActions {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+    justify-content: center;
+    margin: 20px 0px 0px 0px;
+}
+div.overlay button.closeOverlay {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    border-radius: .5em;
+}
+div.overlay div.line {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 10px;
+}
+
+html {
+    height: 100%;
+}
+
+#root {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+@media (max-width: 900px) {
+    :root {
+        --header-height: 56px;
+        --chart-side-spacing: 0px;
+        --console-height: 380px;
+    }
+
+    div.overlayContainer {
+        align-items: flex-start;
+        padding: 12px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    div.overlay {
+        width: 100%;
+        max-width: 100%;
+        max-height: calc(100dvh - 24px);
+        margin: 0 auto;
+        padding: 42px 16px 16px 16px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    div.overlay .overlayActions {
+        flex-wrap: wrap;
+    }
+
+    div.overlay div.line {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

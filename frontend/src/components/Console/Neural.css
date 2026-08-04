@@ -1,0 +1,2154 @@
+section#Console .Neural {
+    height: 100%;
+    min-height: 0;
+}
+
+section#Console .Neural .neuralLayout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 16px;
+    height: 100%;
+    min-height: 0;
+}
+
+section#Console .Neural .neuralSidebar,
+section#Console .Neural .neuralContent {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid var(--border-default);
+    border-radius: 0.6em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralSidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralSidebarTitle,
+section#Console .Neural .neuralSectionTitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralSidebarListTabs {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+section#Console .Neural .neuralSidebarListTabs button {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralSidebarListTabs button.active {
+    border-color: rgba(107, 184, 255, 0.55);
+    background: rgba(107, 184, 255, 0.16);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralNetworkList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+}
+
+section#Console .Neural .neuralGuestNotice,
+section#Console .Neural .neuralGuestDisplayCard,
+section#Console .Neural .neuralGuestReadOnlyPanel {
+    padding: 10px 12px;
+    border: 1px solid rgba(250, 204, 21, 0.34);
+    border-radius: 0.55em;
+    background: rgba(250, 204, 21, 0.1);
+    color: #facc15;
+    font-size: 0.86rem;
+    line-height: 1.4;
+}
+
+section#Console .Neural .neuralGuestDisplayCard,
+section#Console .Neural .neuralGuestReadOnlyPanel {
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralGuestReadOnlyNote {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 8px;
+    border: 1px solid rgba(250, 204, 21, 0.28);
+    border-radius: 0.45em;
+    color: #facc15;
+    font-size: 0.78rem;
+}
+
+section#Console .Neural .neuralFamilyGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralFamilyGroup + .neuralFamilyGroup {
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Neural .neuralFamilyGroupTitle,
+section#Console .Neural .neuralConfigGroupTitle,
+section#Console .Neural .neuralHeaderMeta {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralFamilyGroupTitle,
+section#Console .Neural .neuralConfigGroupTitle {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Neural .neuralSidebarSubempty {
+    padding: 2px 2px 0;
+    font-size: 0.82rem;
+}
+
+section#Console .Neural .neuralNetworkCardEntry {
+    position: relative;
+    display: block;
+}
+
+section#Console .Neural .neuralNetworkCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    padding: 10px 48px 10px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.55em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralNetworkCard.active {
+    border-color: var(--border-strong);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Neural .neuralNetworkCard.active .neuralNetworkCardHeader {
+    color: #ffffff;
+}
+
+section#Console .Neural .neuralNetworkCardHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralNetworkCardLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+section#Console .Neural .neuralNetworkFavoriteStar {
+    color: #facc15;
+    font-size: 0.96rem;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(250, 204, 21, 0.18);
+    flex: 0 0 auto;
+}
+
+section#Console .Neural .neuralNetworkFavoriteToggle {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+section#Console .Neural .neuralNetworkFavoriteToggle.active {
+    border-color: rgba(250, 204, 21, 0.35);
+    background: rgba(250, 204, 21, 0.12);
+    color: #facc15;
+}
+
+section#Console .Neural .neuralNetworkFavoriteToggle:hover:not(:disabled) {
+    color: #facc15;
+    border-color: rgba(250, 204, 21, 0.28);
+}
+
+section#Console .Neural .neuralNetworkType,
+section#Console .Neural .neuralNetworkCardMeta,
+section#Console .Neural .neuralDescription,
+section#Console .Neural .neuralEmpty,
+section#Console .Neural .neuralEmptyState,
+section#Console .Neural .neuralMetaLabel,
+section#Console .Neural .neuralSectionHint,
+section#Console .Neural .fieldDescription,
+section#Console .Neural .neuralRuntimeMeta,
+section#Console .Neural .neuralLogTime {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralNetworkDescriptionCard .neuralDescription {
+    white-space: pre-line;
+    line-height: 1.5;
+}
+
+section#Console .Neural .neuralContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    overflow: auto;
+}
+
+section#Console .Neural .neuralCompletionCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.6em;
+    background-color: var(--surface-panel);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+section#Console .Neural .neuralCompletionCard.positive {
+    border-color: color-mix(in srgb, var(--status-positive) 38%, transparent);
+    background-color: color-mix(in srgb, var(--status-positive) 10%, var(--surface-panel) 90%);
+}
+
+section#Console .Neural .neuralCompletionCard.warning {
+    border-color: color-mix(in srgb, var(--status-warning) 42%, transparent);
+    background-color: color-mix(in srgb, var(--status-warning) 10%, var(--surface-panel) 90%);
+}
+
+section#Console .Neural .neuralCompletionCard.negative {
+    border-color: color-mix(in srgb, var(--status-negative) 42%, transparent);
+    background-color: color-mix(in srgb, var(--status-negative) 10%, var(--surface-panel) 90%);
+}
+
+section#Console .Neural .neuralCompletionCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralCompletionCardTitle {
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralCompletionCardBody {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    font-size: 0.84rem;
+}
+
+section#Console .Neural .neuralCompletionCardClose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+section#Console .Neural .neuralStickyGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+section#Console.isMaximized .Neural .neuralStickyGroup.isPinned {
+    position: sticky;
+    top: 0;
+    z-index: 14;
+    margin: 0 0 12px;
+    padding: 10px 0 0;
+    background:
+        linear-gradient(to bottom, var(--surface-app) 0%, var(--surface-app) calc(100% - 10px), transparent 100%);
+}
+
+section#Console.isMaximized .Neural .neuralStickyGroup.isPinned .neuralHeader {
+    padding: 0 0 10px;
+    background-color: var(--surface-app);
+}
+
+section#Console.isMaximized .Neural .neuralStickyGroup.isPinned .neuralTabs {
+    margin-top: 0;
+    border-radius: 0.6em;
+    border-left: 1px solid var(--border-default);
+    border-right: 1px solid var(--border-default);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+}
+
+section#Console .Neural .neuralTitle {
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+section#Console .Neural .neuralHeaderMeta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    margin-top: 8px;
+}
+
+section#Console .Neural .neuralContextSummary {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+section#Console .Neural .neuralContextChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 24px;
+    padding: 0 9px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+section#Console .Neural .neuralContextChip strong {
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralScoreToken.positive {
+    border-color: color-mix(in srgb, var(--status-positive) 38%, transparent);
+    background-color: color-mix(in srgb, var(--status-positive) 10%, transparent);
+    color: color-mix(in srgb, var(--status-positive) 82%, white 18%);
+}
+
+section#Console .Neural .neuralScoreToken.warning {
+    border-color: color-mix(in srgb, var(--status-warning) 42%, transparent);
+    background-color: color-mix(in srgb, var(--status-warning) 12%, transparent);
+    color: color-mix(in srgb, var(--status-warning) 86%, white 14%);
+}
+
+section#Console .Neural .neuralScoreToken.negative {
+    border-color: color-mix(in srgb, var(--status-negative) 42%, transparent);
+    background-color: color-mix(in srgb, var(--status-negative) 12%, transparent);
+    color: color-mix(in srgb, var(--status-negative) 88%, white 12%);
+}
+
+section#Console .Neural .neuralScoreToken strong {
+    color: inherit;
+}
+
+section#Console .Neural .neuralSummary {
+    min-width: 220px;
+    text-align: right;
+    font-size: 0.92rem;
+}
+
+section#Console .Neural .neuralTabs {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 42px;
+    margin: -7.5px -20px 0;
+    padding-right: 12px;
+    border-top: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralTabsList {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+}
+
+section#Console .Neural .neuralTabsActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+section#Console .Neural .neuralTabButton {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    padding: 0 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+section#Console .Neural .neuralTabButton.active {
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+    background-color: rgba(255, 255, 255, 0.06);
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralTabActionButton {
+    height: 32px;
+    padding: 0 14px;
+    border-radius: 0.45em;
+}
+
+section#Console .Neural .neuralTabsActions .neuralRunsToolbarButton {
+    height: 32px;
+}
+
+section#Console .Neural .neuralSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 0.6em;
+    background-color: var(--surface-panel);
+}
+
+section#Console .Neural .neuralTabPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Neural .neuralConfigGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralConfigSubgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 0.55em;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Neural .neuralConfigSubgroupTitle {
+    align-self: flex-start;
+    margin-top: -20px;
+    margin-bottom: 2px;
+    padding: 0 8px;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background-color: var(--surface-panel);
+}
+
+section#Console .Neural .neuralConfigSubgroupHint {
+    color: #f6d365;
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralConfigTopRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+}
+
+section#Console .Neural .neuralConfigGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralConfigurationPanels {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+    gap: 14px;
+}
+
+section#Console .Neural .neuralNetworkDescriptionCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.55em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Neural .field label {
+    font-size: 0.84rem;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .fieldDescription,
+section#Console .Neural .neuralSectionHint {
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Neural .field input {
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .field select {
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralIndicatorsTabPanel {
+    gap: 14px;
+}
+
+section#Console .Neural .neuralIndicatorCatalogHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+section#Console .Neural .neuralIndicatorSearchRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralIndicatorSearchRow input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralIndicatorSearchClear {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralIndicatorCurrentList,
+section#Console .Neural .neuralIndicatorCatalogList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralIndicatorCurrentCard,
+section#Console .Neural .neuralIndicatorCatalogCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.55em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralIndicatorCatalogCard.active {
+    border-color: rgba(107, 184, 255, 0.45);
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Neural .neuralIndicatorCurrentMeta,
+section#Console .Neural .neuralIndicatorCatalogCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+section#Console .Neural .neuralIndicatorCurrentMeta span,
+section#Console .Neural .neuralIndicatorCatalogMeta {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Neural .neuralIndicatorCatalogCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralIndicatorCatalogLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralIndicatorLoadedBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 0 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(107, 184, 255, 0.35);
+    background: rgba(107, 184, 255, 0.12);
+    color: #9ad0ff;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Neural .neuralIndicatorFavoriteToggle {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.45);
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+section#Console .Neural .neuralIndicatorFavoriteToggle.active {
+    border-color: rgba(250, 204, 21, 0.35);
+    background: rgba(250, 204, 21, 0.12);
+    color: #facc15;
+}
+
+section#Console .Neural .neuralIndicatorActionButton {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+section#Console .Neural .neuralIndicatorActionButton:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+section#Console .Neural .neuralReadonlyFieldValue {
+    display: flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 0.45em;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+section#Console .Neural .neuralToggleRow {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .checkboxField {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+}
+
+section#Console .Neural .neuralActions {
+    display: flex;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralRuntimeControls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralConfigTransferRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralAliasRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralAliasSection {
+    align-self: start;
+}
+
+section#Console .Neural .neuralAliasSectionFull {
+    width: 100%;
+}
+
+section#Console .Neural .neuralAliasRow input {
+    min-width: 0;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralPresetCreateRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralPresetCreateRow input {
+    flex: 1 1 220px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsToolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralLayerEditor {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralArchitecturePanels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralArchitecturePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--border-default);
+    background: var(--surface-panel);
+}
+
+section#Console .Neural .neuralArchitecturePanel.active {
+    border-color: rgba(107, 184, 255, 0.45);
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Neural .neuralArchitecturePanel.planned {
+    opacity: 0.92;
+}
+
+section#Console .Neural .neuralArchitecturePanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralArchitectureBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    border: 1px solid var(--border-default);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Neural .neuralArchitectureBadge.active {
+    color: var(--text-primary);
+    border-color: rgba(107, 184, 255, 0.45);
+    background: rgba(107, 184, 255, 0.12);
+}
+
+section#Console .Neural .neuralNormalizationSelector {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralNormalizationGrid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralNormalizationChip {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(181, 189, 208, 0.22);
+    border-radius: 999px;
+    background-color: rgba(181, 189, 208, 0.08);
+    color: #b5bdd0;
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralNormalizationChip.active {
+    border-color: rgba(120, 214, 154, 0.34);
+    background-color: rgba(120, 214, 154, 0.12);
+    color: #78d69a;
+}
+
+section#Console .Neural .neuralLayerCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralLayerCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralLayerCardActions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralLayerCardActions button {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralLayerRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralRunBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 7px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+section#Console .Neural .neuralRunBadge.success {
+    color: #78d69a;
+    border-color: rgba(120, 214, 154, 0.3);
+    background-color: rgba(120, 214, 154, 0.08);
+}
+
+section#Console .Neural .neuralRunBadge.accent {
+    color: #9db2ff;
+    border-color: rgba(157, 178, 255, 0.32);
+    background-color: rgba(93, 124, 255, 0.1);
+}
+
+section#Console .Neural .neuralRunBadge.warning {
+    color: #ffcf7b;
+    border-color: rgba(255, 207, 123, 0.28);
+    background-color: rgba(255, 207, 123, 0.1);
+}
+
+section#Console .Neural .neuralRunBadge.neutral {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralRunBadge.muted {
+    color: #b5bdd0;
+    border-color: rgba(181, 189, 208, 0.24);
+    background-color: rgba(181, 189, 208, 0.08);
+}
+
+section#Console .Neural .neuralActions button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralRuntimeControls button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralConfigTransferRow button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralPresetCreateRow button,
+section#Console .Neural .neuralPresetActions button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralPresetList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralPresetCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralPresetCard.active {
+    border-color: var(--border-strong);
+    background-color: rgba(93, 124, 255, 0.08);
+}
+
+section#Console .Neural .neuralPresetHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Neural .neuralPresetHeaderText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Neural .neuralPresetHeader strong {
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralPresetAlias {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+section#Console .Neural .neuralPresetActions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralTestSourceSelect {
+    height: 36px;
+    min-width: 180px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsFilterSelect {
+    height: 36px;
+    min-width: 150px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsToolbarButton {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 207, 123, 0.18);
+    border-radius: 0.45em;
+    background-color: rgba(255, 207, 123, 0.06);
+    color: #d5bea1;
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralRunsToolbarButton:hover:not(:disabled) {
+    border-color: rgba(255, 207, 123, 0.28);
+    background-color: rgba(255, 207, 123, 0.1);
+    color: #ead6bd;
+}
+
+section#Console .Neural .neuralRunsToolbarButton:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+section#Console .Neural .neuralActions .neuralPrimary {
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralActions button:disabled,
+section#Console .Neural .neuralRuntimeControls button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+section#Console .Neural .neuralMetricsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralShortlistGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralShortlistCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.55em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralShortlistCard.active {
+    border-color: var(--border-strong);
+    background-color: rgba(93, 124, 255, 0.08);
+}
+
+section#Console .Neural .neuralShortlistHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralShortlistMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+section#Console .Neural .neuralMetricCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 96px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralEvaluationCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.6em;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+section#Console .Neural .neuralEvaluationCard.positive {
+    border-color: rgba(120, 214, 154, 0.24);
+    background: linear-gradient(180deg, rgba(120, 214, 154, 0.12) 0%, rgba(120, 214, 154, 0.04) 100%);
+}
+
+section#Console .Neural .neuralEvaluationCard.warning {
+    border-color: rgba(255, 204, 102, 0.24);
+    background: linear-gradient(180deg, rgba(255, 204, 102, 0.12) 0%, rgba(255, 204, 102, 0.04) 100%);
+}
+
+section#Console .Neural .neuralEvaluationCard.negative {
+    border-color: rgba(255, 141, 141, 0.24);
+    background: linear-gradient(180deg, rgba(255, 141, 141, 0.12) 0%, rgba(255, 141, 141, 0.04) 100%);
+}
+
+section#Console .Neural .neuralEvaluationHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralEvaluationLabel {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralEvaluationMeta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralEvaluationScoreRow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralEvaluationPanels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+section#Console .Neural .neuralEvaluationPanels.comparison {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+section#Console .Neural .neuralEvaluationPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.55em;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Neural .neuralEvaluationPanel.positive {
+    border-color: rgba(120, 214, 154, 0.2);
+}
+
+section#Console .Neural .neuralEvaluationPanel.warning {
+    border-color: rgba(255, 204, 102, 0.2);
+}
+
+section#Console .Neural .neuralEvaluationPanel.negative {
+    border-color: rgba(255, 141, 141, 0.2);
+}
+
+section#Console .Neural .neuralEvaluationPanelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralEvaluationPanelLabel {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralEvaluationScore {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+section#Console .Neural .neuralEvaluationScale {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralEvaluationBreakdown {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Neural .neuralEvaluationItem {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 12px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.5em;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Neural .neuralEvaluationItemName {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralEvaluationItemTarget,
+section#Console .Neural .neuralEvaluationItemActual {
+    font-size: 0.76rem;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralEvaluationItemValue {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: center;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralMetricSectionsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralMetricSection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 160px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralMetricSectionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Neural .neuralMetricSectionTitle {
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralMetricSectionHint {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Neural .neuralMetricList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralMetricRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color .16s ease, border-color .16s ease;
+}
+
+section#Console .Neural .neuralMetricRow:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+section#Console .Neural .neuralMetricRow:hover {
+    background-color: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Neural .neuralMetricRowLabel {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+section#Console .Neural .neuralMetricRowValue {
+    color: var(--text-primary);
+    font-weight: 700;
+    text-align: right;
+}
+
+section#Console .Neural .neuralMetricRowDelta {
+    color: var(--text-muted);
+    font-size: 0.74rem;
+}
+
+section#Console .Neural .neuralMetricLabel,
+section#Console .Neural .neuralMetricHint {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralMetricLabel {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Neural .neuralMetricValue {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralMetricHint {
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+section#Console .Neural .neuralRuntimeCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralRuntimeHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+}
+
+section#Console .Neural .neuralRuntimeHeaderInfo {
+    min-width: 0;
+}
+
+section#Console .Neural .neuralRuntimeHeaderActions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Neural .neuralRuntimeCancelButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 141, 141, 0.28);
+    border-radius: 999px;
+    background-color: rgba(255, 141, 141, 0.08);
+    color: #ff9a9a;
+    cursor: pointer;
+    font-weight: 700;
+    line-height: 1;
+}
+
+section#Console .Neural .neuralRuntimeCancelButton:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+section#Console .Neural .neuralProgressTrack {
+    height: 8px;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Neural .neuralProgressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #5d7cff 0%, #7be39e 100%);
+}
+
+section#Console .Neural .neuralRuntimeFeedState {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: rgba(181, 189, 208, 0.08);
+}
+
+section#Console .Neural .neuralRuntimeFeedState.receiving {
+    border-color: rgba(120, 214, 154, 0.34);
+    background-color: rgba(120, 214, 154, 0.1);
+    color: #78d69a;
+}
+
+section#Console .Neural .neuralRuntimeFeedState.waiting {
+    border-color: rgba(255, 207, 123, 0.28);
+    background-color: rgba(255, 207, 123, 0.08);
+    color: #ffcf7b;
+}
+
+section#Console .Neural .neuralRuntimeFeedState.stale {
+    border-color: rgba(255, 141, 141, 0.3);
+    background-color: rgba(255, 141, 141, 0.08);
+    color: #ff9a9a;
+}
+
+section#Console .Neural .neuralRuntimeFeedState.finished {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralRuntimeMeta {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+}
+
+section#Console .Neural .neuralRuntimeEtaBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1px solid color-mix(in srgb, var(--status-warning) 40%, transparent);
+    border-radius: 999px;
+    background-color: color-mix(in srgb, var(--surface-app) 84%, rgba(255, 207, 123, 0.16) 16%);
+}
+
+section#Console .Neural .neuralRuntimeEtaBadgeLabel {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+section#Console .Neural .neuralRuntimeEtaBadge strong {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+}
+
+section#Console .Neural .neuralLogPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 220px;
+    overflow: auto;
+    padding-top: 4px;
+}
+
+section#Console .Neural .neuralLogEntry {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 10px;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+section#Console .Neural .neuralLogEntryFull {
+    align-items: start;
+}
+
+section#Console .Neural .neuralLogEntryFull > span:last-child {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+section#Console .Neural .neuralLogEntry.success {
+    color: #78d69a;
+}
+
+section#Console .Neural .neuralLogEntry.error {
+    color: #ff8d8d;
+}
+
+section#Console .Neural .neuralLogEntry.info {
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsTable {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+section#Console .Neural .neuralRunsTableHeader,
+section#Console .Neural .neuralRunsTableRow {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1.35fr) 100px 110px minmax(0, 1fr) 88px 124px 150px;
+    gap: 10px;
+    padding: 10px 12px;
+}
+
+section#Console .Neural .neuralRunsTableHeader {
+    background-color: var(--surface-app);
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralRunsTableHeader > span {
+    min-width: 0;
+}
+
+section#Console .Neural .neuralRunsTableIndexHeader,
+section#Console .Neural .neuralRunsTableIndexCell {
+    justify-self: center;
+    text-align: center;
+}
+
+section#Console .Neural .neuralRunsSortButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    text-align: left;
+}
+
+section#Console .Neural .neuralRunsSortButton.active {
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsSortGlyph {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    flex-shrink: 0;
+    width: 10px;
+    opacity: 0.5;
+}
+
+section#Console .Neural .neuralRunsSortGlyph.active {
+    opacity: 1;
+}
+
+section#Console .Neural .neuralRunsSortTriangle {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+section#Console .Neural .neuralRunsSortTriangle.up {
+    border-bottom: 5px solid var(--text-muted);
+}
+
+section#Console .Neural .neuralRunsSortTriangle.down {
+    border-top: 5px solid var(--text-muted);
+}
+
+section#Console .Neural .neuralRunsSortTriangle.active {
+    filter: brightness(1.25);
+}
+
+section#Console .Neural .neuralRunsSortButton.active .neuralRunsSortTriangle.up.active {
+    border-bottom-color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsSortButton.active .neuralRunsSortTriangle.down.active {
+    border-top-color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunsTableHeader > span:nth-child(7),
+section#Console .Neural .neuralRunsTableHeader > span:last-child {
+    justify-self: center;
+    text-align: center;
+}
+
+section#Console .Neural .neuralRunsTableRow {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: transparent;
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color .16s ease, border-color .16s ease;
+}
+
+section#Console .Neural .neuralRunRowBadges {
+    display: inline-flex;
+    gap: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralRunActionsCell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralRunConfigCell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralRunConfigButton {
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+section#Console .Neural .neuralArchiveIconButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralArchiveIconButton svg {
+    width: 16px;
+    height: 16px;
+}
+
+section#Console .Neural .neuralArchiveIconButton.active {
+    color: #b5bdd0;
+    background-color: rgba(181, 189, 208, 0.08);
+}
+
+section#Console .Neural .neuralDeleteFileIconButton {
+    color: #ffb0b0;
+}
+
+section#Console .Neural .neuralDeleteFileIconButton:disabled {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralDeleteRunIconButton {
+    color: #ff8f8f;
+}
+
+section#Console .Neural .neuralDeleteRunIconButton:disabled {
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralRunsTableRow.active {
+    background-color: rgba(93, 124, 255, 0.09);
+}
+
+section#Console .Neural .neuralRunsTableRow:hover {
+    background-color: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Neural .neuralPagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+section#Console .Neural .neuralPagination button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralPaginationRows {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Neural .neuralPaginationRows input {
+    width: 72px;
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+section#Console .Neural .neuralRunErrorPreview {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: #ff9d9d;
+    font-size: 0.78rem;
+    line-height: 1.35;
+    padding-top: 2px;
+}
+
+section#Console .Neural .neuralRunErrorCopyButton {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 1px solid rgba(255, 141, 141, 0.28);
+    border-radius: 999px;
+    background-color: rgba(255, 141, 141, 0.08);
+    color: #ffb0b0;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+section#Console .Neural .neuralRunErrorCopyIcon {
+    font-size: 0.9rem;
+    line-height: 1;
+}
+
+section#Console .Neural .neuralCompareBar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralCompareLabel {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralRunDetailGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Neural .neuralRunDetailBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralCompareTable {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    overflow: hidden;
+    background-color: var(--surface-app);
+}
+
+section#Console .Neural .neuralCompareTableHeader,
+section#Console .Neural .neuralCompareTableRow {
+    display: grid;
+    grid-template-columns: minmax(140px, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+    padding: 10px 12px;
+}
+
+section#Console .Neural .neuralCompareTableHeader {
+    background-color: rgba(255, 255, 255, 0.03);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+section#Console .Neural .neuralCompareTableRow {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    transition: background-color .16s ease, border-color .16s ease;
+}
+
+section#Console .Neural .neuralCompareTableRow.changed {
+    background-color: rgba(93, 124, 255, 0.08);
+}
+
+section#Console .Neural .neuralCompareTableRow:hover {
+    background-color: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Neural .neuralCodeBlock {
+    margin: 0;
+    padding: 12px;
+    min-height: 180px;
+    max-height: 320px;
+    overflow: auto;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+section#Console .Neural .neuralRunError {
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 120, 120, 0.28);
+    border-radius: 0.5em;
+    background-color: rgba(255, 120, 120, 0.08);
+    color: #ff9d9d;
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+section#Console .Neural .neuralComparisonSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid rgba(93, 124, 255, 0.22);
+    border-radius: 0.5em;
+    background: linear-gradient(180deg, rgba(93, 124, 255, 0.10) 0%, rgba(93, 124, 255, 0.04) 100%);
+}
+
+section#Console .Neural .neuralComparisonSummaryTitle {
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralComparisonSummaryLine {
+    color: var(--text-primary);
+    font-size: 0.84rem;
+    line-height: 1.4;
+}
+
+section#Console .Neural .neuralComparisonSummaryHighlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralComparisonSummaryHighlights span {
+    padding: 5px 8px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+section#Console .Neural .neuralRunMetaActions,
+section#Console .Neural .neuralRunNoteActions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralRunMetaActions button,
+section#Console .Neural .neuralRunNoteActions button {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Neural .neuralRunMetaActions button:disabled,
+section#Console .Neural .neuralRunNoteActions button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+section#Console .Neural .neuralRunNoteEditor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Neural .neuralRunNoteEditor textarea {
+    min-height: 96px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    resize: vertical;
+    font: inherit;
+    line-height: 1.45;
+}
+
+section#Console .Neural .neuralDangerButton {
+    border-color: rgba(255, 120, 120, 0.28) !important;
+    background-color: rgba(255, 120, 120, 0.08) !important;
+    color: #ffb0b0 !important;
+}
+
+section#Console .Neural .neuralOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+section#Console .Neural .neuralOverlayBackdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(4, 7, 11, 0.72);
+}
+
+section#Console .Neural .neuralOverlayCard {
+    position: relative;
+    z-index: 1;
+    width: min(520px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.7em;
+    background-color: var(--surface-app);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+section#Console .Neural .neuralOverlayTitle {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+section#Console .Neural .neuralOverlayText {
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+section#Console .Neural .neuralOverlayActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Neural .neuralOverlayActions button {
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    section#Console .Neural .neuralLayout {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralConfigGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    section#Console .Neural .neuralConfigTopRow {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralConfigurationPanels {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralMetricsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralMetricSectionsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralShortlistGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    section#Console .Neural .neuralEvaluationBreakdown {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralEvaluationPanels.comparison {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    section#Console .Neural .neuralLayout {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralSidebar {
+        max-height: 34vh;
+        overflow: auto;
+    }
+
+    section#Console .Neural .neuralConfigGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralLayerRow {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralHeader {
+        flex-direction: column;
+    }
+
+    section#Console .Neural .neuralSummary {
+        min-width: 0;
+        text-align: left;
+    }
+
+    section#Console .Neural .neuralLogEntry {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralRunDetailGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralRuntimeEtaOverlay {
+        right: 12px;
+        bottom: 12px;
+        min-height: 34px;
+        padding: 0 12px;
+    }
+
+    section#Console .Neural .neuralShortlistGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Neural .neuralTabs {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 8px 12px;
+        margin: -7.5px -12px 0;
+    }
+
+    section#Console .Neural .neuralTabsList,
+    section#Console .Neural .neuralTabsActions {
+        flex-wrap: wrap;
+    }
+
+    section#Console .Neural .neuralCompareTableHeader,
+    section#Console .Neural .neuralCompareTableRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    section#Console .Neural .neuralContent {
+        padding: 12px;
+    }
+}

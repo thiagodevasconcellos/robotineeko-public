@@ -1,13 +1,32 @@
-# frontend
+# Frontend
 
-Public placeholder only.
+This folder contains the public snapshot of the Robotineeko frontend.
 
-This folder marks the frontend boundary of the live product.
+## Stack
 
-In the public repository, no production frontend code is included.
+- React 19
+- Vite
+- lightweight-charts
+- React Router
 
-Future public-safe material here may include:
+## What is visible here
 
-- UI screenshots
-- component notes
-- sanitized product flow descriptions
+- the main desktop console
+- guest-safe auth and showcase behavior
+- chart and runtime-oriented UI
+- strategy, research, neural, and trader-facing surfaces
+- mobile monitoring route
+
+## What was removed from the public snapshot
+
+- restricted `/fund` surface
+- generated research catalogs
+- runtime data and local artifacts
+
+## Local commands
+
+```bash
+npm install
+npm run lint
+npm run build
+```

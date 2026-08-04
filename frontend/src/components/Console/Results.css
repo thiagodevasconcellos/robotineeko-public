@@ -1,0 +1,2566 @@
+section#Console .Results {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 16px;
+    height: 100%;
+    box-sizing: border-box;
+    min-height: 0;
+    padding-top: 8px;
+    overflow: hidden;
+}
+
+section#Console .Results.Research {
+    display: block;
+    grid-template-columns: none;
+}
+
+section#Console .Results .resultsPane {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+section#Console .Results .resultsPaneLeft {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 10px;
+    overflow: hidden;
+}
+
+section#Console .Results .resultsPaneRight {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+    box-sizing: border-box;
+}
+
+section#Console .Results .resultsTabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    align-items: stretch;
+    min-height: 42px;
+    padding: 0 4px;
+    border-top: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+}
+
+section#Console .Results .resultsTab {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    flex: 0 0 auto;
+    padding: 0 16px;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--text-primary);
+    font: inherit;
+}
+
+section#Console .Results .resultsTab.active {
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Results .resultsActionButton {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+section#Console .Results .resultsActionButton:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+section#Console .Results .consoleJobProgress {
+    position: relative;
+    height: 2px;
+    margin-top: -4px;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+section#Console .Results .consoleJobProgressFill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.28) 0%, rgba(107, 184, 255, 0.92) 100%);
+    box-shadow: 0 0 10px rgba(107, 184, 255, 0.22);
+}
+
+section#Console .Results .consoleJobProgressFill.isIndeterminate {
+    width: 38%;
+    animation: consoleJobProgressSlide 1.15s ease-in-out infinite;
+}
+
+@keyframes consoleJobProgressSlide {
+    0% {
+        transform: translateX(-115%);
+    }
+
+    100% {
+        transform: translateX(365%);
+    }
+}
+
+section#Console .Results .resultsChartCard {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    background-color: var(--surface-panel);
+    border-radius: 0.5em;
+    padding: 12px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+section#Console .Results .resultsChartHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+section#Console .Results .resultsChartTitle {
+    font-weight: 700;
+    font-size: 1.05em;
+}
+
+section#Console .Results .resultsChartMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    opacity: 0.8;
+    font-size: 0.9em;
+}
+
+section#Console .Results .resultsChartSvg {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    display: block;
+    background-color: var(--surface-app);
+    border-radius: 0.5em;
+}
+
+section#Console .Results .resultsChartEmpty {
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-app);
+    border-radius: 0.5em;
+    opacity: 0.8;
+}
+
+section#Console .Results .resultsChartEmptyContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 420px;
+    text-align: center;
+    padding: 20px;
+}
+
+section#Console .Results .resultsChartEmptyHint {
+    font-size: 0.92em;
+    color: var(--text-muted);
+}
+
+section#Console .Results .statisticsEmpty,
+section#Console .Results .statisticsPanel {
+    background-color: var(--surface-panel);
+    border-radius: 0.5em;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+section#Console .Results .statisticsEmpty {
+    height: 100%;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+section#Console .Results .statisticsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Results .portfolioSummaryPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(107, 184, 255, 0.18);
+    background: linear-gradient(180deg, rgba(107, 184, 255, 0.08) 0%, rgba(107, 184, 255, 0.03) 100%);
+    border-radius: 0.5em;
+}
+
+section#Console .Results .portfolioSummaryHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Results .portfolioSummaryTitle {
+    font-weight: 700;
+}
+
+section#Console .Results .portfolioSummaryMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .portfolioSummaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .portfolioSummaryAnalyticsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .portfolioSummaryAnalyticsCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border: 1px solid rgba(251, 191, 36, 0.18);
+    background: rgba(251, 191, 36, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .portfolioSummaryAnalyticsCard strong {
+    color: var(--text-primary);
+}
+
+section#Console .Results .portfolioSummaryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .portfolioSummaryPairwisePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid rgba(167, 139, 250, 0.18);
+    background: rgba(167, 139, 250, 0.06);
+    border-radius: 0.5em;
+}
+
+section#Console .Results .portfolioSummaryPairwiseList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .portfolioSummaryPairwiseItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 0.82rem;
+}
+
+section#Console .Research {
+    height: 100%;
+    min-height: 0;
+}
+
+section#Console .Research .statisticsPanel {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+section#Console .Research .researchPane {
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+    box-sizing: border-box;
+}
+
+section#Console .Results .regimeTerminalPanel {
+    height: 100%;
+    min-height: 0;
+}
+
+section#Console .Results .researchSummaryBanner {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.08);
+    border: 1px solid rgba(107, 184, 255, 0.16);
+}
+
+section#Console .Results .researchSummaryTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchSummaryText {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+section#Console .Results .researchDashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .researchDashboardCard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchDashboardCard.wide {
+    grid-column: span 2;
+}
+
+section#Console .Results .researchDashboardCard.alert {
+    border-color: rgba(107, 184, 255, 0.18);
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .researchDashboardCard.warning {
+    border-color: rgba(255, 196, 87, 0.2);
+    background: rgba(255, 196, 87, 0.08);
+}
+
+section#Console .Results .researchDashboardCard span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+section#Console .Results .researchDashboardCard strong {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+section#Console .Results .statisticsLayout {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 16px;
+    min-width: 0;
+}
+
+section#Console .Results .statisticsSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+}
+
+section#Console .Results .statisticsSidebarTitle {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .statisticsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-width: 0;
+}
+
+section#Console .Results .statisticsListButton {
+    display: flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 12px;
+    border: none;
+    border-left: 3px solid transparent;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+    transition: background-color .16s ease, color .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+section#Console .Results .statisticsListButton:hover {
+    background: color-mix(in srgb, var(--surface-panel) 78%, rgba(107, 184, 255, 0.10));
+}
+
+section#Console .Results .statisticsListButton.active {
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.20), rgba(107, 184, 255, 0.08));
+    color: var(--text-primary);
+    border-left-color: #6bb8ff;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.22);
+}
+
+section#Console .Results .statisticsContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+section#Console .Results .researchSectionPanel {
+    display: none;
+    min-width: 0;
+}
+
+section#Console .Results .researchSectionPanel.active {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+section#Console .Results .researchLayout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: start;
+}
+
+section#Console .Results .researchSidebar {
+    position: sticky;
+    top: 0;
+}
+
+section#Console .Results .researchPrimaryTabs {
+    margin-bottom: 4px;
+}
+
+section#Console .Results .statisticsSubviewTabs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section#Console .Results .statisticsSubviewTab {
+    flex: 1 1 0;
+    min-height: 32px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 0.4em;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+    transition: background-color .16s ease, color .16s ease;
+}
+
+section#Console .Results .statisticsSubviewTab.active {
+    background: rgba(107, 184, 255, 0.18);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Results .statisticsGroupDescription {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .statisticsGroupDescriptionText {
+    color: var(--text-secondary);
+}
+
+section#Console .Results .statisticsGroupDescriptionMeta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+section#Console .Results .statisticsEvaluationCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .statisticsEvaluationCard.positive {
+    border-color: color-mix(in srgb, var(--status-positive) 38%, transparent);
+}
+
+section#Console .Results .statisticsEvaluationCard.warning {
+    border-color: color-mix(in srgb, var(--status-warning) 42%, transparent);
+}
+
+section#Console .Results .statisticsEvaluationCard.negative {
+    border-color: color-mix(in srgb, var(--status-negative) 42%, transparent);
+}
+
+section#Console .Results .statisticsEvaluationHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Results .statisticsEvaluationLabel {
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+
+section#Console .Results .statisticsEvaluationMeta {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+section#Console .Results .statisticsEvaluationScoreRow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+section#Console .Results .statisticsEvaluationScore {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+section#Console .Results .statisticsEvaluationCard.positive .statisticsEvaluationScore {
+    color: var(--status-positive);
+}
+
+section#Console .Results .statisticsEvaluationCard.warning .statisticsEvaluationScore {
+    color: var(--status-warning);
+}
+
+section#Console .Results .statisticsEvaluationCard.negative .statisticsEvaluationScore {
+    color: var(--status-negative);
+}
+
+section#Console .Results .statisticsEvaluationScoreScale {
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+section#Console .Results .statisticsEvaluationBreakdown {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+section#Console .Results .statisticsEvaluationItem {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 10px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 0.4em;
+    padding: 8px 10px;
+}
+
+section#Console .Results .statisticsEvaluationItemName {
+    font-weight: 600;
+}
+
+section#Console .Results .statisticsEvaluationItemTarget {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .statisticsEvaluationItemActual {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .statisticsEvaluationItemValue {
+    grid-row: 1 / span 3;
+    grid-column: 2;
+    font-weight: 800;
+    align-self: center;
+}
+
+section#Console .Results .regimeSummaryPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Results .regimeInsightBanner {
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.10);
+    border: 1px solid rgba(107, 184, 255, 0.18);
+    color: var(--text-primary);
+}
+
+section#Console .Results .regimeInsightGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .regimeInsightCard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .regimeInsightLabel {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .regimeInsightValue {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .regimeInsightMeta {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .Results .regimeSummaryGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .regimeSummaryTitle {
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+section#Console .Results .presetComparePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Results .presetCompareHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+section#Console .Results .presetCompareText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Results .presetCompareTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .presetCompareMeta {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+}
+
+section#Console .Results .presetCompareRecommendation {
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.10);
+    border: 1px solid rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Results .presetCompareBaseline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .presetCompareBaselineTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .presetCompareSideTabs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+section#Console .Results .presetCompareSideTab {
+    min-height: 34px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.45em;
+    background: var(--surface-app);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font: inherit;
+}
+
+section#Console .Results .presetCompareSideTab.active {
+    background: rgba(107, 184, 255, 0.18);
+    border-color: rgba(107, 184, 255, 0.22);
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Results .presetCompareEmpty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: center;
+}
+
+section#Console .Results .presetCompareError {
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: var(--status-negative);
+}
+
+section#Console .Results .presetCompareCards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .presetCompareCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchPlaybookLayout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 16px;
+    min-height: 0;
+}
+
+section#Console .Results .researchPlaybookSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 12px;
+}
+
+section#Console .Results .researchPlaybookSidebarTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchPlaybookSidebarMeta {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+section#Console .Results .researchPlaybookSidebarList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 0;
+    overflow: auto;
+}
+
+section#Console .Results .researchPlaybookSidebarButton {
+    width: 100%;
+    min-height: 36px;
+    padding: 8px 10px;
+    border: none;
+    border-left: 3px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+}
+
+section#Console .Results .researchPlaybookSidebarButton.active {
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.2), rgba(107, 184, 255, 0.06));
+    border-left-color: #6bb8ff;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Results .researchPlaybookContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+section#Console .Results .researchPlaybookSections {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Results .researchPlaybookCard {
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .researchPlaybookCardTitle {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchPlaybookParagraphs p {
+    margin: 0 0 10px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+section#Console .Results .researchPlaybookList {
+    margin: 0 0 0 18px;
+    color: var(--text-secondary);
+}
+
+section#Console .Results .researchPlaybookList li {
+    margin-bottom: 8px;
+    line-height: 1.55;
+}
+
+section#Console .Results .researchPlaybookTerms {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .researchPlaybookTermRow {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Results .researchPlaybookTerm {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchPlaybookTermExplanation {
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+section#Console .Results .researchPlaybookFlowchart {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+section#Console .Results .researchPlaybookFlowStep {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Results .researchPlaybookFlowNode {
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.12);
+    border: 1px solid rgba(107, 184, 255, 0.22);
+    color: var(--text-primary);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+section#Console .Results .researchPlaybookFlowArrow {
+    color: var(--text-muted);
+    font-weight: 700;
+}
+
+section#Console .Results .presetCompareCard.isBest {
+    border-color: rgba(107, 184, 255, 0.30);
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Results .presetCompareCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Results .presetCompareCardTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .presetCompareBadge {
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(107, 184, 255, 0.18);
+    color: var(--text-primary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .presetCompareBadge.isPortfolio {
+    background: rgba(251, 191, 36, 0.18);
+    color: #fde68a;
+}
+
+section#Console .Results .presetCompareInlineMeta {
+    margin-left: 8px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+section#Console .Results .presetCompareMetrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+section#Console .Results .presetCompareMetrics div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .presetCompareMetrics span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+section#Console .Results .presetCompareMetrics strong {
+    color: var(--text-primary);
+    font-size: 0.96rem;
+}
+
+section#Console .Results .presetCompareContributionPreview {
+    padding: 8px 10px;
+    border-radius: 0.45em;
+    background: rgba(251, 191, 36, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+section#Console .Results .presetCompareDeltaGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+section#Console .Results .presetCompareDeltaGrid div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px 10px;
+    border-radius: 0.45em;
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .presetCompareDeltaGrid span {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+section#Console .Results .presetCompareDeltaGrid strong {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+section#Console .Results .presetCompareActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+section#Console .Results .presetStudyPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .presetStudyTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+section#Console .Results .presetStudyMeta {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+section#Console .Results .presetStudyCards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .presetStudyCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .presetStudyCard.isBest {
+    border-color: rgba(107, 184, 255, 0.30);
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Results .presetStudyWindowTable {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Results .presetStudyWindowRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 10px;
+    border-radius: 0.45em;
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .researchJobsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Results .researchJobsSummary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .researchJobsSummaryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchJobsSummaryCard span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .researchJobsSummaryCard strong {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+section#Console .Results .researchJobsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+section#Console .Results .researchJobsFilters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .researchJobCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchJobHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+section#Console .Results .researchJobHeader > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+section#Console .Results .researchJobTitle {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .Results .researchJobMeta {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .researchJobDetail {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+section#Console .Results .researchJobProgressRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Results .researchJobProgressRow span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    min-width: 40px;
+    text-align: right;
+}
+
+section#Console .Results .researchJobProgressTrack {
+    position: relative;
+    flex: 1 1 auto;
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+section#Console .Results .researchJobProgressFill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.45) 0%, rgba(107, 184, 255, 0.95) 100%);
+}
+
+section#Console .Results .presetStudyWindowRow span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .presetStudyWindowRow strong {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+section#Console .Results .promotionCandidateCards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .promotionCandidateCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .promotionCandidateCard.isBest {
+    border-color: rgba(107, 184, 255, 0.30);
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Results .promotionCandidateCard.tone-promote {
+    border-color: color-mix(in srgb, var(--status-positive) 34%, transparent);
+}
+
+section#Console .Results .promotionCandidateCard.tone-watch {
+    border-color: color-mix(in srgb, var(--status-warning) 34%, transparent);
+}
+
+section#Console .Results .promotionCandidateCard.tone-reject {
+    border-color: color-mix(in srgb, var(--status-negative) 34%, transparent);
+}
+
+section#Console .Results .promotionCandidateBadges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+section#Console .Results .promotionDisposition {
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .promotionDisposition.promote {
+    background: color-mix(in srgb, var(--status-positive) 20%, transparent);
+    color: var(--status-positive);
+}
+
+section#Console .Results .promotionDisposition.watch {
+    background: color-mix(in srgb, var(--status-warning) 20%, transparent);
+    color: var(--status-warning);
+}
+
+section#Console .Results .promotionDisposition.reject {
+    background: color-mix(in srgb, var(--status-negative) 20%, transparent);
+    color: var(--status-negative);
+}
+
+section#Console .Results .promotionCandidateScoreRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: 0.45em;
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .promotionCandidateScoreRow span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .promotionCandidateScoreRow strong {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+section#Console .Results .paperTrackerGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .paperTrackerField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Results .paperTrackerField span {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .paperTrackerField select,
+section#Console .Results .paperTrackerField input,
+section#Console .Results .paperTrackerField textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: var(--surface-panel);
+    color: var(--text-primary);
+    font: inherit;
+}
+
+section#Console .Results .paperTrackerField select {
+    height: 36px;
+    padding: 0 10px;
+}
+
+section#Console .Results .paperTrackerField input {
+    height: 36px;
+    padding: 0 10px;
+}
+
+section#Console .Results .paperTrackerField.notes {
+    grid-column: 1 / -1;
+}
+
+section#Console .Results .paperTrackerField textarea {
+    min-height: 92px;
+    resize: vertical;
+    padding: 10px;
+}
+
+section#Console .Results .researchDecisionLogPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchDecisionLogTitle {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .researchDecisionLogList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .researchDecisionLogItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Results .researchDecisionLogMain {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+section#Console .Results .researchDecisionLogMain strong {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+section#Console .Results .researchDecisionLogMain span {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Results .researchDecisionLogMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-end;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+section#Console .Results .researchReviewChecklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchReviewChecklistTitle {
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .researchReviewChecklistItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+section#Console .Results .researchReviewChecklistItem span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .researchReviewChecklistItem strong {
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Results .researchPayloadPreview {
+    margin: 0;
+    max-height: 420px;
+    overflow: auto;
+    padding: 12px;
+    border-radius: 0.45em;
+    background: rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Results .resultsExportPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .resultsExportGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+section#Console .Results .resultsExportField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+section#Console .Results .resultsExportField span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .resultsExportField select {
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+section#Console .Results .resultsExportActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+section#Console .Results .resultsTabs::-webkit-scrollbar {
+    height: 6px;
+}
+
+section#Console .Results .resultsTabs::-webkit-scrollbar-thumb {
+    background-color: var(--border-default);
+    border-radius: 999px;
+}
+
+section#Console .Results .resultsTabs::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+section#Console .Results .statisticsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .statisticsTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: var(--surface-app);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+section#Console .Results .statisticsTable td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    vertical-align: middle;
+    transition: background-color .16s ease, color .16s ease;
+}
+
+section#Console .Results .statisticsTable th {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    text-align: left;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    font-weight: 700;
+    vertical-align: middle;
+}
+
+section#Console .Results .statisticsTable tr:last-child td {
+    border-bottom: none;
+}
+
+section#Console .Results .statisticsTable tbody tr:hover td {
+    background-color: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .statisticsLabel {
+    color: var(--text-muted);
+    width: 64%;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Results .statisticsLabelMain {
+    color: var(--text-muted);
+}
+
+section#Console .Results .statisticsLabelMeta {
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+section#Console .Results .statisticsValue {
+    text-align: right;
+    font-weight: 700;
+    width: 36%;
+    white-space: nowrap;
+}
+
+section#Console .Results .statisticsValue.positive {
+    color: var(--status-positive);
+}
+
+section#Console .Results .statisticsValue.negative {
+    color: var(--status-negative);
+}
+
+section#Console .Results .statisticsDocTable {
+    table-layout: auto;
+}
+
+section#Console .Results .statisticsDocTable td {
+    vertical-align: top;
+    color: var(--text-secondary);
+}
+
+section#Console .Results .statisticsDocField {
+    color: var(--text-primary);
+    font-weight: 700;
+    width: 18%;
+}
+
+section#Console .Results .statisticsDocFormula {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    width: 24%;
+    overflow-wrap: anywhere;
+}
+
+section#Console .Results .statisticsOperationsPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+section#Console .Results .statisticsOperationsMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .Results .statisticsOperationsTableWrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.6em;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+section#Console .Results .statisticsOperationsTable {
+    min-width: 960px;
+    table-layout: auto;
+}
+
+section#Console .Results .statisticsOperationsTable td,
+section#Console .Results .statisticsOperationsTable th {
+    white-space: nowrap;
+}
+
+section#Console .Results .positiveStrategiesPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesHero,
+section#Console .Results .positiveStrategiesWinnersCard,
+section#Console .Results .positiveStrategiesDetailCard,
+section#Console .Results .positiveStrategiesFilters,
+section#Console .Results .positiveStrategiesTableWrap {
+    padding: 14px;
+    border-radius: 0.5em;
+    background-color: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .positiveStrategiesHero {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Results .positiveStrategiesWinnersCard {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+section#Console .Results .positiveStrategiesWinnersCard .positiveStrategiesTableWrap {
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+section#Console .Results .positiveStrategiesHeroHeader,
+section#Console .Results .positiveStrategiesDetailHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+section#Console .Results .positiveStrategiesTitle,
+section#Console .Results .positiveStrategiesDetailTitle {
+    font-size: 1.02rem;
+    font-weight: 700;
+}
+
+section#Console .Results .positiveStrategiesSubtitle {
+    color: var(--text-secondary);
+    line-height: 1.45;
+    max-width: 920px;
+}
+
+section#Console .Results .positiveStrategiesMeta,
+section#Console .Results .positiveStrategiesDetailMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .Results .positiveStrategiesHeroTools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+section#Console .Results .positiveStrategiesRefreshGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    min-width: 180px;
+}
+
+section#Console .Results .positiveStrategiesDetailHeaderActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+section#Console .Results .positiveStrategiesActionButton {
+    appearance: none;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font: inherit;
+    line-height: 1;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: border-color .16s ease, background-color .16s ease, opacity .16s ease;
+}
+
+section#Console .Results .positiveStrategiesActionButton:hover:not(:disabled) {
+    border-color: rgba(107, 184, 255, 0.44);
+    background: rgba(107, 184, 255, 0.12);
+}
+
+section#Console .Results .positiveStrategiesActionButton:disabled {
+    cursor: default;
+    opacity: 0.72;
+}
+
+section#Console .Results .positiveStrategiesSaveStatus {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(107, 184, 255, 0.22);
+    background: rgba(107, 184, 255, 0.08);
+    color: var(--text-primary);
+}
+
+section#Console .Results .positiveStrategiesSaveStatus.error {
+    border-color: rgba(255, 122, 122, 0.22);
+    background: rgba(255, 122, 122, 0.08);
+}
+
+section#Console .Results .positiveStrategiesActionStack {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+}
+
+section#Console .Results .positiveStrategiesInlineStatus {
+    font-size: 0.74rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+}
+
+section#Console .Results .positiveStrategiesInlineStatus.success {
+    color: var(--status-positive);
+}
+
+section#Console .Results .positiveStrategiesInlineStatus.error {
+    color: var(--status-negative);
+}
+
+section#Console .Results .positiveStrategiesInlineStatus.info {
+    color: var(--text-secondary);
+}
+
+section#Console .Results .positiveStrategiesSummaryGrid,
+section#Console .Results .positiveStrategiesDetailGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .positiveStrategiesSummaryCard,
+section#Console .Results .positiveStrategiesDetailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+section#Console .Results .positiveStrategiesSummaryCard span,
+section#Console .Results .positiveStrategiesDetailItem span,
+section#Console .Results .positiveStrategiesNarrativeBlock span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .positiveStrategiesSummaryCard strong,
+section#Console .Results .positiveStrategiesDetailItem strong,
+section#Console .Results .positiveStrategiesNarrativeBlock strong {
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+section#Console .Results .positiveStrategiesDetailItem small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+section#Console .Results .positiveStrategiesSummaryCard.positive {
+    border-color: color-mix(in srgb, var(--status-positive) 32%, transparent);
+}
+
+section#Console .Results .positiveStrategiesSummaryCard.warning {
+    border-color: color-mix(in srgb, var(--status-warning) 34%, transparent);
+}
+
+section#Console .Results .positiveStrategiesSummaryCard.wide {
+    grid-column: span 2;
+}
+
+section#Console .Results .positiveStrategiesFilters {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) minmax(260px, 2fr) minmax(180px, 1fr) minmax(220px, 1.2fr);
+    gap: 10px;
+}
+
+section#Console .Results .positiveStrategiesFilterField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+}
+
+section#Console .Results .positiveStrategiesFilterField input,
+section#Console .Results .positiveStrategiesFilterField select {
+    min-height: 36px;
+    padding: 0 10px;
+    border-radius: 0.4em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    font: inherit;
+}
+
+section#Console .Results .positiveStrategiesFilterField select {
+    color-scheme: dark;
+}
+
+section#Console .Results .positiveStrategiesFilterField select option {
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+section#Console .Results .positiveStrategiesTableWrap {
+    overflow-x: auto;
+}
+
+section#Console .Results .positiveStrategiesTable {
+    width: 100%;
+    min-width: 1180px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+section#Console .Results .positiveStrategiesWinnerTable {
+    min-width: 980px;
+}
+
+section#Console .Results .positiveStrategiesTable th,
+section#Console .Results .positiveStrategiesTable td {
+    padding: 10px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .positiveStrategiesTable th {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+section#Console .Results .positiveStrategiesSortButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-transform: inherit;
+    letter-spacing: inherit;
+    cursor: pointer;
+}
+
+section#Console .Results .positiveStrategiesSortButton:hover {
+    color: var(--text-primary);
+}
+
+section#Console .Results .positiveStrategiesTable tbody tr {
+    cursor: pointer;
+    transition: background-color .16s ease;
+}
+
+section#Console .Results .positiveStrategiesTable tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .positiveStrategiesTable tbody tr.active {
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .positiveStrategiesEmptyState {
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
+}
+
+section#Console .Results .positiveStrategiesGroupRow {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .positiveStrategiesGroupRow td {
+    padding: 0;
+}
+
+section#Console .Results .positiveStrategiesGroupButton {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+}
+
+section#Console .Results .positiveStrategiesGroupButton:hover {
+    background: rgba(107, 184, 255, 0.08);
+}
+
+section#Console .Results .positiveStrategiesGroupChevron {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    flex: 0 0 auto;
+}
+
+section#Console .Results .positiveStrategiesGroupGrid {
+    display: grid;
+    width: 100%;
+}
+
+section#Console .Results .positiveStrategiesGroupCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 10px 12px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+section#Console .Results .positiveStrategiesGroupCell:last-child {
+    border-right: none;
+}
+
+section#Console .Results .positiveStrategiesGroupCellLabel {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .positiveStrategiesGroupCellValue {
+    min-width: 0;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    line-height: 1.35;
+}
+
+section#Console .Results .positiveStrategiesGroupCellValue .positiveStrategiesBadge {
+    width: fit-content;
+}
+
+section#Console .Results .positiveStrategiesGroupCellStrategy {
+    justify-content: center;
+}
+
+section#Console .Results .positiveStrategiesGroupStrategyMeta {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesGroupStrategyText {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesGroupHeaderMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+section#Console .Results .positiveStrategiesGroupTitle {
+    font-weight: 700;
+    flex: 0 0 auto;
+}
+
+section#Console .Results .positiveStrategiesGroupCount {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    flex: 0 0 auto;
+}
+
+section#Console .Results .positiveStrategiesGroupStrategyLead {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.35;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesTruncatedInline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesTruncatedText {
+    display: block;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+section#Console .Results .positiveStrategiesTooltipIcon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    font-size: 0.62rem;
+    line-height: 1;
+    cursor: help;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .positiveStrategiesStrategyCell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesStrategyTitle {
+    display: block;
+    min-width: 0;
+}
+
+section#Console .Results .positiveStrategiesStrategyCell span {
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+}
+
+section#Console .Results .positiveStrategiesStrategyFamily {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+section#Console .Results .positiveStrategiesWinnerValue {
+    white-space: nowrap;
+}
+
+section#Console .Results .positiveStrategiesMetricCell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+section#Console .Results .positiveStrategiesMetricSubvalue {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    line-height: 1.2;
+}
+
+section#Console .Results .positiveStrategiesCadenceCell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+section#Console .Results .positiveStrategiesCadenceSubvalue {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+section#Console .Results .positiveStrategiesBadge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-size: 0.74rem;
+    line-height: 1;
+}
+
+section#Console .Results .positiveStrategiesBadge.promoted {
+    background: color-mix(in srgb, var(--status-positive) 24%, transparent);
+}
+
+section#Console .Results .positiveStrategiesBadge.watch {
+    background: color-mix(in srgb, var(--status-warning) 22%, transparent);
+}
+
+section#Console .Results .positiveStrategiesBadge.positive_local,
+section#Console .Results .positiveStrategiesBadge.checkpoint_positive {
+    background: rgba(107, 184, 255, 0.18);
+}
+
+section#Console .Results .positiveStrategiesBadge.experimental {
+    background: rgba(168, 85, 247, 0.18);
+}
+
+section#Console .Results .positiveStrategiesNarrative {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+section#Console .Results .positiveStrategiesNarrativeBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .positiveStrategiesEvidenceList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+section#Console .Results .positiveStrategiesEvidenceList code {
+    padding: 4px 8px;
+    border-radius: 0.35em;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+section#Console .Results .researchWhatWorkedPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+section#Console .Results .researchWhatWorkedHero {
+    gap: 14px;
+}
+
+section#Console .Results .researchWhatWorkedSummaryGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .researchWhatWorkedSummaryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchWhatWorkedSummaryCard span,
+section#Console .Results .researchWhatWorkedStopCard span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .researchWhatWorkedSummaryCard strong,
+section#Console .Results .researchWhatWorkedLadderMain strong,
+section#Console .Results .researchWhatWorkedLadderMetric strong,
+section#Console .Results .researchWhatWorkedThesisTitle,
+section#Console .Results .researchWhatWorkedReadingCard strong,
+section#Console .Results .researchWhatWorkedStopCard strong {
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchWhatWorkedSummaryCard small,
+section#Console .Results .researchWhatWorkedLadderMain span,
+section#Console .Results .researchWhatWorkedLadderMetric span,
+section#Console .Results .researchWhatWorkedThesisBody,
+section#Console .Results .researchWhatWorkedMotifRow small,
+section#Console .Results .researchWhatWorkedReadingCard p,
+section#Console .Results .researchWhatWorkedStopCard p {
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+section#Console .Results .researchWhatWorkedSummaryCard.wide {
+    grid-column: span 2;
+}
+
+section#Console .Results .researchWhatWorkedGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+section#Console .Results .researchWhatWorkedSection {
+    min-width: 0;
+}
+
+section#Console .Results .researchWhatWorkedSectionWide {
+    grid-column: 1 / -1;
+}
+
+section#Console .Results .researchWhatWorkedThesisGrid,
+section#Console .Results .researchWhatWorkedStopList,
+section#Console .Results .researchWhatWorkedReadingList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+section#Console .Results .researchWhatWorkedThesisCard,
+section#Console .Results .researchWhatWorkedStopCard,
+section#Console .Results .researchWhatWorkedReadingCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchWhatWorkedHypothesisMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisMeta span {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisGroups {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisGroup {
+    border-radius: 0.55em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    list-style: none;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary::-webkit-details-marker {
+    display: none;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary strong,
+section#Console .Results .researchWhatWorkedHypothesisHeading strong {
+    color: var(--text-primary);
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary small,
+section#Console .Results .researchWhatWorkedHypothesisCard p,
+section#Console .Results .researchWhatWorkedHypothesisCard small {
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisSummary span {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 0.79rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px;
+    padding: 0 12px 12px;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisCard {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-app);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .Results .researchWhatWorkedHypothesisHeading {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+section#Console .Results .researchWhatWorkedHypothesisHeading span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1;
+}
+
+section#Console .Results .researchWhatWorkedEvidenceList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+section#Console .Results .researchWhatWorkedEvidenceChip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(107, 184, 255, 0.12);
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+}
+
+section#Console .Results .researchWhatWorkedLadder {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .researchWhatWorkedLadderRow {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1.5fr) minmax(180px, 0.9fr);
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .researchWhatWorkedLadderStep {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: rgba(107, 184, 255, 0.18);
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+section#Console .Results .researchWhatWorkedLadderMain,
+section#Console .Results .researchWhatWorkedLadderMetric {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+section#Console .Results .researchWhatWorkedMotifTable {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .Results .researchWhatWorkedMotifHeader,
+section#Console .Results .researchWhatWorkedMotifRow {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.6fr) 70px minmax(180px, 1fr) 110px;
+    gap: 12px;
+    align-items: start;
+}
+
+section#Console .Results .researchWhatWorkedMotifHeader {
+    padding: 0 2px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+section#Console .Results .researchWhatWorkedMotifRow {
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .Results .researchWhatWorkedMotifRow > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+@media (max-width: 1200px) {
+    section#Console .Results {
+        grid-template-columns: 1fr;
+        overflow-y: auto;
+    }
+
+    section#Console .Results .resultsPaneRight {
+        max-height: 320px;
+    }
+
+    section#Console .Results .statisticsEvaluationBreakdown {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .resultsExportGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .statisticsLayout {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .regimeInsightGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .positiveStrategiesFilters {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .researchWhatWorkedGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .Results .researchWhatWorkedMotifHeader {
+        display: none;
+    }
+
+    section#Console .Results .researchWhatWorkedMotifRow,
+    section#Console .Results .researchWhatWorkedLadderRow {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 640px) {
+    section#Console .Results .resultsTabs {
+        padding: 6px 0;
+    }
+
+    section#Console .Results .resultsTab {
+        min-height: 36px;
+        padding: 0 12px;
+    }
+}

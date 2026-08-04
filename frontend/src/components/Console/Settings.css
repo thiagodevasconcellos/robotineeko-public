@@ -1,0 +1,58 @@
+section#Console .Settings {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+
+section#Console .Settings .group {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--surface-panel);
+    border-radius: .5em;
+    margin: 15px 0 0 0;
+    padding: 30px 20px 20px 20px;
+    align-content: start;
+}
+
+section#Console .Settings .group .title {
+    position: absolute;
+    top: -12.5px;
+    left: 10px;
+    background-color: var(--surface-panel);
+    border-radius: .5em;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+section#Console .Settings .loadedChartInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    font-size: .95em;
+}
+
+section#Console .Settings .loadedChartStatus {
+    font-size: .85em;
+    padding: 10px 12px;
+    border-radius: .5em;
+    background-color: var(--surface-app);
+}
+
+section#Console .Settings .loadedChartStatus.syncing {
+    color: var(--status-danger);
+    font-weight: bold;
+}
+
+section#Console .Settings .loadedChartStatus.applied {
+    opacity: .8;
+}
+
+section#Console .Settings .loadedChartHint {
+    font-size: .88rem;
+    opacity: .8;
+    padding-top: 4px;
+}

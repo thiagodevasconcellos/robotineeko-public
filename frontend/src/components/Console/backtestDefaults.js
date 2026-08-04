@@ -1,0 +1,28 @@
+import { DEFAULT_BACKTEST_COST_PROFILE } from './backtestCostProfiles.js'
+
+export const BACKTEST_DEFAULTS = {
+    initialBalance: 10000,
+    assetType: 'forex',
+    initialVolume: 1.0,
+    pipSize: 0.0001,
+    pipValuePerLot: 10.0,
+    costProfile: DEFAULT_BACKTEST_COST_PROFILE,
+    spreadInPips: 1.0,
+    slippageInPips: 0.2,
+    entrySlippageInPips: 0.2,
+    closeSlippageInPips: 0.2,
+    takeProfitSlippageInPips: 0.0,
+    stopLossSlippageInPips: 0.4,
+    trailingStopSlippageInPips: 0.5,
+    minimumStopDistanceInPips: 0.0,
+    volatilitySlippageMultiplier: 0.0,
+    executionMode: 'next_bar_open',
+    portfolioMode: 'parallel_sleeves',
+    portfolioStructureVersion: 1,
+    capitalModel: null,
+    portfolios: [],
+    symbol: 'EURUSD',
+    timeframe: 'M1',
+    historyScopeMode: 'loaded_chart',
+    historyScopeBars: null,
+}

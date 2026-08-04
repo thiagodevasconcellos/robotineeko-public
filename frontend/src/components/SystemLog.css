@@ -1,0 +1,265 @@
+section#SystemLog {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 72px;
+    background-color: var(--surface-app);
+    overflow: hidden;
+}
+
+section#SystemLog .systemLogToolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px 0 20px;
+    z-index: 4;
+}
+
+section#SystemLog .systemLogMeta {
+    min-width: 0;
+}
+
+section#SystemLog .systemLogMetaTitleRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+section#SystemLog .systemLogMetaTitle {
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+section#SystemLog .systemLogMetaCountLabel {
+    color: var(--text-subtle);
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+section#SystemLog .systemLogMetaLabel {
+    min-width: 0;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+section#SystemLog .systemLogMetaBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    padding: 0 7px;
+    border: 1px solid var(--border-default);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+section#SystemLog .systemLogMetaBadge.is-active {
+    border-color: rgba(110, 175, 255, 0.45);
+    color: #8fb7ff;
+}
+
+section#SystemLog .systemLogMetaBadge.is-archived {
+    color: var(--text-subtle);
+}
+
+section#SystemLog .systemLogMetaBadge.is-local {
+    border-color: rgba(255, 193, 94, 0.35);
+    color: #f0c46a;
+}
+
+section#SystemLog .systemLogMetaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+    color: var(--text-subtle);
+    font-size: 0.74rem;
+}
+
+section#SystemLog .systemLogActions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+section#SystemLog .systemLogActionButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 9px;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.74rem;
+    line-height: 1;
+}
+
+section#SystemLog .systemLogActionButton:hover:not(:disabled) {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
+section#SystemLog .systemLogActionButton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+section#SystemLog .systemLogStart {
+    border-color: rgba(110, 175, 255, 0.35);
+    color: #8fb7ff;
+}
+
+section#SystemLog .resizeHandle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 14px;
+    cursor: ns-resize;
+    background-color: transparent;
+    z-index: 6;
+    touch-action: none;
+}
+
+section#SystemLog .resizeHandle::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    width: 56px;
+    height: 4px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+section#SystemLog .resizeHandle:hover::before {
+    background: rgba(143, 183, 255, 0.55);
+}
+
+section#SystemLog .systemLogBody {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding: 14px 20px 10px 20px;
+    font-family: monospace;
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+section#SystemLog .systemLogEmpty {
+    color: var(--text-muted);
+}
+
+section#SystemLog .systemLogEntry + .systemLogEntry {
+    margin-top: 4px;
+}
+
+section#SystemLog .systemLogEntry {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    max-width: 100%;
+    min-width: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+section#SystemLog .systemLogEntryCopy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    padding: 0;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-size: 0.74rem;
+    line-height: 1;
+}
+
+section#SystemLog .systemLogEntryCopy + .systemLogEntryCopy {
+    margin-right: 2px;
+}
+
+section#SystemLog .systemLogEntryCopy:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
+section#SystemLog .systemLogEntryTimestamp {
+    flex: 0 0 auto;
+    min-width: 72px;
+    color: var(--text-subtle);
+    font-variant-numeric: tabular-nums;
+}
+
+section#SystemLog .systemLogEntryMessage {
+    min-width: 0;
+    color: var(--text-muted);
+}
+
+section#SystemLog .systemLogEntry.is-success .systemLogEntryMessage {
+    color: #8fb7ff;
+}
+
+section#SystemLog .systemLogEntry.is-error .systemLogEntryMessage {
+    color: #ef6b73;
+}
+
+@media (max-width: 640px) {
+    section#SystemLog .resizeHandle {
+        height: 18px;
+    }
+
+    section#SystemLog .systemLogToolbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 18px 12px 0 12px;
+    }
+
+    section#SystemLog .systemLogActions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    section#SystemLog .systemLogActionButton {
+        min-height: 28px;
+    }
+
+    section#SystemLog .systemLogBody {
+        padding: 10px 12px 10px 12px;
+        font-size: 0.78rem;
+    }
+
+    section#SystemLog .systemLogEntry {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    section#SystemLog .systemLogEntryTimestamp {
+        min-width: auto;
+    }
+}

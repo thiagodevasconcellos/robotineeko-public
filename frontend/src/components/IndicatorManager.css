@@ -1,0 +1,630 @@
+.indicatorManagerOverlay {
+    z-index: 1200;
+}
+
+.indicatorManagerOverlay .indicatorManagerWindow {
+    box-sizing: border-box;
+    width: 1160px;
+    max-width: 1160px;
+    min-width: 1160px;
+    height: 720px;
+    max-height: 720px;
+    padding: 50px 18px 18px 18px;
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.indicatorManagerOverlay .indicatorManagerWindow button.closeOverlay {
+    top: 6px;
+    right: 12px;
+    width: 40px;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    background: transparent;
+}
+
+.indicatorManagerLayout {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 16px;
+    height: 100%;
+    min-height: 0;
+}
+
+.indicatorManagerSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+    min-height: 0;
+    padding: 12px;
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    background-color: var(--surface-app);
+    overflow: hidden;
+}
+
+.indicatorManagerTabs {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    margin: -12px -12px 0 -12px;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.indicatorManagerTabs button,
+.indicatorManagerList button,
+.indicatorEditorButton {
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+}
+
+.indicatorManagerTabs button {
+    position: relative;
+    bottom: -1px;
+    height: 36px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-top-left-radius: .45em !important;
+    border-top-right-radius: .45em !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.indicatorManagerTabs button:first-child {
+    margin-left: -12px;
+}
+
+.indicatorManagerTabs button.active {
+    background-color: var(--surface-app);
+    color: var(--text-primary);
+    border-color: var(--border-default);
+    font-weight: 700;
+}
+
+.indicatorManagerSubtabs {
+    display: flex;
+    gap: 8px;
+    padding: 0 0 2px;
+    border-bottom: 1px dashed var(--border-default);
+}
+
+.indicatorManagerSubtabs button {
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px !important;
+    background: var(--surface-panel);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: .84rem;
+    font-weight: 600;
+}
+
+.indicatorManagerSubtabs button.active {
+    background: rgba(107, 184, 255, 0.12);
+    color: var(--text-primary);
+    border-color: rgba(107, 184, 255, 0.45);
+}
+
+.indicatorManagerList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.indicatorManagerCatalog {
+    gap: 10px;
+}
+
+.indicatorManagerCatalogControls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed var(--border-default);
+}
+
+.indicatorManagerCatalogFilters {
+    display: flex;
+    gap: 8px;
+}
+
+.indicatorManagerCatalogFilters button {
+    height: 32px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 999px !important;
+    background: var(--surface-panel);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: .84rem;
+    font-weight: 600;
+}
+
+.indicatorManagerCatalogFilters button.active {
+    background: rgba(107, 184, 255, 0.12);
+    color: var(--text-primary);
+    border-color: rgba(107, 184, 255, 0.45);
+}
+
+.indicatorManagerSearchRow {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+}
+
+.indicatorManagerSearchRow input {
+    min-width: 0;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: .45em;
+    background: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+.indicatorManagerSearchClear {
+    height: 36px;
+    padding: 0 12px !important;
+    border: 1px solid var(--border-default) !important;
+    border-radius: .45em !important;
+    background: var(--surface-panel) !important;
+    color: var(--text-muted) !important;
+    cursor: pointer;
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.indicatorManagerSearchClear:hover {
+    color: var(--text-primary) !important;
+    border-color: rgba(107, 184, 255, 0.45) !important;
+}
+
+.indicatorManagerGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.indicatorManagerGroupToggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid rgba(107, 184, 255, 0.18);
+    border-top: 2px solid rgba(244, 248, 252, 0.96);
+    border-bottom: 1px solid rgba(244, 248, 252, 0.9);
+    border-radius: .5em;
+    background: linear-gradient(180deg, rgba(54, 82, 110, 0.44), rgba(37, 58, 78, 0.42));
+    color: #9fc5e7;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .16s ease, color .16s ease, border-color .16s ease;
+}
+
+.indicatorManagerGroupToggle:hover {
+    color: #d6e8f7;
+    border-color: rgba(107, 184, 255, 0.34);
+    border-top-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(248, 251, 255, 0.96);
+    background: linear-gradient(180deg, rgba(63, 93, 123, 0.52), rgba(42, 66, 88, 0.48));
+}
+
+.indicatorManagerGroupCaret {
+    width: 8px;
+    height: 8px;
+    border-right: 1.4px solid currentColor;
+    border-bottom: 1.4px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform .16s ease;
+}
+
+.indicatorManagerGroupToggle.collapsed .indicatorManagerGroupCaret {
+    transform: rotate(-45deg);
+}
+
+.indicatorManagerGroupList {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 4px;
+}
+
+.indicatorManagerCatalogEntry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 6px;
+}
+
+.indicatorManagerCatalogSelect {
+    text-align: left;
+}
+
+.indicatorManagerCatalogFavoriteToggle {
+    width: 38px;
+    min-width: 38px;
+    padding: 0 !important;
+    border: 1px solid transparent !important;
+    border-radius: .45em !important;
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    font-size: .96rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.indicatorManagerCatalogFavoriteToggle:hover {
+    color: #ffd54f !important;
+    border-color: rgba(255, 213, 79, 0.35) !important;
+    background: rgba(255, 213, 79, 0.10) !important;
+}
+
+.indicatorManagerCatalogFavoriteToggle.isFavorite {
+    color: #ffd54f !important;
+    border-color: rgba(255, 213, 79, 0.42) !important;
+    background: rgba(255, 213, 79, 0.14) !important;
+}
+
+.indicatorManagerList button {
+    text-align: left;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 0 !important;
+    border-left: 3px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color .16s ease, color .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.indicatorManagerList button:hover {
+    background: color-mix(in srgb, var(--surface-panel) 78%, rgba(107, 184, 255, 0.10));
+}
+
+.indicatorManagerList button.active {
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.20), rgba(107, 184, 255, 0.08));
+    color: var(--text-primary);
+    border-color: transparent;
+    border-radius: 0 !important;
+    border-left-color: #6bb8ff;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.22);
+}
+
+.indicatorManagerEmptyList {
+    opacity: .75;
+    font-size: .9rem;
+    padding: 14px 6px;
+}
+
+.indicatorManagerContent {
+    min-width: 0;
+    min-height: 0;
+    background-color: var(--surface-app);
+    border: 1px solid var(--border-default);
+    border-radius: .6em;
+    padding: 16px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-default) transparent;
+}
+
+.indicatorManagerContent::-webkit-scrollbar {
+    width: 8px;
+}
+
+.indicatorManagerContent::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.indicatorManagerContent::-webkit-scrollbar-thumb {
+    background-color: var(--border-default);
+    border-radius: 999px;
+}
+
+.indicatorEditorEmpty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    opacity: .75;
+}
+
+.indicatorEditor {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 100%;
+    min-width: 0;
+}
+
+.indicatorEditorHeader {
+    position: sticky;
+    top: -16px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: -16px -16px 0 -16px;
+    padding: 16px;
+    background-color: var(--surface-app);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.indicatorEditorHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.indicatorEditorTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.indicatorEditorBody {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-height: 0;
+    padding-top: 16px;
+}
+
+.indicatorEditorGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.indicatorEditorField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.indicatorEditorField.small {
+    max-width: 120px;
+}
+
+.indicatorEditorField span,
+.indicatorEditorSectionTitle {
+    font-size: .82rem;
+    color: var(--text-muted);
+}
+
+.indicatorEditorSectionTitle {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.indicatorEditor input,
+.indicatorEditor select {
+    height: 34px;
+    padding: 0 10px;
+    border-radius: .45em;
+    border: 1px solid var(--border-default);
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+}
+
+.indicatorEditor input.isDuplicate {
+    color: var(--status-danger-strong);
+    border-color: var(--status-danger-strong);
+    font-weight: 700;
+}
+
+.indicatorEditor input[type='color'] {
+    padding: 4px;
+}
+
+.indicatorEditorLines {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.indicatorEditorLineCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+    background-color: var(--surface-panel);
+    border-radius: .55em;
+}
+
+.indicatorEditorLineHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.indicatorEditorLineTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.indicatorEditorLineDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+}
+
+.indicatorEditorLineControls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.indicatorEditorError {
+    color: var(--status-danger);
+    font-size: .9rem;
+}
+
+.indicatorEditorButton {
+    height: 38px;
+    padding: 0 16px;
+    border-radius: .45em;
+    cursor: pointer;
+}
+
+.indicatorEditorButton:disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.indicatorEditorButton.primary {
+    background-color: var(--surface-panel);
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+}
+
+.indicatorEditorButton.secondary {
+    background-color: transparent;
+}
+
+@media (max-width: 980px) {
+    .indicatorManagerWindow {
+        min-width: auto;
+        width: min(96vw, 960px);
+        max-width: min(96vw, 960px);
+        height: auto;
+        max-height: 92vh;
+    }
+
+    .indicatorManagerLayout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .indicatorEditorGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .indicatorEditorLines {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .indicatorManagerOverlay .indicatorManagerWindow {
+        width: calc(100vw - 16px);
+        max-width: calc(100vw - 16px);
+        min-width: 0;
+        height: calc(100dvh - 16px);
+        max-height: calc(100dvh - 16px);
+        padding: 42px 10px 10px 10px;
+        overflow: hidden;
+    }
+
+    .indicatorManagerLayout {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .indicatorManagerSidebar {
+        padding: 10px;
+        max-height: 30vh;
+        overflow: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .indicatorManagerTabs {
+        padding: 0 10px;
+    }
+
+    .indicatorManagerTabs button,
+    .indicatorManagerSubtabs button {
+        font-size: 0.8rem;
+    }
+
+    .indicatorManagerContent {
+        padding: 12px;
+        min-height: 0;
+        overflow-y: auto;
+    }
+
+    .indicatorEditorHeader {
+        top: -12px;
+        margin: -12px -12px 0 -12px;
+        padding: 12px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .indicatorEditorHeaderActions {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+    .indicatorEditor {
+        min-height: 0;
+        height: 100%;
+    }
+
+    .indicatorEditorBody {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .indicatorManagerOverlay .indicatorManagerWindow,
+    .indicatorManagerWindow {
+        width: calc(100vw - 16px);
+        max-width: calc(100vw - 16px);
+        height: calc(100dvh - 16px);
+        max-height: calc(100dvh - 16px);
+        padding: 42px 12px 12px 12px;
+    }
+
+    .indicatorManagerSidebar {
+        max-height: 26vh;
+    }
+
+    .indicatorManagerContent {
+        padding: 10px;
+    }
+
+    .indicatorEditorBody {
+        gap: 14px;
+        padding-top: 14px;
+        padding-bottom: 28px;
+    }
+
+    .indicatorManagerTabs {
+        overflow-x: auto;
+    }
+
+    .indicatorManagerSubtabs {
+        flex-wrap: wrap;
+    }
+}

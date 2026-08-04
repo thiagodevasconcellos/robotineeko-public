@@ -1,0 +1,1027 @@
+.Batch {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    min-height: 100%;
+    color: var(--text-primary);
+    overflow: hidden;
+}
+
+.batchTabs {
+    margin: -7.5px -20px 14px;
+    z-index: 2;
+}
+
+.batchTabsInline {
+    margin: 0 0 12px;
+}
+
+.batchTabButton {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.batchTabButton.active {
+    font-weight: bold;
+}
+
+.batchLayout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 14px;
+    width: 100%;
+    min-height: 0;
+}
+
+.batchRunsLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+
+.batchDashboardControls {
+    order: 1;
+}
+
+.batchDashboardProcessing {
+    order: 2;
+}
+
+.batchDashboardInspector {
+    order: 3;
+}
+
+.batchDashboardRuns {
+    order: 4;
+}
+
+.batchSidebar,
+.batchContent {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+    min-height: 0;
+}
+
+.batchContent {
+    overflow: hidden;
+}
+
+.batchPanel,
+.batchRuntimeCard {
+    min-width: 0;
+    overflow: visible;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 14px;
+}
+
+.batchContent > .batchPanel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.batchPanelBody {
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.batchPanelHeader,
+.batchRuntimeHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.batchRuntimeHeaderActions {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.batchPanelTitle {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.batchPanelMeta,
+.batchRuntimeDetail,
+.batchJobListItem span,
+.batchField span,
+.batchSummaryCard span,
+.batchRuntimeMeta {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.batchImportTextarea,
+.batchField input,
+.batchField select {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    min-height: 44px;
+    line-height: 1.35;
+}
+
+.batchImportTextarea {
+    min-height: 150px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.batchActionRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.batchActionColumn {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-top: 0;
+}
+
+.batchActionRow.compact {
+    margin-top: 0;
+}
+
+.batchActionHint {
+    margin: -2px 0 12px;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.batchActionButton {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    border-radius: 999px;
+    padding: 9px 14px;
+    cursor: pointer;
+}
+
+.batchActionButton.primary {
+    background: rgba(107, 184, 255, 0.16);
+    border-color: rgba(107, 184, 255, 0.4);
+}
+
+.batchActionButton.danger {
+    background: rgba(227, 109, 109, 0.12);
+    border-color: rgba(227, 109, 109, 0.3);
+}
+
+.batchActionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.batchJobsList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 280px);
+    min-height: 0;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.batchJobListItem {
+    text-align: left;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--text-primary);
+}
+
+.batchJobListItem strong {
+    color: var(--text-primary);
+}
+
+.batchJobListItem.active {
+    border-color: rgba(107, 184, 255, 0.45);
+    background: rgba(107, 184, 255, 0.1);
+}
+
+.batchRuntimeListItem.hasIssue {
+    border-color: rgba(227, 109, 109, 0.32);
+    background: rgba(227, 109, 109, 0.08);
+}
+
+.batchJobCreateItem {
+    border-style: dashed;
+}
+
+.batchOptionsGrid,
+.batchSummaryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.batchOptionsGrid.single {
+    grid-template-columns: 1fr;
+}
+
+.batchField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.batchFieldAction {
+    justify-content: flex-end;
+}
+
+.batchFieldAction .batchActionButton {
+    min-height: 44px;
+}
+
+.batchSummaryCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+}
+
+.batchRunStatusStrip {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.batchRunStatusCard {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.batchRunStatusCard:first-child {
+    border-color: rgba(107, 184, 255, 0.32);
+    background: rgba(107, 184, 255, 0.08);
+}
+
+.batchRunStatusCard span,
+.batchRunStatusCard small {
+    color: var(--text-muted);
+}
+
+.batchRunStatusCard strong {
+    color: var(--text-primary);
+    font-size: 0.98rem;
+}
+
+.batchPresetBuilder {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.batchPresetBuilderList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.batchPresetBuilderList.twoColumns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.batchPresetBuilderItem {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+}
+
+.batchPresetBuilderItem input {
+    margin-top: 3px;
+}
+
+.batchPresetBuilderItem span {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .batchRuntimeHeaderActions {
+        align-items: flex-start;
+    }
+
+    .batchPresetBuilderList.twoColumns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.batchPresetBuilderItem small {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.batchStrategyEditor {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.batchStrategyLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 12px;
+    min-height: 0;
+}
+
+.batchPortfolioPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.batchPortfolioHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.batchPortfolioHeader span {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.batchPortfolioList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.batchPortfolioRow {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.batchPortfolioRow.isDisabled {
+    opacity: 0.72;
+}
+
+.batchPortfolioRowMain {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.batchPortfolioPriority {
+    min-width: 40px;
+    color: var(--text-muted);
+    font-weight: 700;
+    line-height: 42px;
+}
+
+.batchPortfolioFields {
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) minmax(120px, 1fr) minmax(110px, 0.8fr);
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.batchPortfolioRowActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.batchPortfolioEmpty {
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.14);
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.batchEditorTextarea {
+    min-height: 110px;
+    resize: vertical;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.batchInlineInput {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(7, 10, 18, 0.66);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    font: inherit;
+}
+
+.batchCheckboxRow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.batchTokenSidebar {
+    min-width: 0;
+    min-height: 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    overflow: auto;
+}
+
+.batchTokenSidebarHeader {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+}
+
+.batchTokenSidebarGroups {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.batchTokenSidebarGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.batchTokenSidebarGroupTitle {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.batchTokenSidebarList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.batchTokenSidebarButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+}
+
+.batchTokenSidebarSwatch {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+}
+
+.batchTokenSidebarButtonLabel {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.batchInlineNotice {
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(211, 166, 69, 0.28);
+    background: rgba(211, 166, 69, 0.1);
+    color: var(--text-primary);
+    padding: 10px 12px;
+    font-size: 0.9rem;
+}
+
+.batchSummaryCard.wide {
+    grid-column: 1 / -1;
+}
+
+.batchSummaryIdentityBlock {
+    display: grid;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.batchSummaryIdentityMain,
+.batchSummaryIdentitySidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.batchSummaryIdentitySidebar > span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.batchPayloadPreview {
+    box-sizing: border-box;
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border-radius: 10px;
+    background: rgba(7, 10, 18, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    max-height: 420px;
+    overflow: auto;
+}
+
+.batchRuntimeBadge {
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+}
+
+.batchRuntimeBadge.is-running,
+.batchRuntimeBadge.is-queued {
+    background: rgba(211, 166, 69, 0.14);
+}
+
+.batchRuntimeBadge.is-completed {
+    background: rgba(94, 199, 123, 0.14);
+}
+
+.batchRuntimeBadge.is-failed,
+.batchRuntimeBadge.is-cancelled {
+    background: rgba(227, 109, 109, 0.14);
+}
+
+.batchRuntimeFeedState {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(181, 189, 208, 0.08);
+    color: var(--text-muted);
+}
+
+.batchRuntimeFeedState strong {
+    color: var(--text-primary);
+}
+
+.batchRuntimeContextNote {
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.batchCompletionWindow {
+    width: min(640px, calc(100vw - 32px));
+    border-color: rgba(211, 166, 69, 0.42);
+    background:
+        linear-gradient(180deg, rgba(211, 166, 69, 0.18), rgba(211, 166, 69, 0.08)),
+        var(--surface-overlay);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.batchCompletionHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.batchCompletionHeader span,
+.batchCompletionMeta,
+.batchCompletionDetail {
+    color: var(--text-muted);
+}
+
+.batchCompletionHeader strong {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+}
+
+.batchCompletionMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+.batchCompletionGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.batchCompletionDetail {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(211, 166, 69, 0.26);
+    background: rgba(211, 166, 69, 0.08);
+}
+
+.batchRuntimeFeedState.receiving {
+    border-color: rgba(120, 214, 154, 0.34);
+    background: rgba(120, 214, 154, 0.1);
+    color: #78d69a;
+}
+
+.batchRuntimeFeedState.waiting {
+    border-color: rgba(255, 207, 123, 0.28);
+    background: rgba(255, 207, 123, 0.08);
+    color: #ffcf7b;
+}
+
+.batchRuntimeFeedState.stale {
+    border-color: rgba(255, 141, 141, 0.3);
+    background: rgba(255, 141, 141, 0.08);
+    color: #ff9a9a;
+}
+
+.batchRuntimeFeedState.finished {
+    color: var(--text-muted);
+}
+
+.batchProgressTrack {
+    position: relative;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    margin: 12px 0 8px;
+}
+
+.batchProgressTrack.compact {
+    height: 6px;
+    margin: 8px 0 6px;
+}
+
+.batchProgressFill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(107, 184, 255, 0.4), rgba(107, 184, 255, 0.95));
+}
+
+.batchRuntimeMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.batchRuntimeToolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.batchRuntimeToolbar .batchField {
+    max-width: 240px;
+}
+
+.batchRuntimeToolbar .batchField:last-child {
+    max-width: 180px;
+}
+
+.batchRuntimeToolbar .batchField input,
+.batchRuntimeToolbar .batchField select {
+    min-height: 44px;
+}
+
+.batchRuntimeList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+    min-height: 560px;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.batchRuntimeLeaderboard {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.batchRuntimeLeaderboardInline {
+    margin-top: 0;
+}
+
+.batchRuntimeLeaderboardCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.batchRuntimeLeaderboardCard > span {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.batchRuntimeLeaderboardList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.batchRuntimeLeaderboardItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+}
+
+.batchRuntimeLeaderboardItem strong {
+    min-width: 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.batchRuntimeLeaderboardItem span {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    white-space: nowrap;
+}
+
+.batchRuntimeListItem {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.batchRuntimeListItem.active {
+    border-left-width: 4px;
+    border-color: rgba(255, 255, 255, 0.38);
+    background: rgba(244, 247, 252, 0.16);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 6px 18px rgba(0, 0, 0, 0.18);
+    color: #f4f7fb;
+    border-left-color: rgba(255, 255, 255, 0.88);
+}
+
+.batchRuntimeListItem.active .batchRuntimeListMeta,
+.batchRuntimeListItem.active .batchRuntimeListTitle,
+.batchRuntimeListItem.active .batchRuntimeJobStatus {
+    color: #f4f7fb;
+}
+
+.batchRuntimeListMain {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.batchRuntimeJobMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+.batchRuntimeJobDetail {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.batchRuntimeSummaryGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.batchRuntimeSummaryGrid.expanded {
+    margin-top: 2px;
+}
+
+.batchRuntimeSummaryChip {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.batchRuntimeSummaryChip.secondary {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.batchRuntimeSummaryChip span {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+}
+
+.batchRuntimeSummaryChip strong {
+    color: var(--text-primary);
+    font-size: 0.92rem;
+}
+
+.batchRuntimeSummaryChip.isHighlighted {
+    border-color: rgba(107, 184, 255, 0.42);
+    background: rgba(107, 184, 255, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(107, 184, 255, 0.12);
+}
+
+.batchRuntimeInspector {
+    margin-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 14px;
+}
+
+.batchRuntimeInspectorGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.batchTemplateList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.batchTemplateItem {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 12px;
+}
+
+.batchEmpty {
+    color: var(--text-muted);
+    padding: 10px 0;
+}
+
+@media (max-width: 1100px) {
+    .batchLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .batchRuntimeListItem {
+        flex-direction: column;
+    }
+
+    .batchRuntimeLeaderboard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .batchRunStatusStrip,
+    .batchSummaryIdentityBlock {
+        grid-template-columns: 1fr;
+    }
+
+    .batchRuntimeSummaryGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .batchTemplateItem {
+        flex-direction: column;
+    }
+
+    .batchRuntimeInspectorGrid,
+    .batchOptionsGrid,
+    .batchSummaryGrid,
+    .batchStrategyEditor,
+    .batchStrategyLayout {
+        grid-template-columns: 1fr;
+    }
+
+    .batchPortfolioRow {
+        flex-direction: column;
+    }
+
+    .batchPortfolioFields {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .batchPortfolioRowActions {
+        justify-content: flex-start;
+    }
+
+}
+
+@media (max-width: 720px) {
+    .batchRuntimeLeaderboard {
+        grid-template-columns: 1fr;
+    }
+
+    .batchCompletionGrid,
+    .batchRuntimeSummaryGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

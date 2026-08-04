@@ -1,0 +1,87 @@
+section#Console .Statistics {
+    display: grid;
+    grid-template-areas:
+        'summary trades pnl'
+        'averages costs pnl';
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+section#Console .Statistics .group {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: var(--surface-panel);
+    border-radius: .5em;
+    margin: 15px 0px 0px 0px;
+    padding: 30px 20px 10px 20px;
+    align-content: start;
+}
+
+section#Console .Statistics .group.summary {
+    grid-area: summary;
+}
+
+section#Console .Statistics .group.trades {
+    grid-area: trades;
+}
+
+section#Console .Statistics .group.pnl {
+    grid-area: pnl;
+}
+
+section#Console .Statistics .group.averages {
+    grid-area: averages;
+}
+
+section#Console .Statistics .group.costs {
+    grid-area: costs;
+}
+
+section#Console .Statistics .group.empty {
+    grid-template-columns: 1fr;
+}
+
+section#Console .Statistics .group .title {
+    position: absolute;
+    top: -12.5px;
+    left: 10px;
+    background-color: var(--surface-panel);
+    border-radius: .5em;
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+section#Console .Statistics .field {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px 0px 0px;
+    padding: 10px;
+    background-color: var(--surface-app);
+    border-radius: .5em;
+}
+
+section#Console .Statistics .field .label {
+    font-size: .85em;
+    opacity: .75;
+    margin-bottom: 5px;
+}
+
+section#Console .Statistics .field .value {
+    font-size: 1.05em;
+    font-weight: bold;
+}
+
+section#Console .Statistics .field.positive .value {
+    color: var(--status-positive);
+}
+
+section#Console .Statistics .field.negative .value {
+    color: var(--status-negative);
+}
+
+section#Console .Statistics .emptyMessage {
+    padding: 20px 0px 5px 0px;
+    opacity: .8;
+}

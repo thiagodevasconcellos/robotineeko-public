@@ -1,0 +1,1232 @@
+[
+  {
+    "name": "ADX",
+    "label": "ADX",
+    "pythonImport": "python.lib.indicator.trend.adx.ADX",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "trend_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 14, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "ADX", "defaultColor": "#ffb74d", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "plus_di", "columnSuffix": "plus_di", "label": "+DI", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "minus_di", "columnSuffix": "minus_di", "label": "-DI", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "ATR",
+    "label": "ATR",
+    "pythonImport": "python.lib.indicator.volatility.atr.ATR",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "volatility_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 14, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "ATR", "defaultColor": "#ffcc80", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "BollingerBands",
+    "label": "Bollinger Bands",
+    "pythonImport": "python.lib.indicator.volatility.bollinger_bands.BollingerBands",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "period - 1" },
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "columnParamIndexes": [0, 1, 2],
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 20, "min": 1 },
+      { "key": "stdDev", "label": "Std. dev.", "type": "number", "defaultValue": 2, "step": "any" }
+    ],
+    "lines": [
+      { "key": "middle", "columnSuffix": "middle", "label": "Middle", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "upper", "columnSuffix": "upper", "label": "Upper", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "lower", "columnSuffix": "lower", "label": "Lower", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "width", "columnSuffix": "width", "label": "Width", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "ChoppinessIndex",
+    "label": "Choppiness Index",
+    "pythonImport": "python.lib.indicator.volatility.choppiness_index.ChoppinessIndex",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "regime_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 14, "min": 2 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "Choppiness", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "trendiness", "columnSuffix": "trendiness", "label": "Trendiness", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "DonchianChannels",
+    "label": "Donchian Channels",
+    "pythonImport": "python.lib.indicator.overlay.donchian_channels.DonchianChannels",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "period - 1" },
+      "patch_bars": 0,
+      "output_layer": "structure_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 20, "min": 1 }
+    ],
+    "lines": [
+      { "key": "upper", "columnSuffix": "upper", "label": "Upper", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "middle", "columnSuffix": "middle", "label": "Middle", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "lower", "columnSuffix": "lower", "label": "Lower", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "width", "columnSuffix": "width", "label": "Width", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "CrossAssetConfirmation",
+    "label": "Cross-Asset Confirmation",
+    "pythonImport": "python.lib.indicator.features.cross_asset_confirmation.CrossAssetConfirmation",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "smoothingPeriod", "label": "Score smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "confirmation_score", "columnSuffix": "confirmation_score", "label": "Confirmation score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "divergence_score", "columnSuffix": "divergence_score", "label": "Divergence score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "primary_return", "columnSuffix": "primary_return", "label": "Primary return", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "peer_return", "columnSuffix": "peer_return", "label": "Peer return", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "return_gap", "columnSuffix": "return_gap", "label": "Return gap", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetResidualEntropyStateV1",
+    "label": "Cross-Asset Residual Entropy State V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_residual_entropy_state_v1.CrossAssetResidualEntropyStateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "entropyWindow", "label": "Entropy window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Persistence smoothing", "type": "number", "defaultValue": 5, "min": 1 },
+      { "key": "neutralBand", "label": "Neutral band bps", "type": "number", "defaultValue": 15, "min": 1 }
+    ],
+    "lines": [
+      { "key": "residual_entropy", "columnSuffix": "residual_entropy", "label": "Residual entropy", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "residual_state_persistence", "columnSuffix": "residual_state_persistence", "label": "Residual state persistence", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetResidualPercentileStateV1",
+    "label": "Cross-Asset Residual Percentile State V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_residual_percentile_state_v1.CrossAssetResidualPercentileStateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "percentileWindow", "label": "Percentile window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "absolute_residual_percentile", "columnSuffix": "absolute_residual_percentile", "label": "Absolute residual percentile", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "signed_residual_percentile", "columnSuffix": "signed_residual_percentile", "label": "Signed residual percentile", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetResidualAutocorrelationStateV1",
+    "label": "Cross-Asset Residual Autocorrelation State V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_residual_autocorrelation_state_v1.CrossAssetResidualAutocorrelationStateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "autocorrWindow", "label": "Autocorrelation window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Persistence smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "residual_autocorrelation", "columnSuffix": "residual_autocorrelation", "label": "Residual autocorrelation", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "residual_persistence", "columnSuffix": "residual_persistence", "label": "Residual persistence", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetResidualVolatilityStateV1",
+    "label": "Cross-Asset Residual Volatility State V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_residual_volatility_state_v1.CrossAssetResidualVolatilityStateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "volatilityWindow", "label": "Volatility window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "zscoreWindow", "label": "Volatility z-score window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "residual_volatility", "columnSuffix": "residual_volatility", "label": "Residual volatility", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "volatility_zscore", "columnSuffix": "volatility_zscore", "label": "Volatility z-score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetBetaNormalizedSpreadV1",
+    "label": "Cross-Asset Beta-Normalized Spread V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_beta_normalized_spread_v1.CrossAssetBetaNormalizedSpreadV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "betaWindow", "label": "Beta window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "spreadWindow", "label": "Spread window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "spread_zscore", "columnSuffix": "spread_zscore", "label": "Spread z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "beta_normalized_spread", "columnSuffix": "beta_normalized_spread", "label": "Beta-normalized spread", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "absolute_spread_zscore", "columnSuffix": "absolute_spread_zscore", "label": "Absolute spread z-score", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "spread_delta", "columnSuffix": "spread_delta", "label": "Spread delta", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "spread_velocity", "columnSuffix": "spread_velocity", "label": "Spread velocity", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "beta_stability", "columnSuffix": "beta_stability", "label": "Beta stability", "defaultColor": "#26a69a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "hedge_beta_smooth", "columnSuffix": "hedge_beta_smooth", "label": "Hedge beta smooth", "defaultColor": "#7e57c2", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "beta_adjusted_peer_return", "columnSuffix": "beta_adjusted_peer_return", "label": "Beta-adjusted peer return", "defaultColor": "#5c6bc0", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetResidualSpreadV1",
+    "label": "Cross-Asset Residual Spread V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_residual_spread_v1.CrossAssetResidualSpreadV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 24, "min": 2 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "residual_zscore", "columnSuffix": "residual_zscore", "label": "Residual z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "absolute_normalized_residual", "columnSuffix": "absolute_normalized_residual", "label": "Absolute normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "adjusted_peer_return", "columnSuffix": "adjusted_peer_return", "label": "Adjusted peer return", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetClusterLeaderFollowerV1",
+    "label": "Cross-Asset Cluster Leader-Follower V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_cluster_leader_follower_v1.CrossAssetClusterLeaderFollowerV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbols", "label": "Peer symbols", "type": "text", "defaultValue": "GBPUSDzAUDUSDzUSDCHF" },
+      { "key": "relations", "label": "Relations", "type": "text", "defaultValue": "directzdirectzinverse" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "leader_follow_gap_zscore", "columnSuffix": "leader_follow_gap_zscore", "label": "Leader gap z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_follow_gap", "columnSuffix": "normalized_follow_gap", "label": "Normalized follow gap", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "leader_dominance", "columnSuffix": "leader_dominance", "label": "Leader dominance", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "leader_margin", "columnSuffix": "leader_margin", "label": "Leader margin", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "leader_adjusted_return", "columnSuffix": "leader_adjusted_return", "label": "Leader adjusted return", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "leader_code", "columnSuffix": "leader_code", "label": "Leader code", "defaultColor": "#26a69a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetNewsProxyShockV1",
+    "label": "Cross-Asset News Proxy Shock V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_news_proxy_shock_v1.CrossAssetNewsProxyShockV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "high", "low", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 1, "min": 1 },
+      { "key": "shockWindow", "label": "Shock window", "type": "number", "defaultValue": 24, "min": 6 }
+    ],
+    "lines": [
+      { "key": "combined_proxy_zscore", "columnSuffix": "combined_proxy_zscore", "label": "Combined shock z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "primary_proxy_zscore", "columnSuffix": "primary_proxy_zscore", "label": "Primary shock z-score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "peer_proxy_zscore", "columnSuffix": "peer_proxy_zscore", "label": "Peer shock z-score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "primary_proxy_move", "columnSuffix": "primary_proxy_move", "label": "Primary proxy move", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "peer_proxy_move", "columnSuffix": "peer_proxy_move", "label": "Peer proxy move", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetPeerDisagreementGraphV1",
+    "label": "Cross-Asset Peer Disagreement Graph V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_peer_disagreement_graph_v1.CrossAssetPeerDisagreementGraphV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbols", "label": "Peer symbols", "type": "text", "defaultValue": "GBPUSD,AUDUSD,USDCHF" },
+      { "key": "relations", "label": "Relations", "type": "text", "defaultValue": "direct,direct,inverse" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "smoothingPeriod", "label": "Smoothing period", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "agreement_balance", "columnSuffix": "agreement_balance", "label": "Agreement balance", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "disagreement_pressure", "columnSuffix": "disagreement_pressure", "label": "Disagreement pressure", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "similarity_gap", "columnSuffix": "similarity_gap", "label": "Similarity gap", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "mixed_graph_flag", "columnSuffix": "mixed_graph_flag", "label": "Mixed graph flag", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "aligned_count", "columnSuffix": "aligned_count", "label": "Aligned count", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "disagreement_count", "columnSuffix": "disagreement_count", "label": "Disagreement count", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "leader_disagrees", "columnSuffix": "leader_disagrees", "label": "Leader disagrees", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "leader_agrees", "columnSuffix": "leader_agrees", "label": "Leader agrees", "defaultColor": "#26a69a", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetFxBlockRouterV1",
+    "label": "Cross-Asset FX Block Router V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_fx_block_router_v1.CrossAssetFxBlockRouterV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "europePeerSymbols", "label": "Europe peer symbols", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "commodityPeerSymbols", "label": "Commodity peer symbols", "type": "text", "defaultValue": "AUDUSDzNZDUSD" },
+      { "key": "dollarPeerSymbols", "label": "Dollar peer symbols", "type": "text", "defaultValue": "USDCHF" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "smoothingPeriod", "label": "Smoothing period", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "dominant_block_code", "columnSuffix": "dominant_block_code", "label": "Dominant block code", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "dominant_block_dominance", "columnSuffix": "dominant_block_dominance", "label": "Dominant block dominance", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "dominant_block_margin_ratio", "columnSuffix": "dominant_block_margin_ratio", "label": "Dominant block margin ratio", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "dominant_block_agreement", "columnSuffix": "dominant_block_agreement", "label": "Dominant block agreement", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "dominant_block_return", "columnSuffix": "dominant_block_return", "label": "Dominant block return", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetWeightedPeerConfidenceV1",
+    "label": "Cross-Asset Weighted Peer Confidence V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_weighted_peer_confidence_v1.CrossAssetWeightedPeerConfidenceV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbols", "label": "Peer symbols", "type": "text", "defaultValue": "GBPUSDzAUDUSDzUSDCHF" },
+      { "key": "relations", "label": "Relations", "type": "text", "defaultValue": "directzdirectzinverse" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "smoothingPeriod", "label": "Smoothing period", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "weighted_peer_return", "columnSuffix": "weighted_peer_return", "label": "Weighted peer return", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "weighted_confidence", "columnSuffix": "weighted_confidence", "label": "Weighted confidence", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "active_confident_peer_count", "columnSuffix": "active_confident_peer_count", "label": "Active confident peer count", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "confidence_concentration", "columnSuffix": "confidence_concentration", "label": "Confidence concentration", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "weighted_agreement", "columnSuffix": "weighted_agreement", "label": "Weighted agreement", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "absolute_weighted_residual", "columnSuffix": "absolute_weighted_residual", "label": "Absolute weighted residual", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "weighted_residual_zscore", "columnSuffix": "weighted_residual_zscore", "label": "Weighted residual z-score", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetCointegrationGateV1",
+    "label": "Cross-Asset Cointegration Gate V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_cointegration_gate_v1.CrossAssetCointegrationGateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "betaWindow", "label": "Beta window", "type": "number", "defaultValue": 36, "min": 6 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 36, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Smoothing period", "type": "number", "defaultValue": 5, "min": 2 }
+    ],
+    "lines": [
+      { "key": "cointegration_score", "columnSuffix": "cointegration_score", "label": "Cointegration score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "spread_zscore", "columnSuffix": "spread_zscore", "label": "Spread z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "path_correlation", "columnSuffix": "path_correlation", "label": "Path correlation", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "beta_stability", "columnSuffix": "beta_stability", "label": "Beta stability", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "hedge_beta", "columnSuffix": "hedge_beta", "label": "Hedge beta", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "adjusted_peer_return", "columnSuffix": "adjusted_peer_return", "label": "Adjusted peer return", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "spread", "columnSuffix": "spread", "label": "Spread", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetDynamicHedgeResidualV1",
+    "label": "Cross-Asset Dynamic Hedge Residual V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_dynamic_hedge_residual_v1.CrossAssetDynamicHedgeResidualV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbol", "label": "Peer symbol", "type": "text", "defaultValue": "GBPUSD" },
+      { "key": "relation", "label": "Relation", "type": "text", "defaultValue": "direct" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "betaWindow", "label": "Beta window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "residual_zscore", "columnSuffix": "residual_zscore", "label": "Residual z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "absolute_normalized_residual", "columnSuffix": "absolute_normalized_residual", "label": "Absolute normalized residual", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "beta_stability", "columnSuffix": "beta_stability", "label": "Beta stability", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "hedge_beta_smooth", "columnSuffix": "hedge_beta_smooth", "label": "Hedge beta smooth", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "beta_adjusted_peer_return", "columnSuffix": "beta_adjusted_peer_return", "label": "Beta-adjusted peer return", "defaultColor": "#26a69a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "signed_residual_return", "columnSuffix": "signed_residual_return", "label": "Signed residual return", "defaultColor": "#7e57c2", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "CrossAssetSyntheticPeerBasketV1",
+    "label": "Cross-Asset Synthetic Peer Basket V1",
+    "pythonImport": "python.lib.indicator.features.cross_asset_synthetic_peer_basket_v1.CrossAssetSyntheticPeerBasketV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "close"]
+    },
+    "fields": [
+      { "key": "peerSymbols", "label": "Peer symbols", "type": "text", "defaultValue": "GBPUSD,AUDUSD,USDCHF" },
+      { "key": "relations", "label": "Relations", "type": "text", "defaultValue": "direct,direct,inverse" },
+      { "key": "weights", "label": "Weights", "type": "text", "defaultValue": "1,1,1" },
+      { "key": "lookback", "label": "Lookback", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "zscoreWindow", "label": "Z-score window", "type": "number", "defaultValue": 24, "min": 3 },
+      { "key": "percentileWindow", "label": "Percentile window", "type": "number", "defaultValue": 24, "min": 6 },
+      { "key": "smoothingPeriod", "label": "Sync smoothing", "type": "number", "defaultValue": 5, "min": 1 }
+    ],
+    "lines": [
+      { "key": "sync_score", "columnSuffix": "sync_score", "label": "Sync score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "residual_zscore", "columnSuffix": "residual_zscore", "label": "Residual z-score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "normalized_residual", "columnSuffix": "normalized_residual", "label": "Normalized residual", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "absolute_residual_percentile", "columnSuffix": "absolute_residual_percentile", "label": "Absolute residual percentile", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "agreement", "columnSuffix": "agreement", "label": "Agreement", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "adjusted_basket_return", "columnSuffix": "adjusted_basket_return", "label": "Adjusted basket return", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "absolute_normalized_residual", "columnSuffix": "absolute_normalized_residual", "label": "Absolute normalized residual", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "EmaLowAdxSetupClusterContextV1",
+    "label": "EMA Low ADX Setup Cluster Context",
+    "pythonImport": "python.lib.indicator.features.ema_low_adx_setup_cluster_context_v1.EmaLowAdxSetupClusterContextV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "slq_di_spread_14", "columnSuffix": "slq_di_spread_14", "label": "DI spread 14", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slq_rsi_delta_3", "columnSuffix": "slq_rsi_delta_3", "label": "RSI delta 3", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slq_reclaim_strength", "columnSuffix": "slq_reclaim_strength", "label": "Reclaim strength", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_base_candidate_flag", "columnSuffix": "slqc_base_candidate_flag", "label": "Base candidate flag", "defaultColor": "#b0bec5", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_prev_candidate_gap_24", "columnSuffix": "slqc_prev_candidate_gap_24", "label": "Previous candidate gap 24", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "slqc_recent_candidate_density_12", "columnSuffix": "slqc_recent_candidate_density_12", "label": "Candidate density 12", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "slqc_recent_candidate_density_24", "columnSuffix": "slqc_recent_candidate_density_24", "label": "Candidate density 24", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_last_candidate_di_spread", "columnSuffix": "slqc_last_candidate_di_spread", "label": "Last candidate DI spread", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_di_vs_last_candidate", "columnSuffix": "slqc_di_vs_last_candidate", "label": "DI vs last candidate", "defaultColor": "#5c6bc0", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_di_vs_recent_candidate_max_12", "columnSuffix": "slqc_di_vs_recent_candidate_max_12", "label": "DI vs recent max 12", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "slqc_di_vs_recent_candidate_mean_12", "columnSuffix": "slqc_di_vs_recent_candidate_mean_12", "label": "DI vs recent mean 12", "defaultColor": "#29b6f6", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "slqc_reclaim_vs_recent_candidate_max_12", "columnSuffix": "slqc_reclaim_vs_recent_candidate_max_12", "label": "Reclaim vs recent max 12", "defaultColor": "#ffca28", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "CandlestickPatterns",
+    "label": "Candlestick Patterns",
+    "pythonImport": "python.lib.indicator.features.candlestick_patterns.CandlestickPatterns",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": { "formula": "max(trendLookback, bodyAveragePeriod) + 4" },
+      "patch_bars": 0,
+      "output_layer": "price_action_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "trendLookback", "label": "Trend lookback", "type": "number", "defaultValue": 5, "min": 2 },
+      { "key": "bodyAveragePeriod", "label": "Body average", "type": "number", "defaultValue": 14, "min": 3 }
+    ],
+    "lines": [
+      { "key": "bullish_reversal_score", "columnSuffix": "bullish_reversal_score", "label": "Bullish reversal score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "bearish_reversal_score", "columnSuffix": "bearish_reversal_score", "label": "Bearish reversal score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "bullish_continuation_score", "columnSuffix": "bullish_continuation_score", "label": "Bullish continuation score", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "bearish_continuation_score", "columnSuffix": "bearish_continuation_score", "label": "Bearish continuation score", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "hammer", "columnSuffix": "hammer", "label": "Hammer", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "belowBar", "markerShape": "arrowUp", "markerColor": "#22c55e", "markerText": "Hammer", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "shooting_star", "columnSuffix": "shooting_star", "label": "Shooting star", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "aboveBar", "markerShape": "arrowDown", "markerColor": "#ef4444", "markerText": "Shooting star", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "bullish_engulfing", "columnSuffix": "bullish_engulfing", "label": "Bullish engulfing", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "belowBar", "markerShape": "arrowUp", "markerColor": "#16a34a", "markerText": "Bullish engulfing", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "bearish_engulfing", "columnSuffix": "bearish_engulfing", "label": "Bearish engulfing", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "aboveBar", "markerShape": "arrowDown", "markerColor": "#dc2626", "markerText": "Bearish engulfing", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "bullish_harami", "columnSuffix": "bullish_harami", "label": "Bullish harami", "defaultColor": "#81c784", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "belowBar", "markerShape": "arrowUp", "markerColor": "#4ade80", "markerText": "Bullish harami", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "bearish_harami", "columnSuffix": "bearish_harami", "label": "Bearish harami", "defaultColor": "#e57373", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "aboveBar", "markerShape": "arrowDown", "markerColor": "#f87171", "markerText": "Bearish harami", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "morning_star", "columnSuffix": "morning_star", "label": "Morning star", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "belowBar", "markerShape": "arrowUp", "markerColor": "#22c55e", "markerText": "Morning star", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "evening_star", "columnSuffix": "evening_star", "label": "Evening star", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "aboveBar", "markerShape": "arrowDown", "markerColor": "#ef4444", "markerText": "Evening star", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "rising_three_methods", "columnSuffix": "rising_three_methods", "label": "Rising three methods", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "belowBar", "markerShape": "square", "markerColor": "#06b6d4", "markerText": "Rising three methods", "markerSize": 1, "markerMinValue": 0.5 },
+      { "key": "falling_three_methods", "columnSuffix": "falling_three_methods", "label": "Falling three methods", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden", "markerPosition": "aboveBar", "markerShape": "square", "markerColor": "#a855f7", "markerText": "Falling three methods", "markerSize": 1, "markerMinValue": 0.5 }
+    ]
+  },
+  {
+    "name": "EMA",
+    "label": "EMA",
+    "pythonImport": "python.lib.indicator.trend.ema.EMA",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 21, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "EMA", "defaultColor": "#ffd54f", "defaultLineWidth": 2, "defaultTarget": "price" }
+    ]
+  },
+  {
+    "name": "TemporalContext",
+    "label": "Temporal Context",
+    "pythonImport": "python.lib.indicator.features.temporal_context.TemporalContext",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "time_context_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "hour_utc", "columnSuffix": "hour_utc", "label": "UTC hour", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "minute_utc", "columnSuffix": "minute_utc", "label": "UTC minute", "defaultColor": "#29b6f6", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "minute_of_day_utc", "columnSuffix": "minute_of_day_utc", "label": "UTC minute of day", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "weekday_utc", "columnSuffix": "weekday_utc", "label": "UTC weekday", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "day_of_month_utc", "columnSuffix": "day_of_month_utc", "label": "UTC day of month", "defaultColor": "#7e57c2", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "tokyo_session", "columnSuffix": "tokyo_session", "label": "Tokyo session", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "london_session", "columnSuffix": "london_session", "label": "London session", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "new_york_session", "columnSuffix": "new_york_session", "label": "New York session", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "tokyo_london_overlap", "columnSuffix": "tokyo_london_overlap", "label": "Tokyo-London overlap", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "london_new_york_overlap", "columnSuffix": "london_new_york_overlap", "label": "London-New York overlap", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "SessionOpeningRangeStateV1",
+    "label": "Session Opening Range State V1",
+    "pythonImport": "python.lib.indicator.features.session_opening_range_state_v1.SessionOpeningRangeStateV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "structure_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "high", "low", "close"]
+    },
+    "fields": [
+      { "key": "sessionName", "label": "Session", "type": "text", "defaultValue": "tokyo" },
+      { "key": "rangeBars", "label": "Opening range bars", "type": "number", "defaultValue": 3, "min": 1 }
+    ],
+    "lines": [
+      { "key": "range_high", "columnSuffix": "range_high", "label": "Range high", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "range_low", "columnSuffix": "range_low", "label": "Range low", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "range_mid", "columnSuffix": "range_mid", "label": "Range mid", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "width_ratio", "columnSuffix": "width_ratio", "label": "Range width ratio", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "position_ratio", "columnSuffix": "position_ratio", "label": "Range position ratio", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "range_ready_flag", "columnSuffix": "range_ready_flag", "label": "Range ready", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "breakout_up_flag", "columnSuffix": "breakout_up_flag", "label": "Breakout up", "defaultColor": "#4caf50", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "reclaim_up_flag", "columnSuffix": "reclaim_up_flag", "label": "Reclaim up", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "session_bar_index", "columnSuffix": "session_bar_index", "label": "Session bar index", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "ElliottWaveProxyV1",
+    "label": "Elliott Wave Proxy V1",
+    "pythonImport": "python.lib.indicator.features.elliott_wave_proxy_v1.ElliottWaveProxyV1",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "structure_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["time", "open", "high", "low", "close"]
+    },
+    "fields": [
+      { "key": "atrWindow", "label": "ATR window", "type": "number", "defaultValue": 14, "min": 2 },
+      { "key": "reversalAtrMultiplier", "label": "Reversal ATR multiplier", "type": "number", "defaultValue": 1.5, "min": 0.1, "step": "any" },
+      { "key": "minimumBars", "label": "Minimum bars per leg", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "breakoutAtrMultiplier", "label": "Breakout ATR buffer", "type": "number", "defaultValue": 0.25, "min": 0, "step": "any" },
+      { "key": "retestAtrMultiplier", "label": "Retest ATR envelope", "type": "number", "defaultValue": 0.5, "min": 0, "step": "any" },
+      { "key": "projectionRangeMultiplier", "label": "Projection range multiplier", "type": "number", "defaultValue": 1, "min": 0, "step": "any" }
+    ],
+    "lines": [
+      { "key": "last_confirmed_swing_high", "columnSuffix": "last_confirmed_swing_high", "label": "Last confirmed swing high", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "last_confirmed_swing_low", "columnSuffix": "last_confirmed_swing_low", "label": "Last confirmed swing low", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bull_breakout_trigger", "columnSuffix": "bull_breakout_trigger", "label": "Bull breakout trigger", "defaultColor": "#ff7043", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bear_breakout_trigger", "columnSuffix": "bear_breakout_trigger", "label": "Bear breakout trigger", "defaultColor": "#26a69a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bull_broken_resistance_level", "columnSuffix": "bull_broken_resistance_level", "label": "Broken resistance as support", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bear_broken_support_level", "columnSuffix": "bear_broken_support_level", "label": "Broken support as resistance", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bull_support_envelope_low", "columnSuffix": "bull_support_envelope_low", "label": "Bull support envelope low", "defaultColor": "#43a047", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bull_support_envelope_high", "columnSuffix": "bull_support_envelope_high", "label": "Bull support envelope high", "defaultColor": "#81c784", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bear_resistance_envelope_low", "columnSuffix": "bear_resistance_envelope_low", "label": "Bear resistance envelope low", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bear_resistance_envelope_high", "columnSuffix": "bear_resistance_envelope_high", "label": "Bear resistance envelope high", "defaultColor": "#e57373", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bull_projection_target", "columnSuffix": "bull_projection_target", "label": "Bull projection target", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "bear_projection_target", "columnSuffix": "bear_projection_target", "label": "Bear projection target", "defaultColor": "#ce93d8", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "wave_confidence", "columnSuffix": "wave_confidence", "label": "Wave confidence", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "active_leg_size_atr", "columnSuffix": "active_leg_size_atr", "label": "Active leg size ATR", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "retracement_ratio", "columnSuffix": "retracement_ratio", "label": "Retracement ratio", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "impulse_score", "columnSuffix": "impulse_score", "label": "Impulse score", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "correction_score", "columnSuffix": "correction_score", "label": "Correction score", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "candidate_impulse_flag", "columnSuffix": "candidate_impulse_flag", "label": "Candidate impulse", "defaultColor": "#4caf50", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "candidate_correction_flag", "columnSuffix": "candidate_correction_flag", "label": "Candidate correction", "defaultColor": "#8d6e63", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "active_leg_direction", "columnSuffix": "active_leg_direction", "label": "Leg direction", "defaultColor": "#29b6f6", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bull_breakout_flag", "columnSuffix": "bull_breakout_flag", "label": "Bull breakout flag", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bear_breakout_flag", "columnSuffix": "bear_breakout_flag", "label": "Bear breakout flag", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bull_breakout_state", "columnSuffix": "bull_breakout_state", "label": "Bull breakout state", "defaultColor": "#388e3c", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bear_breakout_state", "columnSuffix": "bear_breakout_state", "label": "Bear breakout state", "defaultColor": "#c62828", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bull_retest_flag", "columnSuffix": "bull_retest_flag", "label": "Bull retest flag", "defaultColor": "#8bc34a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "bear_retest_flag", "columnSuffix": "bear_retest_flag", "label": "Bear retest flag", "defaultColor": "#ff8a65", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "IchimokoClouds",
+    "label": "Ichimoko Clouds",
+    "pythonImport": "python.lib.indicator.overlay.ichimoko_clouds.IchimokoClouds",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "max(tenkanPeriod - 1, kijunPeriod - 1, senkouBPeriod - 1) + kijunPeriod" },
+      "patch_bars": { "formula": "kijunPeriod" },
+      "output_layer": "structure_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "tenkanPeriod", "label": "Tenkan", "type": "number", "defaultValue": 9, "min": 1 },
+      { "key": "kijunPeriod", "label": "Kijun", "type": "number", "defaultValue": 26, "min": 1 },
+      { "key": "senkouBPeriod", "label": "Senkou B", "type": "number", "defaultValue": 52, "min": 1 }
+    ],
+    "lines": [
+      { "key": "tenkan_sen", "columnSuffix": "tenkan_sen", "label": "Tenkan sen", "defaultColor": "#ff9800", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "kijun_sen", "columnSuffix": "kijun_sen", "label": "Kijun sen", "defaultColor": "#2196f3", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "senkou_span_a", "columnSuffix": "senkou_span_a", "label": "Senkou span A", "defaultColor": "#4caf50", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "senkou_span_b", "columnSuffix": "senkou_span_b", "label": "Senkou span B", "defaultColor": "#f44336", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "chikou_span", "columnSuffix": "chikou_span", "label": "Chikou span", "defaultColor": "#9c27b0", "defaultLineWidth": 2, "defaultTarget": "price" }
+    ]
+  },
+  {
+    "name": "KeltnerChannels",
+    "label": "Keltner Channels",
+    "pythonImport": "python.lib.indicator.volatility.keltner_channels.KeltnerChannels",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "volatility_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}", "high", "low", "close"]
+    },
+    "columnParamIndexes": [0, 1, 2, 3],
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "emaPeriod", "label": "EMA period", "type": "number", "defaultValue": 20, "min": 1 },
+      { "key": "atrPeriod", "label": "ATR period", "type": "number", "defaultValue": 10, "min": 1 },
+      { "key": "multiplier", "label": "Multiplier", "type": "number", "defaultValue": 2, "step": "any" }
+    ],
+    "lines": [
+      { "key": "middle", "columnSuffix": "middle", "label": "Middle", "defaultColor": "#ffee58", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "upper", "columnSuffix": "upper", "label": "Upper", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "lower", "columnSuffix": "lower", "label": "Lower", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "width", "columnSuffix": "width", "label": "Width", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "MACD",
+    "label": "MACD",
+    "pythonImport": "python.lib.indicator.trend.macd.MACD",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "per_line",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "trend_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "columnParamIndexes": [0, 1, 2, 3],
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "fastPeriod", "label": "Fast period", "type": "number", "defaultValue": 12, "min": 1 },
+      { "key": "slowPeriod", "label": "Slow period", "type": "number", "defaultValue": 26, "min": 1 },
+      { "key": "signalPeriod", "label": "Signal period", "type": "number", "defaultValue": 9, "min": 1 }
+    ],
+    "lines": [
+      { "key": "line", "columnSuffix": "line", "label": "MACD line", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "signal", "columnSuffix": "signal", "label": "Signal", "defaultColor": "#ffb74d", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "histogram", "columnSuffix": "histogram", "label": "Histogram", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "MarketRegime",
+    "label": "Market Regime",
+    "pythonImport": "python.lib.indicator.trend.market_regime.MarketRegime",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "regime_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "columnParamIndexes": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "fields": [
+      { "key": "emaFastPeriod", "label": "EMA fast", "type": "number", "defaultValue": 9, "min": 1 },
+      { "key": "emaSlowPeriod", "label": "EMA slow", "type": "number", "defaultValue": 21, "min": 2 },
+      { "key": "adxPeriod", "label": "ADX period", "type": "number", "defaultValue": 14, "min": 2 },
+      { "key": "atrPeriod", "label": "ATR period", "type": "number", "defaultValue": 14, "min": 2 },
+      { "key": "bollingerPeriod", "label": "Bollinger period", "type": "number", "defaultValue": 20, "min": 2 },
+      { "key": "bollingerStdDev", "label": "Bollinger std. dev.", "type": "number", "defaultValue": 2, "step": "any" },
+      { "key": "donchianPeriod", "label": "Donchian period", "type": "number", "defaultValue": 20, "min": 2 },
+      { "key": "choppinessPeriod", "label": "Choppiness period", "type": "number", "defaultValue": 14, "min": 2 },
+      { "key": "supertrendAtrPeriod", "label": "Supertrend ATR", "type": "number", "defaultValue": 10, "min": 2 },
+      { "key": "supertrendMultiplier", "label": "Supertrend multiplier", "type": "number", "defaultValue": 3, "step": "any" },
+      { "key": "vwapSource", "label": "VWAP source", "type": "select", "defaultValue": "hlc3", "options": ["hlc3", "ohlc4", "close"] },
+      { "key": "scoreSmoothingPeriod", "label": "Score smoothing", "type": "number", "defaultValue": 5, "min": 1 },
+      { "key": "regimeConfirmBars", "label": "Regime confirm bars", "type": "number", "defaultValue": 3, "min": 1 }
+    ],
+    "lines": [
+      { "key": "trend_score", "columnSuffix": "trend_score", "label": "Trend score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "volatility_score", "columnSuffix": "volatility_score", "label": "Volatility score", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "compression_score", "columnSuffix": "compression_score", "label": "Compression score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "direction_score", "columnSuffix": "direction_score", "label": "Direction score", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "stability_score", "columnSuffix": "stability_score", "label": "Stability score", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "regime_age", "columnSuffix": "regime_age", "label": "Regime age", "defaultColor": "#ff8a65", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "regime_code", "columnSuffix": "regime_code", "label": "Regime code", "defaultColor": "#ffd54f", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "NeuralCandleReversalV10_1DR035",
+    "label": "Neural Candle Reversal Scores",
+    "pythonImport": "python.lib.indicator.features.neural_candle_reversal_v10_1_dr035.NeuralCandleReversalV10_1DR035",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "neural_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "bear_score", "columnSuffix": "bear_score", "label": "Bear score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "neutral_score", "columnSuffix": "neutral_score", "label": "Neutral score", "defaultColor": "#b0bec5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "bull_score", "columnSuffix": "bull_score", "label": "Bull score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "direction_score", "columnSuffix": "direction_score", "label": "Direction score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "NeuralEmaLowAdxSetupQualityV4BG020",
+    "label": "Neural EMA Low ADX Setup Quality",
+    "pythonImport": "python.lib.indicator.features.neural_ema_low_adx_setup_quality_v4_bg020.NeuralEmaLowAdxSetupQualityV4BG020",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "neural_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "not_good_score", "columnSuffix": "not_good_score", "label": "Not good score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "good_score", "columnSuffix": "good_score", "label": "Good score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "edge_score", "columnSuffix": "edge_score", "label": "Edge score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "NeuralEmaLowAdxSetupQualityV6CC50000",
+    "label": "Neural EMA Low ADX Setup Quality V6 Cluster Context",
+    "pythonImport": "python.lib.indicator.features.neural_ema_low_adx_setup_quality_v6_cc50000.NeuralEmaLowAdxSetupQualityV6CC50000",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "neural_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "not_good_score", "columnSuffix": "not_good_score", "label": "Not good score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "good_score", "columnSuffix": "good_score", "label": "Good score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "edge_score", "columnSuffix": "edge_score", "label": "Edge score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "NeuralMicroCostEdgeHybridS7S4",
+    "label": "Neural Micro Cost Edge Hybrid S7/S4",
+    "pythonImport": "python.lib.indicator.features.neural_micro_cost_edge_hybrid_s7_s4.NeuralMicroCostEdgeHybridS7S4",
+    "incrementalMode": "full_rebuild",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "neural_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [],
+    "lines": [
+      { "key": "v2_short_score", "columnSuffix": "v2_short_score", "label": "V2 short score", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "v2_long_score", "columnSuffix": "v2_long_score", "label": "V2 long score", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "v3_gate_score", "columnSuffix": "v3_gate_score", "label": "V3 gate score", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "hybrid_short_score", "columnSuffix": "hybrid_short_score", "label": "Hybrid short score", "defaultColor": "#d32f2f", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "hybrid_long_score", "columnSuffix": "hybrid_long_score", "label": "Hybrid long score", "defaultColor": "#2e7d32", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "hybrid_score", "columnSuffix": "hybrid_score", "label": "Hybrid score", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "best_safe_gate", "columnSuffix": "best_safe_gate", "label": "Best safe gate", "defaultColor": "#ffb300", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "cadence_gate", "columnSuffix": "cadence_gate", "label": "Cadence gate", "defaultColor": "#26c6da", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "rsi_14", "columnSuffix": "rsi_14", "label": "RSI 14", "defaultColor": "#7e57c2", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "trendiness_14", "columnSuffix": "trendiness_14", "label": "Trendiness 14", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "recent_move_atr_3", "columnSuffix": "recent_move_atr_3", "label": "Recent move ATR 3", "defaultColor": "#ef6c00", "defaultLineWidth": 2, "defaultTarget": "hidden" },
+      { "key": "close_location", "columnSuffix": "close_location", "label": "Close location", "defaultColor": "#5c6bc0", "defaultLineWidth": 2, "defaultTarget": "hidden" }
+    ]
+  },
+  {
+    "name": "Momentum",
+    "label": "Momentum",
+    "pythonImport": "python.lib.indicator.features.momentum.Momentum",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "period" },
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 10, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "Momentum", "defaultColor": "#ff8a65", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "ROC",
+    "label": "ROC",
+    "pythonImport": "python.lib.indicator.features.roc.ROC",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "period" },
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 10, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "ROC", "defaultColor": "#80cbc4", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "RSI",
+    "label": "RSI",
+    "pythonImport": "python.lib.indicator.momentum.rsi.RSI",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "per_line",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "momentum_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 14, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "RSI", "defaultColor": "#b388ff", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "SMA",
+    "label": "SMA",
+    "pythonImport": "python.lib.indicator.trend.sma.SMA",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "period - 1" },
+      "patch_bars": 0,
+      "output_layer": "derived_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["{price}"]
+    },
+    "fields": [
+      { "key": "price", "label": "Price", "type": "select", "defaultValue": "close", "options": ["open", "high", "low", "close"] },
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 20, "min": 1 }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "SMA", "defaultColor": "#4fc3f7", "defaultLineWidth": 2, "defaultTarget": "price" }
+    ]
+  },
+  {
+    "name": "Stochastic",
+    "label": "Stochastic",
+    "pythonImport": "python.lib.indicator.momentum.stochastic.Stochastic",
+    "incrementalMode": "rolling_window",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": true,
+      "requires_full_rebuild": false,
+      "warmup_bars": { "formula": "(period - 1) + (smoothK - 1) + (smoothD - 1)" },
+      "patch_bars": 0,
+      "output_layer": "momentum_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "period", "label": "Period", "type": "number", "defaultValue": 14, "min": 1 },
+      { "key": "smoothK", "label": "Smooth K", "type": "number", "defaultValue": 3, "min": 1 },
+      { "key": "smoothD", "label": "Smooth D", "type": "number", "defaultValue": 3, "min": 1 }
+    ],
+    "lines": [
+      { "key": "k", "columnSuffix": "k", "label": "%K", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "d", "columnSuffix": "d", "label": "%D", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "Supertrend",
+    "label": "Supertrend",
+    "pythonImport": "python.lib.indicator.trend.supertrend.Supertrend",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "per_line",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "trend_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "atrPeriod", "label": "ATR period", "type": "number", "defaultValue": 10, "min": 1 },
+      { "key": "multiplier", "label": "Multiplier", "type": "number", "defaultValue": 3, "step": "any" }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "Supertrend", "defaultColor": "#ffd54f", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "direction", "columnSuffix": "direction", "label": "Direction", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "upper_band", "columnSuffix": "upper_band", "label": "Upper band", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "lower_band", "columnSuffix": "lower_band", "label": "Lower band", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" }
+    ]
+  },
+  {
+    "name": "VasconcellosEnvelope",
+    "label": "Vasconcellos Envelope",
+    "pythonImport": "python.lib.indicator.features.vasconcellos_envelope.VasconcellosEnvelope",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "shared",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": { "formula": "span + 1" },
+      "patch_bars": 0,
+      "output_layer": "structure_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close"]
+    },
+    "fields": [
+      { "key": "reference", "label": "Reference", "type": "select", "defaultValue": "body", "options": ["body", "shadow", "wick"] },
+      { "key": "span", "label": "Span", "type": "number", "defaultValue": 2, "min": 1 },
+      { "key": "deltaValue", "label": "Delta value", "type": "number", "defaultValue": 0, "step": "any" },
+      { "key": "deltaUnit", "label": "Delta unit", "type": "select", "defaultValue": "abs", "options": ["abs", "percentage", "std_dev"] },
+      { "key": "momentumEmaPeriod", "label": "Momentum EMA", "type": "number", "defaultValue": 14, "min": 1 },
+      { "key": "stdDevMode", "label": "Std. dev. mode", "type": "select", "defaultValue": "rolling", "options": ["rolling", "expanding"] },
+      { "key": "stdDevWindow", "label": "Std. dev. window", "type": "number", "defaultValue": 20, "min": 2 }
+    ],
+    "lines": [
+      { "key": "resistance", "columnSuffix": "resistance", "label": "Resistance", "defaultColor": "#ef5350", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "support", "columnSuffix": "support", "label": "Support", "defaultColor": "#66bb6a", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "momentum", "columnSuffix": "momentum", "label": "Momentum", "defaultColor": "#42a5f5", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "top_momentum", "columnSuffix": "top_momentum", "label": "Top momentum", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "bottom_momentum", "columnSuffix": "bottom_momentum", "label": "Bottom momentum", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "momentum_ema", "columnSuffix": "momentum_ema", "label": "Momentum EMA", "defaultColor": "#29b6f6", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  },
+  {
+    "name": "VWAP",
+    "label": "VWAP",
+    "pythonImport": "python.lib.indicator.overlay.vwap.VWAP",
+    "incrementalMode": "recursive",
+    "defaultPriceScaleMode": "per_line",
+    "runtimeContract": {
+      "supports_partial_rebuild": false,
+      "requires_full_rebuild": true,
+      "warmup_bars": 0,
+      "patch_bars": 0,
+      "output_layer": "execution_indicator",
+      "input_layer": "market_data",
+      "input_columns": ["open", "high", "low", "close", "volume"]
+    },
+    "fields": [
+      { "key": "price", "label": "Source", "type": "select", "defaultValue": "hlc3", "options": ["hlc3", "ohlc4", "close"] }
+    ],
+    "lines": [
+      { "key": "value", "columnSuffix": "", "label": "VWAP", "defaultColor": "#29b6f6", "defaultLineWidth": 2, "defaultTarget": "price" },
+      { "key": "distance", "columnSuffix": "distance", "label": "Distance", "defaultColor": "#ffa726", "defaultLineWidth": 2, "defaultTarget": "separate" },
+      { "key": "distance_ratio", "columnSuffix": "distance_ratio", "label": "Distance ratio", "defaultColor": "#ab47bc", "defaultLineWidth": 2, "defaultTarget": "separate" }
+    ]
+  }
+]

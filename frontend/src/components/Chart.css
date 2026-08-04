@@ -1,0 +1,622 @@
+.chartShell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(83, 122, 168, 0.10), transparent 28%),
+        linear-gradient(180deg, #10161d, #0d1319);
+}
+
+.chartShell.isDrawLineMode,
+.chartShell.isDrawLineMode .chartCanvas {
+    cursor: crosshair;
+}
+
+.chartCanvas {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.chartGuestNotice {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 12;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: min(360px, calc(100% - 24px));
+    padding: 9px 10px 9px 12px;
+    border: 1px solid rgba(217, 168, 58, 0.42);
+    background: rgba(31, 27, 16, 0.94);
+    color: #f5d98f;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+    pointer-events: auto;
+}
+
+.chartGuestNoticeText {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.chartGuestNotice strong {
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.chartGuestNotice span {
+    color: rgba(245, 217, 143, 0.9);
+    font-size: 0.78rem;
+    line-height: 1.25;
+}
+
+.chartGuestNoticeClose {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(245, 217, 143, 0.32);
+    border-radius: 999px;
+    background: rgba(245, 217, 143, 0.08);
+    color: #f5d98f;
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+.chartGuestNoticeClose:hover {
+    background: rgba(245, 217, 143, 0.16);
+}
+
+.chartDrawingOverlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.chartDrawingShape line {
+    stroke: var(--drawing-color, #d9d9d9);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+}
+
+.chartDrawingShape circle {
+    fill: var(--drawing-color, #d9d9d9);
+    stroke: #1b1b1b;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+
+.chartDrawingShape.isPending circle {
+    fill: #ffffff;
+}
+
+.chartDrawingShape.isSelected line {
+    stroke-width: 2.5;
+}
+
+.chartDrawingShape.isSelected circle {
+    r: 4.5;
+}
+
+.chartAppliedMeta {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+    pointer-events: auto;
+    max-width: calc(100% - 24px);
+}
+
+.chartAppliedMeta.isStreamMode {
+    top: 18px;
+    left: 18px;
+    gap: 10px;
+    max-width: calc(100% - 36px);
+}
+
+.chartShell.hasExternalStreamMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chartAppliedMeta.isExternalPlacement {
+    position: static;
+    top: auto;
+    left: auto;
+    max-width: none;
+}
+
+.chartShell.hasExternalStreamMeta .chartCanvas {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.chartShell.hasExternalStreamMeta.isStreamMetaCollapsed .chartCanvas {
+    display: none;
+}
+
+.chartShell.hasExternalStreamMeta.isStreamMetaCollapsed .chartAppliedMetaPrimaryGroup > .chartAppliedBadge:not(.chartAppliedPriceBadge) {
+    display: none;
+}
+
+.chartShell.hasExternalStreamMeta.isStreamMetaCollapsed .chartAppliedMetaRow.chartAppliedIndicatorRow {
+    display: none;
+}
+
+.chartAppliedMetaRow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chartAppliedMetaPrimaryRow {
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 12px;
+}
+
+.chartAppliedMetaPrimaryGroup {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.chartAppliedMeta.isStreamMode .chartAppliedMetaPrimaryGroup {
+    gap: 10px;
+}
+
+.chartAppliedMetaControls {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.chartMarkerModeControl {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 24px;
+    padding: 0 8px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(16, 22, 29, 0.88);
+    color: var(--text-primary);
+}
+
+.chartMarkerModeLabel {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.chartMarkerModeSelect {
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    outline: none;
+    cursor: pointer;
+}
+
+.chartMarkerModeSelect option {
+    color: #111;
+}
+
+.chartAppliedMetaButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 1px solid var(--border-default);
+    background-color: rgba(16, 22, 29, 0.88);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.chartAppliedMetaButton svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+.chartAppliedMetaButton:hover {
+    background-color: rgba(28, 38, 49, 0.94);
+}
+
+.chartAppliedMetaButton:disabled {
+    cursor: default;
+    opacity: 0.48;
+}
+
+.chartLegendToggle {
+    position: relative;
+}
+
+.chartLegendChevron {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+}
+
+.chartLegendChevron.down {
+    transform: rotate(45deg) translateY(-1px);
+}
+
+.chartLegendChevron.up {
+    transform: rotate(-135deg) translateY(-1px);
+}
+
+.chartAppliedBadge {
+    display: inline-flex;
+    align-items: center;
+    min-height: calc(var(--chart-meta-font-size, 0.72rem) * 1.9);
+    padding: 0 calc(var(--chart-meta-font-size, 0.72rem) * 0.8);
+    border: 1px solid var(--border-default);
+    background-color: rgba(16, 22, 29, 0.88);
+    color: var(--text-primary);
+    font-size: var(--chart-meta-font-size, 0.72rem);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.chartAppliedMeta.isStreamMode .chartAppliedBadge {
+    min-height: calc(var(--chart-meta-font-size, 0.72rem) * 2.1);
+    padding: 0 calc(var(--chart-meta-font-size, 0.72rem) * 0.95);
+    border-color: rgba(255, 255, 255, 0.11);
+    background-color: rgba(10, 16, 23, 0.82);
+    backdrop-filter: blur(8px);
+}
+
+.chartAppliedInsertButton {
+    cursor: pointer;
+}
+
+button.chartAppliedBadge {
+    font: inherit;
+}
+
+.chartAppliedInsertButton:hover {
+    background-color: rgba(28, 38, 49, 0.94);
+}
+
+.chartBacktestMarkerBadge {
+    text-transform: none;
+}
+
+.chartAppliedPriceSign {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    margin-right: 2px;
+}
+
+.chartAppliedPriceBadge.isOpen .chartAppliedPriceSign {
+    background-color: #6bb8ff;
+}
+
+.chartAppliedPriceBadge.isHigh .chartAppliedPriceSign {
+    background-color: #4caf50;
+}
+
+.chartAppliedPriceBadge.isLow .chartAppliedPriceSign {
+    background-color: #ffb04d;
+}
+
+.chartAppliedPriceBadge.isClose .chartAppliedPriceSign {
+    background-color: #ef4444;
+}
+
+.chartAppliedVolumeBadge {
+    gap: 6px;
+}
+
+.chartAppliedVolumeSign {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex: 0 0 auto;
+    margin-right: 2px;
+    background-color: #75a7ff;
+}
+
+.chartAppliedBadge.isFlashing {
+    animation: chartAppliedFlash 1.8s ease-out;
+}
+
+.chartDrawingEditorBadge {
+    gap: 8px;
+    padding-right: 8px;
+    text-transform: none;
+    margin-left: auto;
+    flex: 0 0 auto;
+}
+
+.chartDrawingEditorLabel {
+    font-weight: 600;
+}
+
+.chartDrawingEditorBadge input[type="color"] {
+    width: 26px;
+    height: 20px;
+    padding: 0;
+    border: 1px solid var(--border-default);
+    background: transparent;
+    cursor: pointer;
+}
+
+.chartDrawingEditorClose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.78rem;
+    cursor: pointer;
+}
+
+.chartDrawingEditorClose:hover {
+    color: var(--border-strong);
+}
+
+.chartAppliedIndicatorRow {
+    align-items: flex-start;
+}
+
+.chartIndicatorLegendControls {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.chartIndicatorLegendOverflowShell {
+    display: flex;
+    flex: 1 1 320px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    min-width: 0;
+}
+
+.chartIndicatorLegendVisibleList,
+.chartIndicatorLegendHiddenList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+}
+
+.chartIndicatorLegendVisibleList {
+    width: 100%;
+    overflow: hidden;
+    transition: max-height 0.18s ease;
+}
+
+.chartIndicatorLegendVisibleList.isExpanded {
+    max-height: none !important;
+}
+
+.chartIndicatorLegendOverflowControls {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.chartIndicatorLegendOverflowHint,
+.chartIndicatorLegendHiddenTitle {
+    color: rgba(215, 227, 241, 0.72);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.chartIndicatorLegendExpandButton {
+    display: inline-flex;
+    align-items: center;
+    min-height: 22px;
+    padding: 0 8px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(16, 22, 29, 0.88);
+    color: var(--text-primary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+}
+
+.chartIndicatorLegendExpandButton:hover {
+    background-color: rgba(28, 38, 49, 0.94);
+}
+
+.chartIndicatorLegendHiddenSection {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.chartIndicatorLegendMenuShell {
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.chartIndicatorLegendMenu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 280px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 10px 12px;
+    border: 1px solid var(--border-default);
+    background-color: rgba(12, 18, 24, 0.97);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+}
+
+.chartIndicatorLegendGroup + .chartIndicatorLegendGroup {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(126, 158, 193, 0.16);
+}
+
+.chartIndicatorLegendGroupHeader {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.chartIndicatorLegendGroupHeader input {
+    margin: 0;
+}
+
+.chartIndicatorLegendGroupTitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.chartIndicatorLegendOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.76rem;
+    padding: 2px 0;
+    cursor: pointer;
+}
+
+.chartIndicatorLegendOption input {
+    margin: 0;
+}
+
+.chartIndicatorValueBadge {
+    gap: 7px;
+    padding-right: calc(var(--chart-meta-font-size, 0.72rem) * 0.95);
+}
+
+.chartIndicatorValueDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+}
+
+.chartIndicatorValueLabel {
+    opacity: 0.92;
+}
+
+.chartIndicatorValueNumber {
+    font-variant-numeric: tabular-nums;
+}
+
+.chartIndicatorValueBadge.isHiddenLegend {
+    opacity: 0.62;
+    border-style: dashed;
+}
+
+.chartErrorBadge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 122, 122, 0.24);
+    background: rgba(122, 36, 44, 0.94);
+    color: #fff;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+@keyframes chartAppliedFlash {
+    0% {
+        background-color: rgba(255, 255, 255, 0.98);
+        border-color: rgba(255, 255, 255, 0.98);
+        color: #111;
+    }
+
+    100% {
+        background-color: rgba(16, 22, 29, 0.88);
+        border-color: var(--border-default);
+        color: var(--text-primary);
+    }
+}
+
+@media (max-width: 900px) {
+    .chartAppliedMeta {
+        top: 8px;
+        left: 8px;
+        max-width: calc(100% - 16px);
+        gap: 6px;
+    }
+
+    .chartAppliedMetaPrimaryRow {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+
+    .chartAppliedMetaControls {
+        align-self: flex-start;
+    }
+
+    .chartIndicatorLegendMenu {
+        min-width: min(280px, calc(100vw - 24px));
+        max-width: calc(100vw - 24px);
+    }
+
+    .chartIndicatorLegendOverflowShell {
+        flex-basis: 100%;
+    }
+
+    .chartErrorBadge {
+        top: auto;
+        right: 8px;
+        bottom: 8px;
+        left: 8px;
+        font-size: 0.82rem;
+    }
+}

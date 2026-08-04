@@ -1,94 +1,78 @@
 # Robotineeko
 
-Curated public repository for the Robotineeko product.
+Public source snapshot of a live quantitative trading workbench built and maintained as a real product.
 
-This repository is intentionally safe and narrow. It does not contain production data, credentials, private documents, or raw internal application logic.
+Live product: `https://robotineeko.com.br`
 
-## Live Product
+## What recruiters should see here
 
-- Website: `https://robotineeko.com.br`
-- Demo mode: restricted public demo available on the live product
+- A real React + Vite frontend with large authenticated product surfaces.
+- A real FastAPI backend with auth, docs, workspace, chart, strategy, and neural-related flows.
+- Product thinking beyond CRUD: research workflow, backtesting, broker-aware behavior, and runtime monitoring.
+- Evidence of shipping and maintenance, not just isolated toy scripts.
 
-## What This Repository Is
+## Product scope
 
-This repository is a portfolio-facing shell that explains the product and exposes only an empty public-safe structure.
+Robotineeko is a broker-aware workbench that connects:
 
-It exists to show:
+- strategy authoring
+- backtesting
+- results inspection
+- comparative research
+- neural experimentation
+- trader runtime monitoring
+- curated in-product documentation
 
-- product scope
-- system boundaries
-- repository organization
-- engineering ownership
+The live product also includes a guest-safe showcase mode for review and demonstration.
 
-It does not exist to mirror the private production codebase.
+## Tech stack
 
-## Product Engineering Scope
+- React 19
+- Vite 8
+- FastAPI
+- Python
+- lightweight-charts
+- SQLite-backed application state in the private runtime
+- MT5 bridge integration in the live system
 
-Robotineeko represents real product work across:
-
-- frontend delivery
-- backend-connected application flows
-- deployment and runtime maintenance
-- iterative production support
-- documentation prepared for public review without exposing internals
-
-## Public Scope
-
-- recruiter-facing README
-- safe repository metadata
-- curated public documentation subset
-- placeholder folder structure for public reference
-- future screenshots and diagrams
-- public architecture notes with sensitive details removed
-
-## Private Scope
-
-The following remain private:
-
-- application data
-- databases and snapshots
-- credentials and environment configuration
-- internal trading logic
-- operational host details
-- private `/fund` area and related materials
-
-## Repository Structure
-
-This public repository currently ships a safe public shell plus a small curated
-documentation set:
+## Repository layout
 
 ```text
 frontend/
+  src/
+  public/
+  shared/
 backend/
+  python/
+  requirements.txt
 docs/
-  README.md
-  product-overview.md
-  public-demo-and-surfaces.md
-  analysis-workflow.md
-public/
-infra/
 ```
 
-Most folders remain placeholders for product boundaries.
+## What is included
 
-The `docs/` folder is the exception: it now contains a small public-safe subset
-prepared specifically for portfolio review.
+- Real frontend application code from the production codebase, curated for public review.
+- Real backend application code from the production codebase, curated for public review.
+- Public-safe product documentation used to explain the workflow and architecture.
+- Tests that show guest hardening and backend behavior.
 
-## Why The Structure Is Empty
+## What is intentionally not included
 
-The live product is active, but this repository is intentionally published as a
-sanitized portfolio artifact.
+- user-created data
+- private databases or snapshots
+- environment files and secrets
+- deployment server configs
+- runtime logs and operational artifacts
+- the private `/fund` data-room surface
+- internal research catalogs and other operational outputs
 
-That means:
+This repository is meant to show how the product is built, not to mirror the live environment byte-for-byte.
 
-- no production source code
-- no datasets or snapshots
-- no environment files
-- no infrastructure secrets
-- no internal operating material
+## Quick tour
 
-## Publication Rule
+- [docs/README.md](./docs/README.md)
+- [frontend/README.md](./frontend/README.md)
+- [backend/README.md](./backend/README.md)
 
-Do not treat this repository as the source of truth for the live system.
+## Why this repo is curated
 
-The live system remains private. This repository is a public-facing portfolio artifact.
+The production repository contains live operational material that should not be public. This snapshot keeps the engineering signal high while removing secrets, private data, runtime state, and restricted business surfaces.

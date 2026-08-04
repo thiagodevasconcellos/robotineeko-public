@@ -1,0 +1,179 @@
+.NeuralRuntime {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.neuralRuntimeToolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-default);
+}
+
+.neuralRuntimeHeadline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.neuralRuntimeDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #6f7784;
+}
+
+.neuralRuntimeDot.is-idle { background: #6f7784; }
+.neuralRuntimeDot.is-ok { background: #5ec77b; }
+.neuralRuntimeDot.is-warn { background: #d3a645; }
+.neuralRuntimeDot.is-error { background: #e36d6d; }
+
+.neuralRuntimeToolbarMeta {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.neuralRuntimeActionButton {
+    height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.45em;
+    background: var(--surface-app);
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+.neuralRuntimeSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(107, 184, 255, 0.10);
+    border: 1px solid rgba(107, 184, 255, 0.18);
+}
+
+.neuralRuntimeSummaryTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.neuralRuntimeSummaryText {
+    color: var(--text-secondary);
+}
+
+.neuralRuntimeGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.neuralRuntimeCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-panel);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.neuralRuntimeCardTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.neuralRuntimeCardBody {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.neuralRuntimeFieldRow {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.neuralRuntimeFieldLabel {
+    color: var(--text-muted);
+    font-size: 0.86rem;
+}
+
+.neuralRuntimeFieldValue {
+    color: var(--text-primary);
+    min-width: 0;
+    word-break: break-word;
+}
+
+.neuralRuntimeError {
+    padding: 12px;
+    border-radius: 0.5em;
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: var(--status-negative);
+}
+
+.neuralRuntimeList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.neuralRuntimeListItem {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.neuralRuntimeListTitle {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.neuralRuntimeListMeta,
+.neuralRuntimeListSubmeta {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+.neuralRuntimeEmpty {
+    padding: 12px;
+    border-radius: 0.5em;
+    background: var(--surface-panel);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1100px) {
+    .neuralRuntimeGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .neuralRuntimeToolbar {
+        flex-wrap: wrap;
+    }
+
+    .neuralRuntimeToolbarMeta {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .neuralRuntimeFieldRow {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}

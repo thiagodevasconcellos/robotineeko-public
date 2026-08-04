@@ -1,0 +1,368 @@
+section#Console .RuntimeConsole {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-top: 0;
+    height: 100%;
+    min-height: 0;
+    overflow: auto;
+}
+
+section#Console .RuntimeConsole .runtimePanelToolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: stretch;
+    min-height: 42px;
+    background-color: var(--surface-app);
+    border-top: 1px solid var(--border-default);
+    border-bottom: 1px solid var(--border-default);
+    margin: -7.5px -20px 0;
+    z-index: 2;
+}
+
+section#Console .RuntimeConsole .runtimePanelTabs {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+section#Console .RuntimeConsole .runtimePanelTab {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 8px;
+    padding: 0 20px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+section#Console .RuntimeConsole .runtimePanelTab.active {
+    border-left: 1px solid var(--border-strong);
+    border-right: 1px solid var(--border-strong);
+    background-color: var(--surface-app);
+    font-weight: bold;
+}
+
+section#Console .RuntimeConsole .runtimePanelTabDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    flex: 0 0 auto;
+    background: #6f7784;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+section#Console .RuntimeConsole .runtimePanelTabDot.is-idle {
+    background: #6f7784;
+}
+
+section#Console .RuntimeConsole .runtimePanelTabDot.is-ok {
+    background: #5ec77b;
+}
+
+section#Console .RuntimeConsole .runtimePanelTabDot.is-warn {
+    background: #d3a645;
+}
+
+section#Console .RuntimeConsole .runtimePanelTabDot.is-error {
+    background: #e36d6d;
+}
+
+section#Console .RuntimeConsole .runtimeActions {
+    display: flex;
+    align-items: stretch;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+section#Console .RuntimeConsole .runtimeToolbarButton {
+    min-width: 150px;
+    padding: 0 16px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+section#Console .RuntimeConsole .runtimeToolbarButton:hover:not(:disabled) {
+    background-color: var(--surface-panel);
+}
+
+section#Console .RuntimeConsole .runtimeToolbarButton:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetry {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px 10px;
+    border-bottom: 1px solid var(--border-default);
+    background: linear-gradient(180deg, rgba(107, 184, 255, 0.06), rgba(107, 184, 255, 0.02));
+    flex: 0 0 auto;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryHeader {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryHeaderActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryTitle {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryMeta {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryToggle {
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid var(--border-default);
+    border-radius: 0.4em;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font: inherit;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryToggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetrySummary {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChain {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(220px, 1fr));
+    gap: 8px;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryLagGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(180px, 1fr));
+    gap: 8px;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryTimeline {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 8px;
+}
+
+section#Console .RuntimeConsole .runtimeTimelineItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTimelineLabel {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .RuntimeConsole .runtimeTimelineTime {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+}
+
+section#Console .RuntimeConsole .runtimeTimelineDetail {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .RuntimeConsole .runtimeLagItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeLagLabel {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .RuntimeConsole .runtimeLagValue {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlerts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlert {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 9px 11px;
+    border-radius: 0.45em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlert.is-warn {
+    border-color: rgba(211, 166, 69, 0.28);
+    background: rgba(211, 166, 69, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlert.is-error {
+    border-color: rgba(227, 109, 109, 0.28);
+    background: rgba(227, 109, 109, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlertTitle {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryAlertDetail {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChip {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 9px 11px;
+    border-radius: 0.45em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChip.is-ok {
+    border-color: rgba(94, 199, 123, 0.28);
+    background: rgba(94, 199, 123, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChip.is-warn {
+    border-color: rgba(211, 166, 69, 0.28);
+    background: rgba(211, 166, 69, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChip.is-error {
+    border-color: rgba(227, 109, 109, 0.28);
+    background: rgba(227, 109, 109, 0.08);
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChipLabel {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryChipDetail {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+section#Console .RuntimeConsole .runtimeTelemetryError {
+    padding: 10px 12px;
+    border-radius: 0.45em;
+    background: rgba(239, 68, 68, 0.10);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    color: var(--status-negative);
+}
+
+section#Console .RuntimeConsole .runtimePanelBody {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    min-height: auto;
+    overflow: visible;
+}
+
+section#Console .RuntimeConsole .runtimePanelView {
+    flex: 0 0 auto;
+    min-height: auto;
+    overflow: visible;
+}
+
+@media (max-width: 1080px) {
+    section#Console .RuntimeConsole .runtimeTelemetryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryChain {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryLagGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryTimeline {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    section#Console .RuntimeConsole .runtimePanelToolbar {
+        flex-wrap: wrap;
+    }
+
+    section#Console .RuntimeConsole .runtimePanelTabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryHeaderActions {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 0;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryLagGrid {
+        grid-template-columns: 1fr;
+    }
+
+    section#Console .RuntimeConsole .runtimeTelemetryTimeline {
+        grid-template-columns: 1fr;
+    }
+}
