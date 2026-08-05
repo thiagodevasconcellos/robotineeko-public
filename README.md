@@ -25,6 +25,16 @@ Robotineeko is a broker-aware workbench that connects:
 
 The live product also includes a guest-safe showcase mode for review and demonstration.
 
+## Public product snapshots
+
+Landing surface with a safe public entry point:
+
+![Robotineeko login and guest entry](./docs/screenshots/login-and-guest-entry.png)
+
+Guest demo research console with real charting and read-only workflow review:
+
+![Robotineeko guest demo research console](./docs/screenshots/guest-demo-research-console.png)
+
 ## Tech stack
 
 - React 19
